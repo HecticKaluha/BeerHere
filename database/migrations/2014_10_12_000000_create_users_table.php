@@ -16,9 +16,14 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->text('about');
+            $table->string('gender');
+            $table->string('age');
+            $table->string('place');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->date('last_login');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +36,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('likes');
+        Schema::dropIfExists('interest_user');
         Schema::dropIfExists('users');
     }
 }
