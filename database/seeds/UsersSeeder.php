@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class UsersSeeder extends Seeder
 {
@@ -16,6 +17,22 @@ class UsersSeeder extends Seeder
             $this->command->warn("Seeding users failed; table 'users' doesn't exist in database...");
             return;
         }
+
+        $faker = Faker::create('nl_NL');
+        DB::table('users')->insert([
+            'name' => 'Dev',
+            'about' => $faker->paragraph,
+            'gender' => 'M',
+            'age' => 22,
+            'place' => $faker->city,
+            'email' => 'dev@dev.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+            'last_login' => $faker->dateTime,
+            'remember_token' => str_random(10),
+        ]);
+        $this->command->info("Seeded user dev (dev@dev.com) with password 'password'");
+
 
         factory(App\User::class, $amount)->create();
         $this->command->info('Seeded ' . $amount . ' users');

@@ -1,0 +1,53 @@
+#flash-message{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    z-index:10;
+}
+
+.dashboard-auth > li > a{
+    color:#999999;
+    padding:10px;
+}
+.dashboard-auth > li > a:hover{
+    color: rgb(62, 62, 62);
+}
+.dropdown-toggle:focus{
+    color: rgb(82, 82, 82);
+}
+
+.text-wrap {
+    -ms-word-break: break-all;
+    word-break: break-all;
+
+    /* Non standard for webkit */
+    word-break: break-word;
+
+    /*-webkit-hyphens: auto;*/
+    /*-moz-hyphens: auto;*/
+    /*hyphens: auto;*/
+}
+
+.cursor_hand{
+    cursor:pointer;
+}
+
+.flexbox{
+    display:flex
+}
+.flexbox-row{
+    flex-direction: row;
+}
+.flexbox-column{
+    flex-direction:column;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+.date{
+    padding:10px;
+}
+.slot{
+    margin-bottom: 5px;
+}
