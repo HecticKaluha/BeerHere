@@ -21,5 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/personal/interests', 'PersonalController@interests');
+Route::get('/interests/unsubscribe/{interest}', 'PersonalController@unsubscribe');
+Route::get('/interests/subscribe/{interest}', 'PersonalController@subscribe');
 
 

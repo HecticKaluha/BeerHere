@@ -1,6 +1,6 @@
 <div class="col-lg-4">
     <div class="block">
-        <div class="bg-image" style="background-image: url('image/profile_temp.jpg');">
+        <div class="bg-image" style="background-image: url('{{asset('image/profile_temp.jpg')}}');">
             <div class="bg-black-op">
                 <a href="#">
                     <div class="block-content block-content-full text-center">

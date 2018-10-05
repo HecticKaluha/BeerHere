@@ -23,7 +23,16 @@
     <div class="content">
         <h2 class="content-heading">Subscribed Interests</h2>
         <div class="row">
-            @each('interests.interest', $interests, 'interest')
+            @foreach($interests as $interest)
+                @include('interests.interest')
+            @endforeach
+        </div>
+
+        <h2 class="content-heading">Unsubscribed Interests</h2>
+        <div class="row">
+            @foreach($allInterests as $interest)
+                @include('interests.interest')
+            @endforeach
         </div>
     </div>
 @endsection

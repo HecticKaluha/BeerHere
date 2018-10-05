@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,6 +86,17 @@ class PersonalController extends Controller
 
     public function interests(){
         $interests = Auth::user()->interests;
-        return view('personal.interests', compact('interests'));
+        $allInterests = Interest::all();
+        return view('personal.interests', compact('interests', 'allInterests'));
+    }
+
+    public function unsubscribe($interest){
+        Auth::user()->interests()->detach($interest);
+        return redirect()->back();
+    }
+
+    public function subscribe($interest){
+        Auth::user()->interests()->attach($interest);
+        return redirect()->back();
     }
 }
