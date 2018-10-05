@@ -47,14 +47,6 @@ class User extends Authenticatable
 
     public function matches()
     {
-        $likedby = $this->likedBy();
-        $likes = $this->likes();
-        foreach($likes as $like)
-        {
-            if(true){
-                return;
-            }
-        }
-        return $this->likedBy()->where('user_id', Auth::user()->id);
+        return $this->belongsToMany(User::class, 'likes', 'user_id', 'likes_user_id')->wherePivotIn('likes_user_id', $this->likedBy->pluck('id')->toArray());
     }
 }
