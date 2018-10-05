@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Laravel - Demos</title>
+    <title>BeerHere - {{Auth::user()->name}}</title>
 
     <meta name="description" content="OneUI - Admin Dashboard Template & UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">

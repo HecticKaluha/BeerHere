@@ -6,13 +6,13 @@
             <div class="col-sm-7">
                 <h1 class="page-heading">
                     {{Auth::user()->name}}
-                    <small>Personal Feed.</small>
+                    <small>Interests</small>
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li>Home</li>
-                    <li><a class="link-effect" href="">Page</a></li>
+                    <li>Personal</li>
+                    <li><a class="link-effect" href="">Interests</a></li>
                 </ol>
             </div>
         </div>
@@ -21,9 +21,9 @@
 
     <!-- Page Content -->
     <div class="content">
-        @include('feed.personal_feed')
-
-        @include('feed.personal_timeline')
+        <h2 class="content-heading">Subscribed Interests</h2>
+        <div class="row">
+            @each('interests.interest', $interests, 'interest')
+        </div>
     </div>
-    <!-- END Page Content -->
 @endsection

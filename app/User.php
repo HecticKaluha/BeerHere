@@ -47,6 +47,6 @@ class User extends Authenticatable
 
     public function matches()
     {
-        return $this->belongsToMany(User::class, 'likes', 'user_id', 'likes_user_id')->wherePivotIn('likes_user_id', $this->likedBy->pluck('id')->toArray());
+        return $this->likes()->wherePivotIn('likes_user_id', $this->likedBy->pluck('id')->toArray());
     }
 }

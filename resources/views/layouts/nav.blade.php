@@ -77,6 +77,9 @@
                                     class="sidebar-mini-hide">Profiel</span></a>
                         <ul>
                             <li>
+                                <a href="/home">Personal Feed</a>
+                            </li>
+                            <li>
                                 <a href="/profile">Weergeven</a>
                             </li>
                             <li>
@@ -89,7 +92,7 @@
                                 class="sidebar-mini-hide">Interests</span></a>
                         <ul>
                             <li>
-                                <a href="/interests">View</a>
+                                <a href="/personal/interests">View</a>
                             </li>
                         </ul>
                     </li>
