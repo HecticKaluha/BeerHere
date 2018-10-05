@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Interest;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PersonalController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PersonalController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -45,9 +45,15 @@ class PersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user = null)
     {
-        //
+        if(!isset($user))
+        {
+            $user = Auth::user();
+        }
+        $interests = $user->interests;
+        return view('profile.profile_overview', compact('user', 'interests'));
+
     }
 
     /**
@@ -82,27 +88,5 @@ class PersonalController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function interests(){
-        $user = Auth::user();
-        $interests = $user->interests;
-        $allInterests = Interest::all();
-        return view('personal.interests', compact('interests', 'allInterests', 'user'));
-    }
-
-    public function unsubscribe($interest){
-        Auth::user()->interests()->detach($interest);
-        return redirect()->back();
-    }
-
-    public function subscribe($interest){
-        Auth::user()->interests()->attach($interest);
-        return redirect()->back();
-    }
-
-    public function getLikes(){
-        $likes = Auth::user()->likes;
-        return view('personal.likes', compact('likes'));
     }
 }

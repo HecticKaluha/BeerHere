@@ -2,7 +2,7 @@
     <div class="block">
         <div class="bg-image" style="background-image: url('{{asset('image/profile_temp.jpg')}}');">
             <div class="bg-black-op">
-                <a href="#">
+                <a href="/profile">
                     <div class="block-content block-content-full text-center">
                         <i class="fa fa-4x fa-user text-warning push-30-t"></i>
                         <h3 class="h4 text-uppercase text-white push-30-t push-5">{{$loggedInUser->name}}</h3>
@@ -18,8 +18,8 @@
                     <div class="h5 text-muted push-5-t">Interests</div>
                 </div>
                 <div class="col-xs-4">
-                    <a class="h2 font-w300" href="#">{{$loggedInUser->likes->count()}}</a>
-                    <div class="h5 text-muted push-5-t">Liked</div>
+                    <a class="h2 font-w300" href="/personal/likes">{{$loggedInUser->likes->count()}}</a>
+                    <div class="h5 text-muted push-5-t">Likes</div>
                 </div>
                 <div class="col-xs-4">
                     <a class="h2 font-w300" href="#">{{$loggedInUser->matches->count()}}</a>
