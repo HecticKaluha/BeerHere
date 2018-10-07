@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,7 +53,8 @@ class ProfileController extends Controller
             $user = Auth::user();
         }
         $interests = $user->interests;
-        return view('profile.profile_overview', compact('user', 'interests'));
+        $last_login = Carbon::parse($user->last_login)->format('d-m-Y');
+        return view('profile.profile_overview', compact('user', 'interests', 'last_login'));
 
     }
 

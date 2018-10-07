@@ -28,7 +28,7 @@
             @endforeach
         </div>
 
-        <h2 class="content-heading">Unsubscribed Interests</h2>
+        <h2 class="content-heading">All Interests</h2>
         <div class="row">
             @foreach($allInterests as $interest)
                 @include('interests.interest')
