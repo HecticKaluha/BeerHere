@@ -88,7 +88,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-heart"></i><span
+                        <a class="nav" data-toggle="" href="/personal/interests"><i class="si si-heart"></i><span
                                 class="sidebar-mini-hide">Interests</span></a>
                         <ul>
                             <li>
@@ -97,7 +97,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-like"></i><span
+                        <a class="nav" data-toggle="" href="/personal/likes"><i class="si si-like"></i><span
                                 class="sidebar-mini-hide">Likes</span></a>
                         <ul>
                             <li>
@@ -106,7 +106,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-link"></i><span
+                        <a class="nav" data-toggle="" href="/personal/matches"><i class="si si-link"></i><span
                                 class="sidebar-mini-hide">Matches</span></a>
                         <ul>
                             <li>
