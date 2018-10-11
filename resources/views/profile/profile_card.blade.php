@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-xs col-lg-3 col-xs-3 remove-margin-b">
                     <div class="push-5"><i class="si si-eye fa-2x"></i></div>
-                    <div class="h5 font-w300 text-muted">{{$last_login}}</div>
+                    <div class="h5 font-w300 text-muted">@if(\Carbon\Carbon::parse($user->last_login)->diffInDays() < 1)Today @elseif(\Carbon\Carbon::parse($user->last_login)->diffInDays(\Carbon\Carbon::now()) <= 7) {{\Carbon\Carbon::parse($user->last_login)->diffInDays() . " day(s) ago"}} @else Not seen recently @endif</div>
                 </div>
             </div>
         </div>

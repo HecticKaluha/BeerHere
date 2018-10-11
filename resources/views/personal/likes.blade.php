@@ -21,6 +21,9 @@
 
     <!-- Page Content -->
     <div class="content">
-
+        {{--@foreach($likes as $like)--}}
+            {{--{{$like->last_login->diffInDays(\Carbon\Carbon::now())}}--}}
+        {{--@endforeach--}}
+        @each('profile.profile_card', $likes, 'user')
     </div>
 @endsection
