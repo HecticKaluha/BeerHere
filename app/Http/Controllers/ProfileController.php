@@ -53,7 +53,17 @@ class ProfileController extends Controller
             $user = Auth::user();
         }
         $interests = $user->interests;
-        $last_login = Carbon::parse($user->last_login)->format('d-m-Y');
+        $last_login = Carbon::parse($user->last_login);
+        if($last_login->diffInDays(Carbon::now()) <= 1)
+        {
+            $last_login = "Today";
+        }
+        else if($last_login->diffInDays(Carbon::now()) <= 7){
+            $last_login = $last_login->diffInDays() . "days ago";
+        }
+        else{
+            $last_login = "Not seen recently";
+        }
         return view('profile.profile_overview', compact('user', 'interests', 'last_login'));
 
     }

@@ -26,43 +26,12 @@
     <!-- END Page Header -->
     <div class="content">
 
-        <h2 class="content-heading">Profile</h2>
         <div class="col-lg-12">
-            <div class="block col-lg-6">
-                <div class="block-content block-content-full text-center">
-                    <div>
-                        <img class="img-avatar img-avatar96" src="{{asset('image/profile_temp.jpg')}}" alt="">
-                    </div>
-                    <div class="h5 push-15-t push-5">{{$user->name}}</div>
-                </div>
-                <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-                    <div class="text-center text-muted">{{$user->about}}</div>
-                </div>
-                <div class="block-content">
-                    <div class="row items-push text-center">
-                        <div class="col-xs col-lg-3">
-                            <div class="push-5"><i
-                                    class="si @if($user->gender == 'M') si-user @else si-user-female @endif fa-2x"></i>
-                            </div>
-                            <div class="h5 font-w300 text-muted">Gender</div>
-                        </div>
-                        <div class="col-xs col-lg-3">
-                            <div class="push-5 h3">{{$user->age}}</div>
-                            <div class="h5 font-w300 text-muted">Age</div>
-                        </div>
-                        <div class="col-xs col-lg-3">
-                            <div class="push-5"><i class="si si-home fa-2x"></i></div>
-                            <div class="h5 font-w300 text-muted">{{$user->place}}</div>
-                        </div>
-                        <div class="col-xs col-lg-3">
-                            <div class="push-5"><i class="si si-eye fa-2x"></i></div>
-                            <div class="h5 font-w300 text-muted">{{$last_login}}</div>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="content-heading">Profile</h2>
+            <div class="col-lg-5">
+                @include('profile.profile_card')
             </div>
-
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="block block-themed">
                         <div class="block-header bg-primary-dark">
                         <ul class="block-options">
@@ -83,14 +52,14 @@
                         <!-- Items -->
                         <div class="carousel-inner">
 
-                            <div class="item active">
-                                <img src="{{asset('image/profile_temp.jpg')}}" alt="Slide 1" />
+                            <div class="item active background">
+                                <img class="img-responsive bg-image-cover" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 1" />
                             </div>
                             <div class="item">
-                                <img src="{{asset('image/profile_temp.jpg')}}" alt="Slide 2" />
+                                <img class="img-responsive" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 2" />
                             </div>
                             <div class="item">
-                                <img src="{{asset('image/profile_temp.jpg')}}" alt="Slide 3" />
+                                <img class="img-responsive" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 3" />
                             </div>
                         </div>
                         <a href="#carousel" class="left carousel-control" data-slide="prev">
@@ -101,14 +70,12 @@
                         </a>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
 
+        <div class="col-lg-12">
         <h2 class="content-heading">Subscribed Interests</h2>
-        <div class="row">
             @foreach($interests as $interest)
                 @include('interests.interest')
             @endforeach
