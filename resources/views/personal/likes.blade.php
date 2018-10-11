@@ -21,9 +21,11 @@
 
     <!-- Page Content -->
     <div class="content">
-        {{--@foreach($likes as $like)--}}
-            {{--{{$like->last_login->diffInDays(\Carbon\Carbon::now())}}--}}
-        {{--@endforeach--}}
-        @each('profile.profile_card', $likes, 'user')
+        <h2 class="content-heading">Liked profiles</h2>
+        @foreach($likes as $user)
+            <div class="col-lg-4">
+                @include('profile.profile_card')
+            </div>
+        @endforeach
     </div>
 @endsection
