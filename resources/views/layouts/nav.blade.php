@@ -74,16 +74,16 @@
                     <li class="nav-main-heading"><span class="sidebar-mini-hide">Pages</span></li>
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span
-                                    class="sidebar-mini-hide">Profiel</span></a>
+                                    class="sidebar-mini-hide">Profile</span></a>
                         <ul>
                             <li>
                                 <a href="/home">Personal Feed</a>
                             </li>
                             <li>
-                                <a href="/profile">Weergeven</a>
+                                <a href="/profile">View</a>
                             </li>
                             <li>
-                                <a href="/profile/options">Opties</a>
+                                <a href="/profile/options">Options</a>
                             </li>
                         </ul>
                     </li>
@@ -93,6 +93,24 @@
                         <ul>
                             <li>
                                 <a href="/personal/interests">View</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-like"></i><span
+                                class="sidebar-mini-hide">Likes</span></a>
+                        <ul>
+                            <li>
+                                <a href="/personal/likes">View</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-link"></i><span
+                                class="sidebar-mini-hide">Matches</span></a>
+                        <ul>
+                            <li>
+                                <a href="/personal/matches">View</a>
                             </li>
                         </ul>
                     </li>
