@@ -29,6 +29,9 @@ Route::get('/personal/likes/', 'PersonalController@getLikes');
 Route::get('/profile/', ['uses' => 'ProfileController@show']);
 Route::get('/profile/{user}', ['uses' => 'ProfileController@show']);
 
+Route::get('/personal/matches/', 'PersonalController@getMatches');
+
+
 
 
 

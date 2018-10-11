@@ -22,7 +22,7 @@
                     <div class="h5 text-muted push-5-t">Likes</div>
                 </div>
                 <div class="col-xs-4">
-                    <a class="h2 font-w300" href="#">{{$loggedInUser->matches->count()}}</a>
+                    <a class="h2 font-w300" href="/personal/matches">{{$loggedInUser->matches->count()}}</a>
                     <div class="h5 text-muted push-5-t">Matches</div>
                 </div>
             </div>
