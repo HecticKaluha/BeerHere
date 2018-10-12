@@ -46,10 +46,7 @@ class LoginController extends Controller
     }
     public function authenticated(Request $request, $user)
     {
-        $user = User::find($user->id);
-//        $user->last_login = Carbon::now()->addDays(3)->format('Y-m-d');
-        $user->name = 'Hans';
-//        dd($user);
-        $user->save;
+        $user->last_login = Carbon::now()->addDays(2);
+        $user->save();
     }
 }
