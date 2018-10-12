@@ -17,6 +17,7 @@ class CreateUserUserTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('likes_user_id');
+            $table->dateTime('liked_on');
 
             $table->foreign('user_id')
                 ->references('id')->on('users')

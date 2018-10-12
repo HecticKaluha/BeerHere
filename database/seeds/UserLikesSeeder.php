@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
@@ -27,6 +28,7 @@ class UserLikesSeeder extends Seeder
                 DB::table('likes')->insert([
                     'user_id' => $user->id,
                     'likes_user_id' => $users->random()->id,
+                    'liked_on' => $faker->dateTimeBetween(Carbon::now()->subWeeks(3), ' now'),
                 ]);
             }
         }
