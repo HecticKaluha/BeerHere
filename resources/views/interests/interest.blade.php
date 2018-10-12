@@ -2,10 +2,8 @@
     <a class="block block-link-hover3">
         <div class="block-content block-content-full text-center bg-image"
              style="background-image: url('{{asset('image/beer_interest.jpg')}}');">
-
-            <i class="fa fa-4x fa-glass text-warning push-30-t"></i>
             <div class="block-content block-content-mini block-content-full">
-                <div class="text-center text-muted">{{$interest->name}}</div>
+                <h3 class="h4 text-uppercase text-warning push-5"><i class="fa fa-glass text-warning"></i> {{$interest->name}}</h3>
             </div>
         </div>
         <div class="block-content">
