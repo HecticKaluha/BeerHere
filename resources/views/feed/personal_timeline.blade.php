@@ -10,7 +10,7 @@
                             class="si si-arrow-up"></i></button>
             </li>
         </ul>
-        <h3 class="block-title">{{$type}}s</h3>
+        <h3 class="block-title"><a class="text-white" href="/personal/{{$type}}s">{{$type}}s</a></h3>
     </div>
     <div class="block-content">
         @if(!$feeditems->isEmpty())
