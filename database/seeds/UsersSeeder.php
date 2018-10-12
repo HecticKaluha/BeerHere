@@ -23,7 +23,7 @@ class UsersSeeder extends Seeder
             'name' => 'Dev',
             'about' => $faker->paragraph,
             'gender' => 'M',
-            'age' => 22,
+            'birthdate' => $faker->dateTimeBetween('-20 years', '-19 years'),
             'place' => $faker->city,
             'email' => 'dev@dev.com',
             'email_verified_at' => now(),

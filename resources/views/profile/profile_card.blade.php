@@ -20,7 +20,7 @@
                     <div class="h5 font-w300 text-muted">Gender</div>
                 </div>
                 <div class="col-xs col-lg-3 col-xs-3 remove-margin-b">
-                    <div class="push-5 h3">{{$user->age ? "Unknown"  : \Carbon\Carbon::parse($user->age)->age}}</div>
+                    <div class="push-5 h3">{{\Carbon\Carbon::parse($user->birthdate)->age}}</div>
                     <div class="h5 font-w300 text-muted">Age</div>
                 </div>
                 <div class="col-xs col-lg-3 col-xs-3 remove-margin-b">

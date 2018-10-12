@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'name' => $faker->name,
         'about' => $faker->paragraph,
         'gender' => $faker->randomElement(['M', 'F']),
-        'age' => $faker->numberBetween(16,99),
+        'birthdate' => $faker->dateTimeBetween('-50 years','-19 years'),
         'place' => $faker->city,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
