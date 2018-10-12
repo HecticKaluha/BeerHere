@@ -53,8 +53,8 @@ class ProfileController extends Controller
             $user = Auth::user();
         }
         $interests = $user->interests;
-        $last_login = Carbon::parse($user->last_login);
-        return view('profile.profile_overview', compact('user', 'interests'));
+        $displayAll = true;
+        return view('profile.profile_overview', compact('user', 'interests', 'displayAll'));
 
     }
 

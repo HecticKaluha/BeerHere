@@ -5,7 +5,7 @@
                 <div class="block-content block-content-full text-center">
                     <i class="fa fa-4x fa-user text-warning push-30-t"></i>
                     <h3 class="h4 text-uppercase text-white push-30-t push-5">{{$user->name}}</h3>
-                    <h4 class="h5 text-white-op push-20">{{$user->about}}</h4>
+                    <h4 class="h5 text-white-op push-20">@if($displayAll){{$user->about}} @else {{ str_limit($user->about, $limit = 80, $end = '...') }} @endif</h4>
                 </div>
             </a>
         </div>
