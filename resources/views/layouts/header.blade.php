@@ -32,8 +32,9 @@
                 @endguest
             </ul>
         </li>
+        <li>
         <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
-        <button class="btn btn-link text-default pull-right" type="button" data-toggle="layout" data-action="sidebar_open">
+        <button class="btn btn-link text-default pull-right hidden-lg hidden-md" type="button" data-toggle="layout" data-action="sidebar_open">
             <i class="fa fa-navicon"></i>
         </button>
         </li>
