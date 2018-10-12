@@ -16,6 +16,7 @@
                     <button class="btn btn-link text-gray dropdown-toggle" data-toggle="dropdown" type="button">
                         <i class="si si-drop"></i>
                     </button>
+
                     <ul class="dropdown-menu dropdown-menu-right font-s13 sidebar-mini-hide">
                         <li>
                             <a data-toggle="theme" data-theme="default" tabindex="-1" href="javascript:void(0)">
@@ -58,15 +59,23 @@
                         </li>
                     </ul>
                 </div>
+                {{--uncomment these lines if you want the logo to be the sidebar toggle--}}
+                {{--<ul class="nav-header pull-left">--}}
+                    {{--<li class="h5 text-white" data-toggle="layout" data-action="sidebar_mini_toggle">--}}
+                        {{--<img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span--}}
+                                {{--class="h6 font-w600 sidebar-mini-hide"> BeerHere</span>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
                 <a class="h5 text-white" href="/home">
                     <img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span
                             class="h6 font-w600 sidebar-mini-hide"> BeerHere</span>
                 </a>
+
             </div>
             <!-- END Side Header -->
 
             <!-- Side Content -->
-            <div class="side-content side-content-full">
+            <div class="side-content side-content-mini">
                 <ul class="nav-main">
                     <li>
                         <a class="active" href="/home"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>

@@ -12,7 +12,7 @@
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
                     <li>Home</li>
-                    <li><a class="link-effect" href="">Page</a></li>
+                    <li><a class="link-effect" href="">Personal feed</a></li>
                 </ol>
             </div>
         </div>
