@@ -22,10 +22,16 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Liked profiles</h2>
-        @foreach($likes as $user)
-            <div class="col-lg-4">
-                @include('profile.profile_card')
+        @if(!$likes->isEmpty())
+            @foreach($likes as $user)
+                <div class="col-lg-4">
+                    @include('profile.profile_card')
+                </div>
+            @endforeach
+        @else
+            <div class="col-lg-12">
+                @include('empty.empty')
             </div>
-        @endforeach
+        @endif
     </div>
 @endsection

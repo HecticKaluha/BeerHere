@@ -22,10 +22,16 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Profiles you matched with</h2>
-        @foreach($matches as $user)
-            <div class="col-lg-4">
-                @include('profile.profile_card')
+        @if(!$matches->isEmpty())
+            @foreach($matches as $user)
+                <div class="col-lg-4">
+                    @include('profile.profile_card')
+                </div>
+            @endforeach
+        @else
+            <div class="col-lg-12">
+                @include('empty.empty')
             </div>
-        @endforeach
+        @endif
     </div>
 @endsection

@@ -20,7 +20,7 @@
                 @endforeach
             </ul>
         @else
-            @include('feed.empty')
+            @include('empty.empty')
         @endif
 
 
