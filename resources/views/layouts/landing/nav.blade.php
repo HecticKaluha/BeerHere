@@ -49,7 +49,7 @@
                     </ul>
                 </div>
                 <a class="h5 text-white" href="/home">
-                    <img class="fa" src="assets/img/favicons/favicon-16x16.png"> <span class="h6 font-w600 sidebar-mini-hide">BeerHere</span>
+                    <img class="fa" src="assets/img/favicons/favicon-16x16.png"> <span class="h6 font-w600 sidebar-mini-hide">Be Here</span>
                 </a>
             </div>
             <!-- END Side Header -->

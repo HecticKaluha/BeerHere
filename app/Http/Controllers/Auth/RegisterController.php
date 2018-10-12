@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,7 +52,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'gender' => 'required|string|min:1',
+            'birthdate' => 'required|date',
+            'place' => 'required|string|min:2',
             'password' => 'required|string|min:6|confirmed',
+
         ]);
     }
 
@@ -66,7 +71,16 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'gender' => $data['gender'],
+            'birthdate' => Carbon::parse($data['birthdate']),
+            'place' => $data['place'],
+            'last_login' => Carbon::now(),
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function getRegister()
+    {
+        return view('auth.register');
     }
 }

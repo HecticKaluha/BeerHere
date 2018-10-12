@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>BeerHere - Landingspage</title>
+    <title>Be Here - Landingspage</title>
 
     <meta name="description" content="OneUI - Admin Dashboard Template & UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -43,10 +43,12 @@
     <!-- Web fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
     <!-- Page JS Plugins CSS go here -->
-
+    @stack("style")
     <!-- Bootstrap and OneUI CSS framework -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" id="css-main" href="{{asset('assets/css/oneui.min.css')}}">
+
+
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
@@ -153,5 +155,6 @@
 <script src="assets/js/oneui.min.js"></script>
 
 <!-- Page JS Plugins + Page JS Code -->
+@stack('scripts')
 </body>
 </html>
