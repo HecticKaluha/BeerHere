@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
@@ -28,7 +29,7 @@ class UsersSeeder extends Seeder
             'email' => 'dev@dev.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
-            'last_login' => $faker->dateTime,
+            'last_login' => Carbon::now(),
             'remember_token' => str_random(10),
         ]);
         $this->command->info("Seeded user dev (dev@dev.com) with password 'password'");
