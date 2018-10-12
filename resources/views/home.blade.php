@@ -21,9 +21,18 @@
 
     <!-- Page Content -->
     <div class="content">
-        @include('feed.personal_feed')
+        <div class="col-lg-4">
+            @include('feed.personal_feed')
+        </div>
 
-        @include('feed.personal_timeline')
+        <div class="col-lg-8">
+            <div class="col-lg-12">
+                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'])
+            </div>
+            <div class="col-lg-12">
+                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'])
+            </div>
+        </div>
     </div>
     <!-- END Page Content -->
 @endsection
