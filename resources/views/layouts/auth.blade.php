@@ -1,4 +1,4 @@
-<ul class="top-right navbar-nav">
+<ul class="navbar-nav remove-margin-t">
     <!-- Authentication Links -->
     @guest
         <li class="nav-item">
