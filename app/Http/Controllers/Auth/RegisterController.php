@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'gender' => 'required|string|min:1',
-            'birthdate' => 'required|date',
+            'birthdate' => 'required|date|before:'.Carbon::now()->subYears(18)->startOfDay(),
             'place' => 'required|string|min:2',
             'password' => 'required|string|min:6|confirmed',
 
