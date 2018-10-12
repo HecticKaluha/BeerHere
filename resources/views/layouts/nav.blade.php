@@ -80,6 +80,9 @@
                     <li>
                         <a class="active" href="/home"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                     </li>
+                    <li>
+                        <a class="active" href="/suggestions"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Suggestions</span></a>
+                    </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-hide">Pages</span></li>
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span
