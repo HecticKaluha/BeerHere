@@ -32,7 +32,7 @@ Route::get('/profile/{user}', ['uses' => 'ProfileController@show']);
 Route::get('/personal/matches/', 'PersonalController@getMatches');
 
 
-Route::get('/suggestions', 'HomeController@index');
+Route::get('/suggestions', 'ProfileController@getSuggestions');
 
 
 

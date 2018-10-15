@@ -26,10 +26,10 @@
         </div>
 
         <div class="col-lg-8">
-            <div class="col-lg-12 timeline">
+            <div class="col-lg-12">
                 <?php echo $__env->make('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
-            <div class="col-lg-12 push-30-t timeline">
+            <div class="col-lg-12 push-30-t">
                 <?php echo $__env->make('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
         </div>

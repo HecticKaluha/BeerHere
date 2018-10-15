@@ -12,7 +12,7 @@
         </ul>
         <h3 class="block-title"><a class="text-white" href="/personal/{{$type}}s">{{$type}}s</a></h3>
     </div>
-    <div class="block-content">
+    <div class="block-content timeline">
         @if(!$feeditems->isEmpty())
             <ul class="list list-timeline pull-t">
                 @foreach($feeditems as $item)

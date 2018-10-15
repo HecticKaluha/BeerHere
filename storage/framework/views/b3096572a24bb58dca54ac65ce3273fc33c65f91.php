@@ -12,7 +12,7 @@
         </ul>
         <h3 class="block-title"><a class="text-white" href="/personal/<?php echo e($type); ?>s"><?php echo e($type); ?>s</a></h3>
     </div>
-    <div class="block-content">
+    <div class="block-content timeline">
         <?php if(!$feeditems->isEmpty()): ?>
             <ul class="list list-timeline pull-t">
                 <?php $__currentLoopData = $feeditems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

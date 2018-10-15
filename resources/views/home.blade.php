@@ -26,10 +26,10 @@
         </div>
 
         <div class="col-lg-8">
-            <div class="col-lg-12 timeline">
+            <div class="col-lg-12">
                 @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'])
             </div>
-            <div class="col-lg-12 push-30-t timeline">
+            <div class="col-lg-12 push-30-t">
                 @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'])
             </div>
         </div>

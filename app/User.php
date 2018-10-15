@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,16 @@ class User extends Authenticatable
     public function orderedMatches(){
         return $this->matches()->orderBy('likes.liked_on', 'DESC');
 
+    }
+
+    public function suggestions(){
+//        $user_interests = $this->interests->pluck('id')->toArray();
+
+//        $get_similar = DB::table('interest_user')
+//            ->select(DB::raw('count(*) as common_interests, user_id'))
+//            ->whereIn('interest_id', $user_interests)
+//            ->groupBy('user_id')
+//            ->get();
+        return User::all();
     }
 }
