@@ -59,13 +59,13 @@
                         </li>
                     </ul>
                 </div>
-                {{--uncomment these lines if you want the logo to be the sidebar toggle--}}
-                {{--<ul class="nav-header pull-left">--}}
-                    {{--<li class="h5 text-white" data-toggle="layout" data-action="sidebar_mini_toggle">--}}
-                        {{--<img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span--}}
-                                {{--class="h6 font-w600 sidebar-mini-hide"> BeerHere</span>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
+                
+                
+                    
+                        
+                                
+                    
+                
                 <a class="h5 text-white" href="/home">
                     <img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span
                             class="h6 font-w600 sidebar-mini-hide"> Be Here</span>

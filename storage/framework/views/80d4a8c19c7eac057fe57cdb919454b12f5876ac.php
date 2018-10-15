@@ -5,7 +5,7 @@
             <li>
                 <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
                 <div class="btn-group">
-                    @include(' layouts.auth')
+                    <?php echo $__env->make(' layouts.auth', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 </div>
             </li>
             <li>

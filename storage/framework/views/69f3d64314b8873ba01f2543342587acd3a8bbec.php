@@ -1,11 +1,11 @@
-@extends('layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Page Header -->
     <div class="content bg-gray-lighter">
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    {{Auth::user()->name}}
+                    <?php echo e(Auth::user()->name); ?>
+
                     <small>Personal Feed.</small>
                 </h1>
             </div>
@@ -22,17 +22,19 @@
     <!-- Page Content -->
     <div class="content">
         <div class="col-lg-4">
-            @include('feed.personal_feed')
+            <?php echo $__env->make('feed.personal_feed', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
 
         <div class="col-lg-8">
             <div class="col-lg-12 timeline">
-                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'])
+                <?php echo $__env->make('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
             <div class="col-lg-12 push-30-t timeline">
-                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'])
+                <?php echo $__env->make('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
         </div>
     </div>
     <!-- END Page Content -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
