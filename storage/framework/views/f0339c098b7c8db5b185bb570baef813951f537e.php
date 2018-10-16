@@ -1,6 +1,6 @@
 <li>
     <div class="list-timeline-time"><?php echo e(\Carbon\Carbon::parse($item->pivot->liked_on)->format('D d-m-Y')); ?></div>
-    <i class="<?php echo e($type == 'like' ? 'si si-like' : 'glyphicon glyphicon-sunglasses'); ?> list-timeline-icon bg-success"></i>
+    <i class="<?php echo e($type == 'like' ? 'si si-like' : 'fa fa-beer'); ?> list-timeline-icon bg-success"></i>
     <div class="list-timeline-content">
         <ul class="nav-users push">
             <li>

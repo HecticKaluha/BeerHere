@@ -82,12 +82,13 @@
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-hide">Pages</span></li>
                     <li>
+                        <a class="nav" data-toggle="" href="/home"><i class="si si-feed"></i><span
+                                    class="sidebar-mini-hide">Personal feed</span></a>
+                    </li>
+                    <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span
                                     class="sidebar-mini-hide">Profile</span></a>
                         <ul>
-                            <li>
-                                <a href="/home">Personal Feed</a>
-                            </li>
                             <li>
                                 <a href="/profile">View</a>
                             </li>
@@ -115,7 +116,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav" data-toggle="" href="/personal/matches"><i class="glyphicon glyphicon-sunglasses"></i><span
+                        <a class="nav" data-toggle="" href="/personal/matches"><i class="fa fa-beer"></i><span
                                 class="sidebar-mini-hide">Matches</span></a>
                         <ul>
                             <li>
