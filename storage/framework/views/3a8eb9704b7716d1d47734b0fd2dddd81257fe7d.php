@@ -115,7 +115,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav" data-toggle="" href="/personal/matches"><i class="si si-link"></i><span
+                        <a class="nav" data-toggle="" href="/personal/matches"><i class="glyphicon glyphicon-sunglasses"></i><span
                                 class="sidebar-mini-hide">Matches</span></a>
                         <ul>
                             <li>
