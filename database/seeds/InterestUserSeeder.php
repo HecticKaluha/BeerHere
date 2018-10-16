@@ -26,10 +26,12 @@ class InterestUserSeeder extends Seeder
 
         foreach ($users as $user) {
             $amountOfInterests = $faker->numberBetween(1, 3);
+            $theseInterests = $interests->shuffle();
+
             foreach (range(1, $amountOfInterests) as $index) {
                 DB::table('interest_user')->insert([
                     'user_id' => $user->id,
-                    'interest_id' => $interests->random()->id,
+                    'interest_id' => $theseInterests->pop()->id,
             ]);
             }
         }
