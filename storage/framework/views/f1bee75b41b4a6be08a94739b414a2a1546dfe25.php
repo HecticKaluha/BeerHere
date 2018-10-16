@@ -12,14 +12,14 @@
                         <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                     </li>
                 <?php else: ?>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown text-right">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php echo e(Auth::user()->name); ?>
 
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
+                            <a class="dropdown-item text-right-force" href="<?php echo e(route('logout')); ?>"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Logout')); ?>

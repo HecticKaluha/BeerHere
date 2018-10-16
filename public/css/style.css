@@ -89,3 +89,7 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.text-right-force{
+    text-align:right !important;
+}
