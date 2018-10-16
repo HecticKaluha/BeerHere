@@ -25,11 +25,11 @@
                 </div>
                 <div class="col-xs col-lg-3 col-xs-3 remove-margin-b">
                     <div class="push-5"><i class="si si-home fa-2x"></i></div>
-                    <div class="h5 font-w300 text-muted"><?php echo e($user->place); ?></div>
+                    <div class="h5 font-w300 text-muted respsonsive_truncation"><?php echo e($user->place); ?></div>
                 </div>
                 <div class="col-xs col-lg-3 col-xs-3 remove-margin-b">
                     <div class="push-5"><i class="si si-eye fa-2x"></i></div>
-                    <div class="h5 font-w300 text-muted"><?php if(\Carbon\Carbon::parse($user->last_login)->diffInDays() < 1): ?>Today <?php elseif(\Carbon\Carbon::parse($user->last_login)->diffInDays(\Carbon\Carbon::now()) <= 7): ?> <?php echo e(\Carbon\Carbon::parse($user->last_login)->diffInDays() . " day(s) ago"); ?> <?php else: ?> Long ago <?php endif; ?></div>
+                    <div class="h5 font-w300 text-muted respsonsive_truncation"><?php if(\Carbon\Carbon::parse($user->last_login)->diffInDays() < 1): ?>Today <?php elseif(\Carbon\Carbon::parse($user->last_login)->diffInDays() <= 7): ?> <?php echo e(\Carbon\Carbon::parse($user->last_login)->diffInDays() . " " . str_plural('day', \Carbon\Carbon::parse($user->last_login)->diffInDays()) . ' ago'); ?> <?php else: ?> Long ago <?php endif; ?></div>
                 </div>
             </div>
         </div>
