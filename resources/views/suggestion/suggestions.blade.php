@@ -23,8 +23,10 @@
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
         <div class="row">
-            @foreach($suggestions as $suggestion)
-                {{$suggestion->name}}
+            @foreach($suggestions as $key=>$user)
+                <div class="col-lg-6 position-fixed top push-5-l" style="z-index:{{$key}};">
+                    @include('profile.profile_card', compact('user', 'displayAll'))
+                </div>
             @endforeach
         </div>
     </div>

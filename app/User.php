@@ -59,13 +59,20 @@ class User extends Authenticatable
     }
 
     public function suggestions(){
-//        $user_interests = $this->interests->pluck('id')->toArray();
+        $user_interests = $this->interests->pluck('id')->toArray();
+        $get_similar = DB::table('interest_user')
+            ->select(DB::raw('user_id'))
+            ->whereIn('interest_id', $user_interests)
+            ->groupBy('user_id')
+            ->get();
 
-//        $get_similar = DB::table('interest_user')
-//            ->select(DB::raw('count(*) as common_interests, user_id'))
-//            ->whereIn('interest_id', $user_interests)
-//            ->groupBy('user_id')
-//            ->get();
-        return User::all();
+        $users = User::whereIn('id', $get_similar->pluck('user_id'))->get();
+
+        $thisUser = $this;
+
+        $filtered = $users->reject(function ($value, $key) use($thisUser) {
+            return $value->id == $thisUser->id;
+        });
+        return $filtered;
     }
 }

@@ -23,9 +23,10 @@
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
         <div class="row">
-            <?php $__currentLoopData = $suggestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $suggestion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php echo e($suggestion->name); ?>
-
+            <?php $__currentLoopData = $suggestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-lg-6 position-fixed push-5-l" style="z-index:<?php echo e($key); ?>;">
+                    <?php echo $__env->make('profile.profile_card', compact('user', 'displayAll'), \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>

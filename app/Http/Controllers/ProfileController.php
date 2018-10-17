@@ -94,7 +94,8 @@ class ProfileController extends Controller
     public function getSuggestions()
     {
         $suggestions = Auth::user()->suggestions();
-        return view('suggestion.suggestions', compact('suggestions'));
+        $displayAll = true;
+        return view('suggestion.suggestions', compact('suggestions', 'displayAll'));
 
     }
 }
