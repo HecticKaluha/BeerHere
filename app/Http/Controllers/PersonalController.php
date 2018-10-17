@@ -97,7 +97,12 @@ class PersonalController extends Controller
     }
 
     public function subscribe($interest){
-        Auth::user()->interests()->attach($interest);
+        try{
+            Auth::user()->interests()->attach($interest);
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors(array('error' => 'You are already subscribed to this interest.'));
+        }
+
         return redirect()->back();
     }
 
