@@ -101,6 +101,6 @@ fabric.properties
 
 .DS_Store
 
-/storage/framework/views/
+storage/framework/views/
 
 # End of https://www.gitignore.io/api/laravel,phpstorm

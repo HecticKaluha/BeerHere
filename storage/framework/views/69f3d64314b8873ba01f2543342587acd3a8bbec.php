@@ -6,7 +6,7 @@
                 <h1 class="page-heading">
                     <?php echo e(Auth::user()->name); ?>
 
-                    <small>Personal Feed.</small>
+                    <small>Personal Feed</small>
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
