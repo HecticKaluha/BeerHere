@@ -22,12 +22,39 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
-        <div class="row">
+        <div class="row parent">
             @foreach($suggestions as $key=>$user)
-                <div class="col-lg-6 position-fixed top push-5-l" style="z-index:{{$key}};">
+                <div class="child col-lg-6 block block-content remove-padding col-lg-push-3 suggestion"
+                     style="z-index:{{$key}};">
                     @include('profile.profile_card', compact('user', 'displayAll'))
+                    <div class="block-content block-content-mini block-content-full bg-gray-lighter">
+                        <div class="text-center text-muted">Overeenkomstige interests</div>
+                    </div>
+                    <div class="block-content">
+                        <div class="row items-push text-center">
+                            <div class="col-xs-6">
+                                <a href="">
+                                    <div class="push-5 text-danger"><i class="si si-like fa-2x"></i></div>
+                                    <div class="h5 font-w300 text-succes">Like</div>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#">
+                                    <div class="push-5 text-danger"><i class="si si-dislike fa-2x"></i></div>
+                                    <div class="h5 font-w300 text-danger">Dislike</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    $('.parent').height($('.child').outerHeight())
+</script>
+@endpush

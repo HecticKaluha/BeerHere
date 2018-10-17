@@ -93,3 +93,13 @@ img {
 .text-right-force{
     text-align:right !important;
 }
+
+.suggestion{
+    position:absolute;
+}
+.parent{
+    margin-bottom:15px;
+}
+
+
+
