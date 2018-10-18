@@ -22,9 +22,9 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
-        <div class="row parent">
+        <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-12">
             @foreach($suggestions as $key=>$user)
-                <div class="child col-lg-6 block block-content remove-padding col-lg-push-3 suggestion"
+                <div class="child block remove-padding suggestion"
                      style="z-index:{{$key}};">
                     @include('profile.profile_card', compact('user', 'displayAll'))
                     <div class="block-content block-content-mini block-content-full bg-gray-lighter">
@@ -46,7 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    </a>
                 </div>
             @endforeach
         </div>
@@ -54,7 +53,14 @@
 @endsection
 
 @push('scripts')
-<script>
-    $('.parent').height($('.child').outerHeight())
-</script>
+    <script>
+        $('.parent').height($('.child').innerHeight() + 25);
+        $('.child').width($('.parent').innerWidth());
+
+        $(window).resize(function() {
+            $(".child").each(function(i,item){
+                $(item).width($('.parent').innerWidth());
+            });
+        });
+    </script>
 @endpush
