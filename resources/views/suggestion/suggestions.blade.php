@@ -22,7 +22,7 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
-        <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-12">
+        <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3" data-equal-height-children>
             @foreach($suggestions as $key=>$user)
                 <div class="child block remove-padding suggestion"
                      style="z-index:{{$key}};">
@@ -63,4 +63,7 @@
             });
         });
     </script>
+    <script src="{{asset('assets/js/plugins/equal_height/jquery.equalHeightChildren.js')}}"></script>
+
+
 @endpush
