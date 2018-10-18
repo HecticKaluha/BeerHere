@@ -24,7 +24,7 @@
         <h2 class="content-heading">Suggested users</h2>
         <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3" data-equal-height-children>
             @foreach($suggestions as $key=>$user)
-                <div class="child block remove-padding suggestion"
+                <div class="child block suggestion"
                      style="z-index:{{$key}};">
                     @include('profile.profile_card', compact('user', 'displayAll'))
                     <div class="block-content block-content-mini block-content-full bg-gray-lighter">
@@ -53,17 +53,21 @@
 @endsection
 
 @push('scripts')
+    <script src="{{asset('assets/js/plugins/equal_height/jquery.equalHeightChildren.js')}}"></script>
     <script>
-        $('.parent').height($('.child').innerHeight() + 25);
-        $('.child').width($('.parent').innerWidth());
+        $(window).load(function() {
+            fixSize();
+        });
 
         $(window).resize(function() {
+            fixSize();
+        });
+
+        function fixSize(){
+            $('.parent').height($('.child').innerHeight());
             $(".child").each(function(i,item){
                 $(item).width($('.parent').innerWidth());
             });
-        });
+        }
     </script>
-    <script src="{{asset('assets/js/plugins/equal_height/jquery.equalHeightChildren.js')}}"></script>
-
-
 @endpush
