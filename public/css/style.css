@@ -80,6 +80,7 @@ img {
 .timeline{
     max-height:50vh;
     overflow:scroll;
+    overflow-x:hidden;
    }
 
 .respsonsive_truncation{

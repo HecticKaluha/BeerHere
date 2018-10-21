@@ -22,8 +22,15 @@
         @else
             @include('empty.empty')
         @endif
-
-
     </div>
 </div>
+
+@push('scripts')
+    {{--<script>--}}
+        {{--jQuery(function () {--}}
+            {{--// Init page helpers (SlimScroll plugin)--}}
+            {{--App.initHelpers('slimscroll');--}}
+        {{--});--}}
+    {{--</script>--}}
+@endpush
 
