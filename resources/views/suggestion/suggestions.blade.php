@@ -64,10 +64,10 @@
         });
 
         function fixSize(){
-            $('.parent').height($('.child').innerHeight());
             $(".child").each(function(i,item){
                 $(item).width($('.parent').innerWidth());
             });
+            $('.parent').height($('.child').innerHeight());
         }
     </script>
 
