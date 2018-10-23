@@ -53,7 +53,8 @@ class ProfileController extends Controller
         }
         $interests = $user->interests;
         $displayAll = true;
-        return view('profile.profile_overview', compact('user', 'interests', 'displayAll'));
+        $truncate = false;
+        return view('profile.profile_overview', compact('user', 'interests', 'displayAll', 'truncate'));
 
     }
 
@@ -95,7 +96,8 @@ class ProfileController extends Controller
     {
         $suggestions = Auth::user()->suggestions();
         $displayAll = true;
-        return view('suggestion.suggestions', compact('suggestions', 'displayAll'));
+        $truncate = true;
+        return view('suggestion.suggestions', compact('suggestions', 'displayAll', 'truncate'));
 
     }
 

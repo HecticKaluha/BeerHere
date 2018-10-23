@@ -84,8 +84,6 @@ img {
    }
 
 .respsonsive_truncation{
-    background: #fff;
-    padding: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

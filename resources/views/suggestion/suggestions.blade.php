@@ -22,7 +22,8 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
-        <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3" data-equal-height-children>
+        <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3"
+             data-equal-height-children>
             @foreach($suggestions as $key=>$user)
                 <div class="child block suggestion"
                      style="z-index:{{$key}};">
@@ -55,16 +56,16 @@
 @push('scripts')
     <script src="{{asset('assets/js/plugins/equal_height/jquery.equalHeightChildren.js')}}"></script>
     <script>
-        $(window).load(function() {
+        $(window).load(function () {
             fixSize();
         });
 
-        $(window).resize(function() {
+        $(window).resize(function () {
             fixSize();
         });
 
-        function fixSize(){
-            $(".child").each(function(i,item){
+        function fixSize() {
+            $(".child").each(function (i, item) {
                 $(item).width($('.parent').innerWidth());
             });
             $('.parent').height($('.child').innerHeight());
@@ -72,27 +73,25 @@
     </script>
 
     <script>
-        function like(userId)
-        {
+        function like(userId) {
             var data = {id: userId, _token: '{{csrf_token()}}'};
             $.ajax({
                 type: "POST",
                 url: '/like',
                 data: data
-            }).done(function( msg ) {
+            }).done(function (msg) {
                 // alert( msg.msg );
             });
             $(event.target).closest('.suggestion').addClass("animated bounceOutLeft");
         }
 
-        function dislike(userId)
-        {
+        function dislike(userId) {
             var data = {id: userId, _token: '{{csrf_token()}}'};
             $.ajax({
                 type: "POST",
                 url: '/dislike',
                 data: data
-            }).done(function( msg ) {
+            }).done(function (msg) {
                 // alert( msg.msg );
             });
             $(event.target).closest('.suggestion').addClass("animated bounceOutRight");

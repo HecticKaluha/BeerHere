@@ -109,12 +109,14 @@ class PersonalController extends Controller
     public function getLikes(){
         $likes = Auth::user()->likes;
         $displayAll = false;
-        return view('personal.likes', compact('likes', 'displayAll'));
+        $truncate = false;
+        return view('personal.likes', compact('likes', 'displayAll', 'truncate'));
     }
 
     public function getMatches(){
         $matches = Auth::user()->matches;
         $displayAll = false;
-        return view('personal.matches', compact('matches', 'displayAll'));
+        $truncate = false;
+        return view('personal.matches', compact('matches', 'displayAll', 'truncate'));
     }
 }
