@@ -34,6 +34,9 @@ Route::get('/personal/matches/', 'PersonalController@getMatches');
 
 Route::get('/suggestions', 'ProfileController@getSuggestions');
 
+Route::post('/like', 'ProfileController@like');
+Route::post('/dislike', 'ProfileController@dislike');
+
 
 
 

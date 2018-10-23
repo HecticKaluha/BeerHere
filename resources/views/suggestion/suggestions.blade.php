@@ -33,13 +33,13 @@
                     <div class="block-content">
                         <div class="row items-push text-center">
                             <div class="col-xs-6">
-                                <a href="">
+                                <a class="cursor_hand like" onclick="like({{$user->id}})">
                                     <div class="push-5 text-danger"><i class="si si-like fa-2x"></i></div>
                                     <div class="h5 font-w300 text-succes">Like</div>
                                 </a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#">
+                                <a onclick="dislike({{$user->id}})" class="cursor_hand dislike">
                                     <div class="push-5 text-danger"><i class="si si-dislike fa-2x"></i></div>
                                     <div class="h5 font-w300 text-danger">Dislike</div>
                                 </a>
@@ -69,5 +69,37 @@
                 $(item).width($('.parent').innerWidth());
             });
         }
+    </script>
+
+    <script>
+        function like(userId)
+        {
+            var data = {id: userId, _token: '{{csrf_token()}}'};
+            $.ajax({
+                type: "POST",
+                url: '/like',
+                data: data
+            }).done(function( msg ) {
+                // alert( msg.msg );
+            });
+            $(event.target).closest('.suggestion').addClass("animated bounceOutLeft");
+        }
+
+        function dislike(userId)
+        {
+            var data = {id: userId, _token: '{{csrf_token()}}'};
+            $.ajax({
+                type: "POST",
+                url: '/dislike',
+                data: data
+            }).done(function( msg ) {
+                // alert( msg.msg );
+            });
+            $(event.target).closest('.suggestion').addClass("animated bounceOutRight");
+
+            $(this).closest(".suggestion")
+                .addClass("animated bounceOutRight");
+        }
+
     </script>
 @endpush

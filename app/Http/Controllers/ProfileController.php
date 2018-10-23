@@ -98,4 +98,17 @@ class ProfileController extends Controller
         return view('suggestion.suggestions', compact('suggestions', 'displayAll'));
 
     }
+
+    public function like(){
+        $user = Auth::user();
+        $userToLike = User::find(request('id'));
+        $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
+        return response()->json(['msg'=>'You succesfully liked ' . $userToLike->name ]);
+    }
+
+    public function dislike(){
+        $user = Auth::user();
+        $userToDislike = User::find(request('id'));
+        return response()->json(['msg'=>'You disliked ' . $userToDislike->name ]);
+    }
 }
