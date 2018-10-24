@@ -28,7 +28,7 @@
 
     <!-- Page Content -->
     <div class="content">
-        <h2 class="content-heading">Profile settings {{$errors}}</h2>
+        <h2 class="content-heading">Profile settings</h2>
         <div class="block block-bordered">
             <div class="block-header bg-gray-lighter">
                 <ul class="block-options">
@@ -52,6 +52,7 @@
                                                type="text"
                                                id="name" name="name"
                                                placeholder="Name..."
+                                               value="{{$loggedInUser->name}}"
                                                autofocus required>
                                         <label for="name">Naam</label>
                                         <span class="input-group-addon"><i class="si si-user"></i></span>
@@ -73,6 +74,7 @@
                                                type="text"
                                                id="place" name="place"
                                                placeholder="Amsterdam"
+                                               value="{{$loggedInUser->place}}"
                                                required>
                                         <label for="place">Where do you live?</label>
                                         <span class="input-group-addon"><i class="si si-pointer"></i></span>
@@ -92,8 +94,8 @@
                                 <div class="col-xs-12">
                                     <div class="">
                                         <label for="mega-bio">About</label>
-                                        <textarea class="form-control input-lg" id="mega-bio" name="about" rows="22"
-                                                  placeholder="Enter a few details about yourself..."></textarea>
+                                        <textarea class="form-control input-lg {{ $errors->has('about') ? ' is-invalid' : '' }}" id="mega-bio" name="about" rows="22"
+                                                  placeholder="Enter a few details about yourself..." value="{{$loggedInUser->about}}"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +107,7 @@
                                         <input class="js-datepicker form-control {{ $errors->has('birthdate') ? ' is-invalid' : '' }}"
                                                type="text" id="example-datepicker6"
                                                name="birthdate" data-date-format="dd-mm-yyyy"
-                                               placeholder="dd-mm-yyyy" required>
+                                               placeholder="dd-mm-yyyy" value="{{$loggedInUser->birthdate}}" required>
                                         <label for="example-datepicker6">Birthdate</label>
                                         <span class="input-group-addon"><i class="si si-calendar"></i></span>
                                     </div>
@@ -120,18 +122,18 @@
                                 <div class="col-lg-12">
                                     <label for="gender">Gender</label>
                                     <div class="">
-                                        <label id="gender" class="css-input css-radio css-radio-warning push-10-r">
+                                        <label id="gender" class="css-input css-radio css-radio-warning push-10-r {{ $errors->has('gender') ? ' is-invalid' : '' }}">
                                             <input id="gender" type="radio" value="M" name="gender"
-                                                   checked=""><span></span> Male
+                                                   @if($loggedInUser->gender == 'M') checked="" @endif ><span></span> Male
                                         </label>
                                         <label class="css-input css-radio css-radio-warning">
-                                            <input type="radio" value="F" name="gender"><span></span> Female
+                                            <input type="radio" value="F" name="gender" @if($loggedInUser->gender == 'F') checked="" @endif ><span></span> Female
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-xs-12" for="example-file-input">File Input</label>
+                                <label class="col-xs-12 {{ $errors->has('image') ? ' is-invalid' : '' }}" for="example-file-input">File Input</label>
                                 <div class="col-xs-12">
                                     <input type="file" id="example-file-input" name="image">
                                 </div>
@@ -180,4 +182,12 @@
             App.initHelpers(['datepicker']);
         });
     </script>
+
+    <script>
+        function uploadImage(){
+
+        }
+    </script>
+
+
 @endpush

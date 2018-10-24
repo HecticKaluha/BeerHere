@@ -16,7 +16,8 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('settings.profilesettings');
+        $loggedInUser = Auth::user();
+        return view('settings.profilesettings', compact('loggedInUser'));
     }
 
     /**
@@ -91,7 +92,7 @@ class SettingsController extends Controller
             'gender' => 'required|string|min:1',
             'birthdate' => 'required|date|before:'.Carbon::now()->subYears(18)->startOfDay(),
             'place' => 'required|string|min:2',
-            'about' => 'nullable|string|min:2',
+            'about' => 'nullable|string|min:1',
         ]);
         $user = User::find(Auth::user()->id);
         $user->name = $request['name'];
@@ -99,9 +100,9 @@ class SettingsController extends Controller
         $user->birthdate = $request['birthdate'];
         $user->place = $request['place'];
         $user->about = $request['about'];
-        $user->save();
+        $user->update();
 
-        $loggedInUser = Auth::user();
+        $loggedInUser = $user;
         return view('home', compact('loggedInUser'));
     }
 }
