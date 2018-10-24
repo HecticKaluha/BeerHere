@@ -25,7 +25,7 @@
                                        placeholder="Name..."
                                        autofocus required>
                                 <label for="name">Naam</label>
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <span class="input-group-addon"><i class="si si-user"></i></span>
                             </div>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
                                        placeholder="Email..."
                                        required>
                                 <label for="register2-email">Email</label>
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <span class="input-group-addon"><i class="si si-envelope"></i></span>
                             </div>
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                                        placeholder="Amsterdam"
                                        required>
                                 <label for="place">Place</label>
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <span class="input-group-addon"><i class="si si-pointer"></i></span>
                             </div>
                             @if ($errors->has('place'))
                                 <span class="invalid-feedback" role="alert">
@@ -98,12 +98,13 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <div class="form-material">
+                            <div class="form-material input-group">
                                 <input class="js-datepicker form-control {{ $errors->has('birthdate') ? ' is-invalid' : '' }}"
                                        type="text" id="example-datepicker6"
                                        name="birthdate" data-date-format="dd-mm-yyyy"
                                        placeholder="dd-mm-yyyy" required>
                                 <label for="example-datepicker6">Birthdate</label>
+                                <span class="input-group-addon"><i class="si si-calendar"></i></span>
                             </div>
                             @if ($errors->has('birthdate'))
                                 <span class="invalid-feedback" role="alert">

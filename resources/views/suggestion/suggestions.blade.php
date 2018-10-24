@@ -22,34 +22,40 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
-        <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3"
-             data-equal-height-children>
-            @foreach($suggestions as $key=>$user)
-                <div class="child block suggestion"
-                     style="z-index:{{$key}};">
-                    @include('profile.profile_card', compact('user', 'displayAll'))
-                    <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-                        <div class="text-center text-muted">Overeenkomstige interests</div>
-                    </div>
-                    <div class="block-content">
-                        <div class="row items-push text-center">
-                            <div class="col-xs-6">
-                                <a class="cursor_hand like" onclick="like({{$user->id}})">
-                                    <div class="push-5 text-danger"><i class="si si-like fa-2x"></i></div>
-                                    <div class="h5 font-w300 text-succes">Like</div>
-                                </a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a onclick="dislike({{$user->id}})" class="cursor_hand dislike">
-                                    <div class="push-5 text-danger"><i class="si si-dislike fa-2x"></i></div>
-                                    <div class="h5 font-w300 text-danger">Dislike</div>
-                                </a>
+        @if(!$suggestions->isEmpty())
+            <div class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3"
+                 data-equal-height-children>
+                @foreach($suggestions as $key=>$user)
+                    <div class="child block suggestion"
+                         style="z-index:{{$key}};">
+                        @include('profile.profile_card', compact('user', 'displayAll'))
+                        <div class="block-content block-content-mini block-content-full bg-gray-lighter">
+                            <div class="text-center text-muted">Overeenkomstige interests</div>
+                        </div>
+                        <div class="block-content">
+                            <div class="row items-push text-center">
+                                <div class="col-xs-6">
+                                    <a class="cursor_hand like" onclick="like({{$user->id}})">
+                                        <div class="push-5 text-danger"><i class="si si-like fa-2x"></i></div>
+                                        <div class="h5 font-w300 text-succes">Like</div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a onclick="dislike({{$user->id}})" class="cursor_hand dislike">
+                                        <div class="push-5 text-danger"><i class="si si-dislike fa-2x"></i></div>
+                                        <div class="h5 font-w300 text-danger">Dislike</div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @else
+            @include('empty.empty_suggestions')
+        @endif
+
+
     </div>
 @endsection
 

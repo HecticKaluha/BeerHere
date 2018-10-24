@@ -33,11 +33,6 @@
                         <i class="si si-call-out"></i> <!-- <abbr title="Telefoon">T:</abbr>--> <a href="tel:0649808075">06-49 8080 75</a> <br>
                         <i class="si si-envelope-open"></i> <a href="mailto:stefanoverhoeve44@gmail.com">stefanoverhoeve44@gmail.com</a>
                     </div>
-                    <strong>Pim Janissen</strong><br>
-                    <div class="font-s13">
-                        <i class="si si-call-out"></i> <!-- <abbr title="Telefoon">T:</abbr>--> <a href="tel:0640159163">06-40159163</a> <br>
-                        <i class="si si-envelope-open"></i> <a href="mailto:???">???</a>
-                    </div>
                 </div>
                 <div class="font-s13 push">
 

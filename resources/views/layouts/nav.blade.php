@@ -86,14 +86,11 @@
                                     class="sidebar-mini-hide">Personal feed</span></a>
                     </li>
                     <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span
+                        <a class="nav" data-toggle="" href="/profile"><i class="si si-user"></i><span
                                     class="sidebar-mini-hide">Profile</span></a>
                         <ul>
                             <li>
                                 <a href="/profile">View</a>
-                            </li>
-                            <li>
-                                <a href="/profile/options">Options</a>
                             </li>
                         </ul>
                     </li>
