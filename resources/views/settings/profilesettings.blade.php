@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @push('style')
     <link rel="stylesheet" href="{{asset('assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/js/plugins/datatables/jquery.dataTables.min.css')}}">
@@ -40,7 +41,8 @@
                 <h3 class="block-title">Edit profile</h3>
             </div>
             <div class="block-content">
-                <form class="form-horizontal push-10-t push-10" action="/settings/editprofile" method="post">
+                <form class="form-horizontal push-10-t push-10" action="/settings/editprofile" method="post"
+                      id="upload_form">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -94,8 +96,11 @@
                                 <div class="col-xs-12">
                                     <div class="">
                                         <label for="mega-bio">About</label>
-                                        <textarea class="form-control input-lg {{ $errors->has('about') ? ' is-invalid' : '' }}" id="mega-bio" name="about" rows="22"
-                                                  placeholder="Enter a few details about yourself..." value="{{$loggedInUser->about}}"></textarea>
+                                        <textarea
+                                                class="form-control input-lg {{ $errors->has('about') ? ' is-invalid' : '' }}"
+                                                id="mega-bio" name="about" rows="22"
+                                                placeholder="Enter a few details about yourself..."
+                                                value="{{$loggedInUser->about}}"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -122,20 +127,25 @@
                                 <div class="col-lg-12">
                                     <label for="gender">Gender</label>
                                     <div class="">
-                                        <label id="gender" class="css-input css-radio css-radio-warning push-10-r {{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                        <label id="gender"
+                                               class="css-input css-radio css-radio-warning push-10-r {{ $errors->has('gender') ? ' is-invalid' : '' }}">
                                             <input id="gender" type="radio" value="M" name="gender"
-                                                   @if($loggedInUser->gender == 'M') checked="" @endif ><span></span> Male
+                                                   @if($loggedInUser->gender == 'M') checked="" @endif ><span></span>
+                                            Male
                                         </label>
                                         <label class="css-input css-radio css-radio-warning">
-                                            <input type="radio" value="F" name="gender" @if($loggedInUser->gender == 'F') checked="" @endif ><span></span> Female
+                                            <input type="radio" value="F" name="gender"
+                                                   @if($loggedInUser->gender == 'F') checked="" @endif ><span></span>
+                                            Female
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-xs-12 {{ $errors->has('image') ? ' is-invalid' : '' }}" for="example-file-input">File Input</label>
+                                <label class="col-xs-12 {{ $errors->has('image') ? ' is-invalid' : '' }}"
+                                       for="image">File Input</label>
                                 <div class="col-xs-12">
-                                    <input type="file" id="example-file-input" name="image">
+                                    <input type="file" id="image" name="image">
                                 </div>
                                 @if ($errors->has('image'))
                                     <span class="invalid-feedback" role="alert">
@@ -147,7 +157,7 @@
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     <div class="img-container fx-img-zoom-in fx-opt-slide-down">
-                                        <img class="img-responsive" src="{{asset('image/profile_temp.jpg')}}" alt="">
+                                        <img id="preview_image" class="img-responsive" src="{{asset('image/no-profile.gif')}}" alt="">
                                         <div class="img-options">
                                             <div class="img-options-content">
                                                 <a class="btn btn-sm btn-default" href="javascript:void(0)"><i
@@ -184,9 +194,30 @@
     </script>
 
     <script>
-        function uploadImage(){
-
-        }
+        $("#image").change(function () {
+            var form_data = new FormData();
+            form_data.append('file', this.files[0]);
+            form_data.append('_token', '{{csrf_token()}}');
+            $.ajax({
+                url: '/upload/image',
+                data: form_data,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.fail) {
+                        alert('failed' + data.errors['file']);
+                    }
+                    else {
+                        $('#preview_image').attr('src', '{{asset('uploads')}}/' + data);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                    $('#preview_image').attr('src', '{{asset('image/no-profile.gif')}}');
+                }
+            })
+        });
     </script>
 
 

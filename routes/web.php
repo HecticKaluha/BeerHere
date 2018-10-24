@@ -40,7 +40,7 @@ Route::post('/dislike', 'ProfileController@dislike');
 Route::get('/settings', 'SettingsController@index');
 Route::put('/settings/editprofile', 'SettingsController@editProfile');
 //image upload route call with ajax
-Route::post('upload/photo','ImageUploadController@uploadImage');
+Route::post('/upload/image','ImageUploadController@uploadImage');
 
 
 
