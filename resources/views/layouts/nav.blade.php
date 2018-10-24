@@ -121,6 +121,15 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="nav" data-toggle="" href="/settings/"><i class="si si-settings"></i><span
+                                    class="sidebar-mini-hide">Settings</span></a>
+                        <ul>
+                            <li>
+                                <a href="/settings">View</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- END Side Content -->

@@ -12,6 +12,7 @@
         <div class="block block-themed">
             <div class="block-header bg-success">
                 <h3 class="block-title">Registreren</h3>
+                {{$errors}}
             </div>
             <div class="block-content">
                 <form class="form-horizontal push-10-t push-10" method="POST" action="{{ route('register') }}"
@@ -58,7 +59,7 @@
                                        id="place" name="place"
                                        placeholder="Amsterdam"
                                        required>
-                                <label for="place">Place</label>
+                                <label for="place">Where do you live?</label>
                                 <span class="input-group-addon"><i class="si si-pointer"></i></span>
                             </div>
                             @if ($errors->has('place'))
