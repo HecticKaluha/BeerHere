@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +30,9 @@ class ImageUploadController extends Controller
         $dir = 'uploads/avatars/';
         $filename = uniqid() . '_' . time() . '.' . $extension;
         $request->file('file')->move($dir, $filename);
-
+        $user = User::find(Auth::user()->id);
+        $user->avatar_url = 'uploads/avatars/' . $filename;
+        $user->update();
         return $filename;
 
     }

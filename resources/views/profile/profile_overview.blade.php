@@ -51,15 +51,12 @@
 
                         <!-- Items -->
                         <div class="carousel-inner">
-
+                            {{--foreach image item--}}
                             <div class="item active background">
-                                <img class="img-responsive bg-image-cover" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 1" />
+                                <img class="img-responsive bg-image-cover" src="@if($user->avatar_url){{asset($user->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif" alt="Slide 1" />
                             </div>
                             <div class="item">
                                 <img class="img-responsive" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 2" />
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 3" />
                             </div>
                         </div>
                         <a href="#carousel" class="left carousel-control" data-slide="prev">

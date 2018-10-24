@@ -157,7 +157,7 @@
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     <div class="img-container fx-img-zoom-in fx-opt-slide-down">
-                                        <img id="preview_image" class="img-responsive" src="{{asset('image/no-profile.gif')}}" alt="">
+                                        <img id="preview_image" class="img-responsive" src="@if($loggedInUser->avatar_url){{asset($loggedInUser->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif" alt="">
                                         <div class="img-options">
                                             <div class="img-options-content">
                                                 <a class="btn btn-sm btn-default" href="javascript:void(0)"><i
@@ -206,7 +206,8 @@
                 processData: false,
                 success: function (data) {
                     if (data.fail) {
-                        alert('failed' + data.errors['file']);
+                        alert(data.errors['file']);
+                        $('#image').val('');
                     }
                     else {
                         $('#preview_image').attr('src', '{{asset('uploads/avatars')}}/' + data);

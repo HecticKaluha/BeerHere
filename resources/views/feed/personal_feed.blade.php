@@ -1,5 +1,5 @@
 <div class="block">
-    <div class="bg-image" style="background-image: url('{{asset('image/profile_temp.jpg')}}');">
+    <div class="bg-image" style="background-image: url('@if($loggedInUser->avatar_url){{asset($loggedInUser->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif');">
         <div class="bg-black-op">
             <a href="/profile">
                 <div class="block-content block-content-full text-center">
