@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ImageUploadController extends Controller
@@ -24,9 +25,10 @@ class ImageUploadController extends Controller
             );
         }
         $extension = $request->file('file')->getClientOriginalExtension();
-        $dir = 'uploads/';
+        $dir = 'uploads/avatars/';
         $filename = uniqid() . '_' . time() . '.' . $extension;
         $request->file('file')->move($dir, $filename);
+
         return $filename;
 
     }

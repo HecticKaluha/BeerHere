@@ -209,7 +209,7 @@
                         alert('failed' + data.errors['file']);
                     }
                     else {
-                        $('#preview_image').attr('src', '{{asset('uploads')}}/' + data);
+                        $('#preview_image').attr('src', '{{asset('uploads/avatars')}}/' + data);
                     }
                 },
                 error: function (xhr, status, error) {
