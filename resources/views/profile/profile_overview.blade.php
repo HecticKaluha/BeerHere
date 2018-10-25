@@ -51,7 +51,12 @@
                                 @endforeach
                             </ol>
                             <!-- Items -->
-                            <div class="carousel-inner">
+                            <div class="carousel-inner ribbon ribbon-modern ribbon-success">
+                                    @if($user->id == Auth::user()->id)
+                                        <a class="ribbon-box font-w600 cursor_hand" onclick="window.location = '/settings/'">
+                                            <i class="fa fa-fw fa-plus"></i>
+                                        </a>
+                                    @endif
                                 {{--foreach image item--}}
                                 @foreach($user->pictures as $key => $picture)
                                     <div class="item @if($key == 1) active @endif">
