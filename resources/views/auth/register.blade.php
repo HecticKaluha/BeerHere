@@ -12,7 +12,6 @@
         <div class="block block-themed">
             <div class="block-header bg-success">
                 <h3 class="block-title">Registreren</h3>
-                {{$errors}}
             </div>
             <div class="block-content">
                 <form class="form-horizontal push-10-t push-10" method="POST" action="{{ route('register') }}"

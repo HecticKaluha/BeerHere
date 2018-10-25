@@ -99,8 +99,7 @@
                                         <textarea
                                                 class="form-control input-lg {{ $errors->has('about') ? ' is-invalid' : '' }}"
                                                 id="mega-bio" name="about" rows="22"
-                                                placeholder="Enter a few details about yourself..."
-                                                value="{{$loggedInUser->about}}"></textarea>
+                                                placeholder="Enter a few details about yourself...">{{$loggedInUser->about}}</textarea>
                                     </div>
                                 </div>
                             </div>
