@@ -211,14 +211,14 @@
                                        for="images">Upload pictures</label>
                                 <div class="col-xs-12">
                                     <input type="file" id="images" name="images[]" multiple>
-                                    @if ($errors->has('images'))
+                                    {{--@if ($errors->has('images'))--}}
+                                        {{--<span class="invalid-feedback" role="alert">--}}
+                                        {{--<strong>{{ $errors->first('images') }}</strong>--}}
+                                    {{--</span>--}}
+                                    {{--@endif--}}
+                                    @if ($errors)
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('images') }}</strong>
-                                    </span>
-                                    @endif
-                                    @if ($errors->has('images.*'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>The files must be an image</strong>
+                                        <strong>{{ $errors->first() }}</strong>
                                     </span>
                                     @endif
                                 </div>
