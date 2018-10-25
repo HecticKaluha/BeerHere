@@ -185,7 +185,7 @@
                 </form>
             </div>
         </div>
-
+        <a name="upload_pictures"></a>
         <div class="block block-bordered">
             <div class="block-header bg-gray-lighter">
                 <ul class="block-options">

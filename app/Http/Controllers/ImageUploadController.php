@@ -62,7 +62,7 @@ class ImageUploadController extends Controller
                     'user_id' => $user->id,
                 ]);
             }
-            return back()->with('success', 'Your images has been successfully uploaded');
+            return back()->with('success', 'Your images has been successfully uploaded, you can view them in your carousel on your profilepage');
         }
         else{
             return back()->with('errors', 'There where no files selected');

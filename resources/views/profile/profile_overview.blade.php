@@ -52,11 +52,12 @@
                             </ol>
                             <!-- Items -->
                             <div class="carousel-inner ribbon ribbon-modern ribbon-success">
-                                    @if($user->id == Auth::user()->id)
-                                        <a class="ribbon-box font-w600 cursor_hand" onclick="window.location = '/settings/'">
-                                            <i class="fa fa-fw fa-plus"></i>
-                                        </a>
-                                    @endif
+                                @if($user->id == Auth::user()->id)
+                                    <a class="ribbon-box font-w600 cursor_hand"
+                                       onclick="window.location = '/settings#upload_pictures'">
+                                        <i class="fa fa-fw fa-plus"></i>
+                                    </a>
+                                @endif
                                 {{--foreach image item--}}
                                 @foreach($user->pictures as $key => $picture)
                                     <div class="item @if($key == 1) active @endif">
@@ -79,7 +80,8 @@
                                 {{--foreach image item--}}
                                 <div class="block-content block-content-full ribbon ribbon-modern ribbon-success">
                                     @if($user->id == Auth::user()->id)
-                                        <a class="ribbon-box font-w600 cursor_hand" onclick="window.location = '/settings/'">
+                                        <a class="ribbon-box font-w600 cursor_hand"
+                                           onclick="window.location = '/settings#upload_pictures'">
                                             <i class="fa fa-fw fa-plus"></i>
                                         </a>
                                     @endif
@@ -93,20 +95,21 @@
                         </div>
                 </div>
             </div>
-
-
-            <div class="col-lg-12">
-                <h2 class="content-heading">Subscribed Interests</h2>
-                @foreach($interests as $interest)
-                    @include('interests.interest')
-                @endforeach
-            </div>
         </div>
 
-        @push('scripts')
-            <script>
-                $('.carousel').carousel()
-            </script>
+
+        <div class="col-lg-12">
+            <h2 class="content-heading">Subscribed Interests</h2>
+            @foreach($interests as $interest)
+                @include('interests.interest')
+            @endforeach
+        </div>
+    </div>
+
+    @push('scripts')
+        <script>
+            $('.carousel').carousel()
+        </script>
     @endpush
 
 @endsection
