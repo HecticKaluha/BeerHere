@@ -33,56 +33,75 @@
             </div>
             <div class="col-lg-7">
                 <div class="block block-themed">
-                        <div class="block-header bg-primary-dark">
+                    <div class="block-header bg-primary-dark">
                         <ul class="block-options">
                             <li>
-                                <span>3 Photos</span>
+                                <span>{{$user->pictures->count()}} Photos</span>
                             </li>
                         </ul>
                         <h3 class="block-title">Gallery</h3>
                     </div>
-                    <div id="carousel" class="carousel slide" data-ride="carousel">
-                        <!-- Menu -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel" data-slide-to="1"></li>
-                            <li data-target="#carousel" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Items -->
-                        <div class="carousel-inner">
-                            {{--foreach image item--}}
-                            <div class="item active background">
-                                <img class="img-responsive bg-image-cover" src="@if($user->avatar_url){{asset($user->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif" alt="Slide 1" />
+                    @if(!$user->pictures->isEmpty())
+                        <div id="carousel" class="carousel slide" data-ride="carousel">
+                            <!-- Menu -->
+                            <ol class="carousel-indicators">
+                                @foreach($user->pictures as $key => $picture)
+                                    <li data-target="#carousel" data-slide-to="{{$key}}"
+                                        class="@if($key == 1) active @endif"></li>
+                                @endforeach
+                            </ol>
+                            <!-- Items -->
+                            <div class="carousel-inner">
+                                {{--foreach image item--}}
+                                @foreach($user->pictures as $key => $picture)
+                                    <div class="item @if($key == 1) active @endif">
+                                        <img class="img-responsive" src="{{asset($picture->picture_url)}}"
+                                             alt="Slide 2"/>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="item">
-                                <img class="img-responsive" src="{{asset('image/profile_temp.jpg')}}" alt="Slide 2" />
-                            </div>
+                            <a href="#carousel" class="left carousel-control" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a href="#carousel" class="right carousel-control" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
                         </div>
-                        <a href="#carousel" class="left carousel-control" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a href="#carousel" class="right carousel-control" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
+
+                    @else
+                        <div>
+                            <div class="carousel-inner">
+                                {{--foreach image item--}}
+                                <div class="block-content block-content-full ribbon ribbon-modern ribbon-success">
+                                    @if($user->id == Auth::user()->id)
+                                        <a class="ribbon-box font-w600 cursor_hand" onclick="window.location = '/settings/'">
+                                            <i class="fa fa-fw fa-plus"></i>
+                                        </a>
+                                    @endif
+                                    <div class="text-center push-20-t push">
+                                        <i class="fa fa-picture-o fa-5x text-gray push"></i>
+                                        <h3 class="h4">No pictures here yet :(</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
                 </div>
+            </div>
+
+
+            <div class="col-lg-12">
+                <h2 class="content-heading">Subscribed Interests</h2>
+                @foreach($interests as $interest)
+                    @include('interests.interest')
+                @endforeach
             </div>
         </div>
 
-
-        <div class="col-lg-12">
-        <h2 class="content-heading">Subscribed Interests</h2>
-            @foreach($interests as $interest)
-                @include('interests.interest')
-            @endforeach
-        </div>
-    </div>
-
-    @push('scripts')
-        <script>
-            $('.carousel').carousel()
-        </script>
+        @push('scripts')
+            <script>
+                $('.carousel').carousel()
+            </script>
     @endpush
 
 @endsection
