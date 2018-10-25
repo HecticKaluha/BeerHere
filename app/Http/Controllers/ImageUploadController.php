@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Picture;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,11 +57,10 @@ class ImageUploadController extends Controller
                 $extension = $image->getClientOriginalExtension();
                 $filename = uniqid() . '_' . time() . '.' . $extension;
                 $image->move($dir, $filename);
-                //attach the image to user
-//                $user->avatar_url = 'uploads/avatars/' . $filename;
-//                $user->update();
-
-                $data[] = $filename;
+                Picture::create([
+                    'picture_url' => 'uploads/pictures/'.$user->id . '/' .$filename,
+                    'user_id' => $user->id,
+                ]);
             }
             return back()->with('success', 'Your images has been successfully uploaded');
         }

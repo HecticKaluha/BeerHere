@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Interest::class, 'interest_user');
     }
 
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class);
+    }
+
     public function likes()
     {
         return $this->belongsToMany(User::class, 'likes', 'user_id', 'likes_user_id')->withPivot(['user_id', 'likes_user_id', 'liked_on']);
