@@ -112,7 +112,9 @@
                                         <input class="js-datepicker form-control {{ $errors->has('birthdate') ? ' is-invalid' : '' }}"
                                                type="text" id="example-datepicker6"
                                                name="birthdate" data-date-format="dd-mm-yyyy"
-                                               placeholder="dd-mm-yyyy" value="{{$loggedInUser->birthdate}}" required>
+                                               placeholder="dd-mm-yyyy"
+                                               value="{{\Carbon\Carbon::parse($loggedInUser->birthdate)->format('d-m-Y')}}"
+                                               required>
                                         <label for="example-datepicker6">Birthdate</label>
                                         <span class="input-group-addon"><i class="si si-calendar"></i></span>
                                     </div>
@@ -143,7 +145,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-xs-12 {{ $errors->has('image') ? ' is-invalid' : '' }}"
-                                       for="image">File Input</label>
+                                       for="image">Upload a profile picture</label>
                                 <div class="col-xs-12">
                                     <input type="file" id="image" name="image">
                                 </div>
@@ -157,7 +159,9 @@
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     <div class="img-container fx-img-zoom-in fx-opt-slide-down">
-                                        <img id="preview_image" class="img-responsive" src="@if($loggedInUser->avatar_url){{asset($loggedInUser->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif" alt="">
+                                        <img id="preview_image" class="img-responsive"
+                                             src="@if($loggedInUser->avatar_url){{asset($loggedInUser->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif"
+                                             alt="">
                                         <div class="img-options">
                                             <div class="img-options-content">
                                                 <a class="btn btn-sm btn-default" href="javascript:void(0)"><i
@@ -175,6 +179,57 @@
                         <div class="col-xs-12">
                             <button class="btn btn-warning" type="submit"><i class="fa fa-check push-5-r"></i> Update
                                 profile
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="block block-bordered">
+            <div class="block-header bg-gray-lighter">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="content_toggle"><i
+                                    class="si si-arrow-up"></i></button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Upload pictures</h3>
+            </div>
+            <div class="block-content">
+                <form class="form-horizontal push-10-t push-10" action="/upload/images" method="post"
+                      id="upload_form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                <label class="col-xs-12 {{ $errors->has('images') ? ' is-invalid' : '' }}"
+                                       for="images">Upload pictures</label>
+                                <div class="col-xs-12">
+                                    <input type="file" id="images" name="images[]" multiple>
+                                    @if ($errors->has('images'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('images') }}</strong>
+                                    </span>
+                                    @endif
+                                    @if ($errors->has('images.*'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>The files must be an image</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button class="btn btn-warning" type="submit"><i class="fa fa-check push-5-r"></i> Upload pictures
                             </button>
                         </div>
                     </div>
@@ -219,6 +274,33 @@
                 }
             })
         });
+
+        {{--$("#images").change(function () {--}}
+            {{--var form_data = new FormData();--}}
+            {{--form_data.append('files', this.files[0]);--}}
+            {{--form_data.append('_token', '{{csrf_token()}}');--}}
+            {{--$.ajax({--}}
+                {{--url: '/upload/images',--}}
+                {{--data: form_data,--}}
+                {{--type: 'POST',--}}
+                {{--contentType: false,--}}
+                {{--processData: false,--}}
+                {{--success: function (data) {--}}
+                    {{--if (data.fail) {--}}
+                        {{--alert(data.errors['files']);--}}
+                        {{--$('#images').val('');--}}
+                    {{--}--}}
+                    {{--else {--}}
+                        {{--//fill carousel--}}
+
+                    {{--}--}}
+                {{--},--}}
+                {{--error: function (xhr, status, error) {--}}
+                    {{--alert(xhr.responseText);--}}
+                    {{--//error message--}}
+                {{--}--}}
+            {{--})--}}
+        {{--});--}}
     </script>
 
 
