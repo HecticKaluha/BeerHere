@@ -216,9 +216,9 @@
                                         {{--<strong>{{ $errors->first('images') }}</strong>--}}
                                     {{--</span>--}}
                                     {{--@endif--}}
-                                    @if ($errors)
+                                    @if ($errors->has('images.*') || $errors->has('images'))
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first() }}</strong>
+                                        <strong>{{ $errors->first()}}</strong>
                                     </span>
                                     @endif
                                 </div>
