@@ -42,7 +42,7 @@
             </div>
             <div class="block-content">
                 <form class="form-horizontal push-10-t push-10" action="/settings/editprofile" method="post"
-                      id="upload_form">
+                      id="upload_form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -249,11 +249,12 @@
 
     <script>
         $("#image").change(function () {
+            var input = this;
             var form_data = new FormData();
             form_data.append('file', this.files[0]);
             form_data.append('_token', '{{csrf_token()}}');
             $.ajax({
-                url: '/upload/image',
+                url: '/validate/image',
                 data: form_data,
                 type: 'POST',
                 contentType: false,
@@ -264,7 +265,7 @@
                         $('#image').val('');
                     }
                     else {
-                        $('#preview_image').attr('src', '{{asset('uploads/avatars')}}/' + data);
+                        var imgpreview=DisplayImagePreview(input);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -273,33 +274,16 @@
                 }
             })
         });
-
-        {{--$("#images").change(function () {--}}
-            {{--var form_data = new FormData();--}}
-            {{--form_data.append('files', this.files[0]);--}}
-            {{--form_data.append('_token', '{{csrf_token()}}');--}}
-            {{--$.ajax({--}}
-                {{--url: '/upload/images',--}}
-                {{--data: form_data,--}}
-                {{--type: 'POST',--}}
-                {{--contentType: false,--}}
-                {{--processData: false,--}}
-                {{--success: function (data) {--}}
-                    {{--if (data.fail) {--}}
-                        {{--alert(data.errors['files']);--}}
-                        {{--$('#images').val('');--}}
-                    {{--}--}}
-                    {{--else {--}}
-                        {{--//fill carousel--}}
-
-                    {{--}--}}
-                {{--},--}}
-                {{--error: function (xhr, status, error) {--}}
-                    {{--alert(xhr.responseText);--}}
-                    {{--//error message--}}
-                {{--}--}}
-            {{--})--}}
-        {{--});--}}
+        function DisplayImagePreview(input){
+            // console.log(input.files);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#preview_image').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 
 

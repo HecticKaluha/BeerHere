@@ -94,7 +94,17 @@ class SettingsController extends Controller
             'place' => 'required|string|min:2',
             'about' => 'nullable|string|min:1',
         ]);
+
         $user = User::find(Auth::user()->id);
+        if($request->hasfile('image'))
+        {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $dir = 'uploads/avatars/';
+            $filename = uniqid() . '_' . time() . '.' . $extension;
+            $request->file('image')->move($dir, $filename);
+            $user->avatar_url = 'uploads/avatars/' . $filename;
+        }
+
         $user->name = $request['name'];
         $user->gender = $request['gender'];
         $user->birthdate = $request['birthdate'];

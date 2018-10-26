@@ -6,14 +6,11 @@ use App\Picture;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ImageUploadController extends Controller
 {
-    public function uploadImage(Request $request)
-    {
+    public function validateUpload(Request $request){
         $validator = Validator::make($request->all(),
             [
                 'file' => 'image',
@@ -27,16 +24,8 @@ class ImageUploadController extends Controller
                 'errors' => $validator->errors()
             );
         }
-        $extension = $request->file('file')->getClientOriginalExtension();
-        $dir = 'uploads/avatars/';
-        $filename = uniqid() . '_' . time() . '.' . $extension;
-        $request->file('file')->move($dir, $filename);
-        $user = User::find(Auth::user()->id);
-        $user->avatar_url = 'uploads/avatars/' . $filename;
-        $user->update();
-        return $filename;
-
     }
+
 
 
     public function uploadImages(Request $request)
