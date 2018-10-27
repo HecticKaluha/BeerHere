@@ -95,6 +95,7 @@ class SettingsController extends Controller
             'about' => 'nullable|string|min:1',
         ]);
 
+
         $user = User::find(Auth::user()->id);
         if($request->hasfile('image'))
         {
@@ -103,6 +104,10 @@ class SettingsController extends Controller
             $filename = uniqid() . '_' . time() . '.' . $extension;
             $request->file('image')->move($dir, $filename);
             $user->avatar_url = 'uploads/avatars/' . $filename;
+        }
+        if($request->removed)
+        {
+            $user->avatar_url = 'image/no-profile.gif';
         }
 
         $user->name = $request['name'];

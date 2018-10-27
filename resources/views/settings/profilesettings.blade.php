@@ -240,13 +240,24 @@
 @push('scripts')
     <script src="{{asset('assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
     <script>
+        var removed = false;
+        var formData = $('form').serializeArray();
+
+        $("#upload_form").submit(function () {
+
+                if (removed) {
+                    var input = $("<input>")
+                        .attr("type", "hidden")
+                        .attr("name", "removed").val("true");
+                    $('#upload_form').append(input);
+                }
+            });
+
+
         jQuery(function () {
             // Init page helpers (BS Datepicker + BS Datetimepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs + AutoNumeric plugins)
             App.initHelpers(['datepicker']);
         });
-    </script>
-
-    <script>
         $("#image").change(function () {
             var input = this;
             var form_data = new FormData();
@@ -291,6 +302,7 @@
             $('#preview_image').attr('src', '{{asset('image/no-profile.gif')}}');
             $('.img-options').remove();
             $('#image').val('');
+            removed = true;
         }
 
 
