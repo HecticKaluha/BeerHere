@@ -105,7 +105,7 @@ class SettingsController extends Controller
             $request->file('image')->move($dir, $filename);
             $user->avatar_url = 'uploads/avatars/' . $filename;
         }
-        if($request->removed)
+        if($request->removed && !$request->hasfile('image'))
         {
             $user->avatar_url = 'image/no-profile.gif';
         }
