@@ -157,15 +157,13 @@
 
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <div class="img-container fx-img-zoom-in fx-opt-slide-down">
+                                    <div id="profile_picture" class="img-container fx-img-zoom-in fx-opt-slide-down">
                                         <img id="preview_image" class="img-responsive"
                                              src="@if($loggedInUser->avatar_url){{asset($loggedInUser->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif"
                                              alt="">
                                         <div class="img-options">
                                             <div class="img-options-content">
-                                                <a class="btn btn-sm btn-default" href="javascript:void(0)"><i
-                                                            class="fa fa-pencil"></i> Edit</a>
-                                                <a class="btn btn-sm btn-default" href="javascript:void(0)"><i
+                                                <a class="btn btn-sm btn-default" id="delete" onclick="remove()"><i
                                                             class="fa fa-times"></i> Delete</a>
                                             </div>
                                         </div>
@@ -212,8 +210,8 @@
                                 <div class="col-xs-12">
                                     <input type="file" id="images" name="images[]" multiple>
                                     {{--@if ($errors->has('images'))--}}
-                                        {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $errors->first('images') }}</strong>--}}
+                                    {{--<span class="invalid-feedback" role="alert">--}}
+                                    {{--<strong>{{ $errors->first('images') }}</strong>--}}
                                     {{--</span>--}}
                                     {{--@endif--}}
                                     @if ($errors->has('images.*') || $errors->has('images'))
@@ -228,7 +226,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <button class="btn btn-warning" type="submit"><i class="fa fa-check push-5-r"></i> Upload pictures
+                            <button class="btn btn-warning" type="submit"><i class="fa fa-check push-5-r"></i> Upload
+                                pictures
                             </button>
                         </div>
                     </div>
@@ -265,7 +264,7 @@
                         $('#image').val('');
                     }
                     else {
-                        var imgpreview=DisplayImagePreview(input);
+                        var imgpreview = DisplayImagePreview(input);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -274,7 +273,8 @@
                 }
             })
         });
-        function DisplayImagePreview(input){
+
+        function DisplayImagePreview(input) {
             // console.log(input.files);
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -282,8 +282,18 @@
                     $('#preview_image').attr('src', e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
+                $('#profile_picture').append("<div class='img-options'><div class='img-options-content'><a class='btn btn-sm btn-default' id='delete' onclick='remove()'><i class='fa fa-times'></i> Delete</a></div></div>");
+
             }
         }
+
+        function remove() {
+            $('#preview_image').attr('src', '{{asset('image/no-profile.gif')}}');
+            $('.img-options').remove();
+            $('#image').val('');
+        }
+
+
     </script>
 
 
