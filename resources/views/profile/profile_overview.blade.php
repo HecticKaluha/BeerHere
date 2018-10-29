@@ -91,8 +91,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif
                         </div>
+                    @endif
                 </div>
             </div>
         </div>
