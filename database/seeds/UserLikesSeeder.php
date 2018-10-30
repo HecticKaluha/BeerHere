@@ -20,14 +20,17 @@ class UserLikesSeeder extends Seeder
         }
 
         $faker = Faker::create('nl_NL');
-        $users = User::all();
+        $users = User::all()->shuffle();
+
 
         foreach ($users as $user) {
+            $uniqueUsers = $users->shuffle();
             $amountOfLikes = $faker->numberBetween(1, 17);
             foreach (range(1, $amountOfLikes) as $index) {
+                $userToLike = $uniqueUsers->pop();
                 DB::table('likes')->insert([
                     'user_id' => $user->id,
-                    'likes_user_id' => $users->random()->id,
+                    'likes_user_id' => $userToLike->id,
                     'liked_on' => $faker->dateTimeBetween(Carbon::now()->subWeeks(3), ' now'),
                 ]);
             }

@@ -104,8 +104,18 @@ class ProfileController extends Controller
     public function like(){
         $user = Auth::user();
         $userToLike = User::find(request('id'));
-        $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
-        return response()->json(['msg'=>'You succesfully liked ' . $userToLike->name ]);
+        try{
+            $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
+        } catch(\Illuminate\Database\QueryException $e){
+            return array(
+                'fail' => true,
+                'errors' => collect(['error'=>'You already liked this user'])
+            );
+        }
+        return array(
+            'fail' => false,
+            'message' => collect(['message'=>'You successfully liked ' . $userToLike->name])
+        );
     }
 
     public function dislike(){

@@ -14,7 +14,6 @@ class CreateUserUserTable extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('likes_user_id');
             $table->dateTime('liked_on');
@@ -25,6 +24,8 @@ class CreateUserUserTable extends Migration
             $table->foreign('likes_user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
+
+            $table->primary(['user_id', 'likes_user_id']);
         });
     }
 

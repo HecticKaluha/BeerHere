@@ -80,15 +80,27 @@
 
     <script>
         function like(userId) {
+            var target = event.target;
             var data = {id: userId, _token: '{{csrf_token()}}'};
             $.ajax({
                 type: "POST",
                 url: '/like',
-                data: data
+                data: data,
+                success: function (data){
+                    if (data.fail) {
+                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>"+ data.errors.error +"</div>");
+                    }
+                    else {
+                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                    }
+                    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
             }).done(function (msg) {
                 // alert( msg.msg );
             });
-            $(event.target).closest('.suggestion').addClass("animated bounceOutLeft");
         }
 
         function dislike(userId) {
