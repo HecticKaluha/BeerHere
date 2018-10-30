@@ -57,7 +57,7 @@ class User extends Authenticatable
     }
     public function nonExpiredDislikes()
     {
-        return $this->dislikes()->where('disliked_on', '>=', Carbon::now()->subDays(7))->get();
+        return $this->dislikes()->where('disliked_on', '>=', Carbon::now()->subDays(7));
     }
     public function orderedLikes(){
         return $this->likes()->orderBy('likes.liked_on', 'DESC');
@@ -86,8 +86,9 @@ class User extends Authenticatable
         }
         $thisUser = $this;
         $filtered = $users->reject(function ($value, $key) use($thisUser) {
-            return $value->id == $thisUser->id || $thisUser->nonExpiredDislikes()->contains($value->id);
+            return $value->id == $thisUser->id || $thisUser->nonExpiredDislikes->contains($value->id) || $thisUser->likes->contains($value->id);
         });
+//        dd($filtered->count());
         return $filtered;
     }
 
