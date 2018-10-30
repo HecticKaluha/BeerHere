@@ -30,7 +30,10 @@
                          style="z-index:{{$key}};">
                         @include('profile.profile_card', compact('user', 'displayAll'))
                         <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-                            <div class="text-center text-muted">In common: @foreach($user->getCommonInterests as $commonInterest) <i class="fa fa-beer text-success"> {{$commonInterest->name}}</i>  @endforeach</div>
+                            <div class="text-center text-muted">In
+                                common: @foreach($user->getCommonInterests as $commonInterest) <i
+                                        class="fa fa-beer text-success"> {{$commonInterest->name}}</i>  @endforeach
+                            </div>
                         </div>
                         <div class="block-content">
                             <div class="row items-push text-center">
@@ -55,7 +58,7 @@
             @include('empty.empty_suggestions')
         @endif
 
-
+        <div id="messages"></div>
     </div>
 @endsection
 
@@ -86,14 +89,19 @@
                 type: "POST",
                 url: '/like',
                 data: data,
-                success: function (data){
+                success: function (data) {
                     if (data.fail) {
-                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>"+ data.errors.error +"</div>");
+                        $('#messages').append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>" + data.errors.error + "</div>");
                     }
                     else {
-                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                        $('#messages').append("<div id='flash-message' class='alert alert-success js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                        $(target).closest('.suggestion').addClass("animated bounceOutLeft");
+
                     }
                     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+                    setTimeout(function () {
+                        $('#messages').find('div').first().remove();
+                    }, 4000);
                 },
                 error: function (xhr, status, error) {
                     alert(xhr.responseText);
