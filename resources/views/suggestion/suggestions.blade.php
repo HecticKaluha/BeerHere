@@ -58,7 +58,6 @@
             @include('empty.empty_suggestions')
         @endif
 
-        <div id="messages"></div>
     </div>
 @endsection
 
@@ -90,18 +89,18 @@
                 url: '/like',
                 data: data,
                 success: function (data) {
+                    emptyAlert();
                     if (data.fail) {
-                        $('#messages').append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>" + data.errors.error + "</div>");
+                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>" + data.errors.error + "</div>");
                     }
                     else {
-                        $('#messages').append("<div id='flash-message' class='alert alert-success js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                        $(document.body).append("<div id='flash-message' class='alert alert-success js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
                         $(target).closest('.suggestion').addClass("animated bounceOutLeft");
-
+                        setTimeout(function () {
+                            removeSuggestion(target)
+                        }, 2000);
                     }
                     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-                    setTimeout(function () {
-                        $('#messages').find('div').first().remove();
-                    }, 4000);
                 },
                 error: function (xhr, status, error) {
                     alert(xhr.responseText);
@@ -112,18 +111,34 @@
         }
 
         function dislike(userId) {
+            var target = event.target;
             var data = {id: userId, _token: '{{csrf_token()}}'};
             $.ajax({
                 type: "POST",
                 url: '/dislike',
-                data: data
+                data: data,
+                success: function (data) {
+                    emptyAlert();
+
+                    $(document.body).append("<div id='flash-message' class='alert alert-warning js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+
+                    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+                },
             }).done(function (msg) {
                 // alert( msg.msg );
             });
             $(event.target).closest('.suggestion').addClass("animated bounceOutRight");
+            setTimeout(function () {
+                removeSuggestion(target)
+            }, 2000);
+        }
 
-            $(this).closest(".suggestion")
-                .addClass("animated bounceOutRight");
+        function removeSuggestion(target) {
+            $(target).closest('.suggestion').remove();
+        }
+
+        function emptyAlert() {
+            $('.alert').not('alert-important').remove();
         }
 
     </script>

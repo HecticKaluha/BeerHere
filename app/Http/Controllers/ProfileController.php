@@ -114,13 +114,16 @@ class ProfileController extends Controller
         }
         return array(
             'fail' => false,
-            'message' => collect(['message'=>'You successfully liked ' . $userToLike->name])
+            'message' => collect(['message'=>'You liked ' . $userToLike->name])
         );
     }
 
     public function dislike(){
         $user = Auth::user();
         $userToDislike = User::find(request('id'));
-        return response()->json(['msg'=>'You disliked ' . $userToDislike->name ]);
+        return array(
+            'fail' => false,
+            'message' => collect(['message'=>'You disliked ' . $userToDislike->name])
+        );
     }
 }
