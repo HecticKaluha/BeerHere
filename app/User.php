@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,19 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'likes', 'user_id', 'likes_user_id')->withPivot(['user_id', 'likes_user_id', 'liked_on']);
     }
 
+    public function dislikes()
+    {
+        return $this->belongsToMany(User::class, 'dislikes', 'user_id', 'dislikes_user_id')->withPivot(['user_id', 'dislikes_user_id', 'disliked_on']);
+    }
+
+    public function expiredDislikes()
+    {
+        return $this->dislikes()->where('disliked_on', '<=', Carbon::now()->subDays(7))->get();
+    }
+    public function nonExpiredDislikes()
+    {
+        return $this->dislikes()->where('disliked_on', '>=', Carbon::now()->subDays(7))->get();
+    }
     public function orderedLikes(){
         return $this->likes()->orderBy('likes.liked_on', 'DESC');
     }
@@ -62,18 +76,17 @@ class User extends Authenticatable
 
     public function orderedMatches(){
         return $this->matches()->orderBy('likes.liked_on', 'DESC');
-
     }
 
     public function suggestions(){
-        $intetests = $this->interests()->with('users')->get();
+        $interests = $this->interests()->with('users')->get();
         $users = collect();
-        foreach($intetests as $interest){
+        foreach($interests as $interest){
             $users = $users->merge($interest->users);
         }
         $thisUser = $this;
         $filtered = $users->reject(function ($value, $key) use($thisUser) {
-            return $value->id == $thisUser->id;
+            return $value->id == $thisUser->id || $thisUser->nonExpiredDislikes()->contains($value->id);
         });
         return $filtered;
     }

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(InterestUserSeeder::class);
         $this->call(UserLikesSeeder::class);
+        $this->call(UserDislikesSeeder::class);
 
         Model::reguard();
     }

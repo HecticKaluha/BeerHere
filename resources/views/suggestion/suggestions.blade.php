@@ -120,8 +120,16 @@
                 success: function (data) {
                     emptyAlert();
 
-                    $(document.body).append("<div id='flash-message' class='alert alert-warning js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
-
+                    if (data.fail) {
+                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>" + data.errors.error + "</div>");
+                    }
+                    else {
+                        $(document.body).append("<div id='flash-message' class='alert alert-warning js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                        $(target).closest('.suggestion').addClass("animated bounceOutRight");
+                        setTimeout(function () {
+                            removeSuggestion(target)
+                        }, 2000);
+                    }
                     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
                 },
             }).done(function (msg) {

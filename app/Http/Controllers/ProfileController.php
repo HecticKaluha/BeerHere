@@ -101,29 +101,39 @@ class ProfileController extends Controller
 
     }
 
-    public function like(){
+    public function like()
+    {
         $user = Auth::user();
         $userToLike = User::find(request('id'));
-        try{
+        try {
             $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
-        } catch(\Illuminate\Database\QueryException $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             return array(
                 'fail' => true,
-                'errors' => collect(['error'=>'You already liked this user'])
+                'errors' => collect(['error' => 'You already liked this user'])
             );
         }
         return array(
             'fail' => false,
-            'message' => collect(['message'=>'You liked ' . $userToLike->name])
+            'message' => collect(['message' => 'You liked ' . $userToLike->name])
         );
     }
 
-    public function dislike(){
-        $user = Auth::user();
+    public function dislike()
+    {
+        $user = Auth::User();
         $userToDislike = User::find(request('id'));
+        try {
+            $user->dislikes()->attach([1 => ['user_id' => $user->id, 'dislikes_user_id' => $userToDislike->id, 'disliked_on' => Carbon::now()]]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return array(
+                'fail' => true,
+                'errors' => collect(['error' => 'You already disliked this user'])
+            );
+        }
         return array(
             'fail' => false,
-            'message' => collect(['message'=>'You disliked ' . $userToDislike->name])
+            'message' => collect(['message' => 'You disliked ' . $userToDislike->name])
         );
     }
 }

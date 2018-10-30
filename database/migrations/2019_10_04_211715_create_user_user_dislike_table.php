@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserUserTable extends Migration
+class CreateUserUserDislikeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateUserUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('dislikes', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('likes_user_id');
-            $table->dateTime('liked_on')->nullable();
+            $table->unsignedInteger('dislikes_user_id');
+            $table->dateTime('disliked_on')->nullable();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->foreign('likes_user_id')
+            $table->foreign('dislikes_user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
 
-            $table->primary(['user_id', 'likes_user_id']);
+            $table->primary(['user_id', 'dislikes_user_id']);
         });
     }
 
@@ -36,7 +36,7 @@ class CreateUserUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('likes', function (Blueprint $table) {
+        Schema::table('dislikes', function (Blueprint $table) {
             //
         });
     }
