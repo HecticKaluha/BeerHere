@@ -30,7 +30,7 @@
                          style="z-index:{{$key}};">
                         @include('profile.profile_card', compact('user', 'displayAll'))
                         <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-                            <div class="text-center text-muted">Overeenkomstige interests</div>
+                            <div class="text-center text-muted">In common: @foreach($user->getCommonInterests as $commonInterest) <i class="fa fa-beer text-success"> {{$commonInterest->name}}</i>  @endforeach</div>
                         </div>
                         <div class="block-content">
                             <div class="row items-push text-center">
