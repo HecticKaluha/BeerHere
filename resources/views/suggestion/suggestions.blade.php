@@ -91,10 +91,10 @@
                 success: function (data) {
                     emptyAlert();
                     if (data.fail) {
-                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>" + data.errors.error + "</div>");
+                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert' style='z-index: 999999;'>" + data.errors.error + "</div>");
                     }
                     else {
-                        $(document.body).append("<div id='flash-message' class='alert alert-success js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                        $(document.body).append("<div id='flash-message' class='alert alert-success js-animation-object animated pulse' role='alert' style='z-index: 999999;'>" + data.message.message + "</div>");
                         $(target).closest('.suggestion').addClass("animated bounceOutLeft");
                         setTimeout(function () {
                             removeSuggestion(target)
@@ -121,10 +121,10 @@
                     emptyAlert();
 
                     if (data.fail) {
-                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert'>" + data.errors.error + "</div>");
+                        $(document.body).append("<div id='flash-message' class='alert alert-danger js-animation-object animated shake' role='alert' style='z-index: 999999;'>" + data.errors.error + "</div>");
                     }
                     else {
-                        $(document.body).append("<div id='flash-message' class='alert alert-warning js-animation-object animated pulse' role='alert'>" + data.message.message + "</div>");
+                        $(document.body).append("<div id='flash-message' class='alert alert-warning js-animation-object animated pulse' role='alert' style='z-index: 999999;'>" + data.message.message + "</div>");
                         $(target).closest('.suggestion').addClass("animated bounceOutRight");
                         setTimeout(function () {
                             removeSuggestion(target)
@@ -135,10 +135,6 @@
             }).done(function (msg) {
                 // alert( msg.msg );
             });
-            $(event.target).closest('.suggestion').addClass("animated bounceOutRight");
-            setTimeout(function () {
-                removeSuggestion(target)
-            }, 2000);
         }
 
         function removeSuggestion(target) {

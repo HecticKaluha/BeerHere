@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $toTruncate = ['likes', 'interest_user', 'users', 'interests'];
+    protected $toTruncate = ['likes', 'dislikes', 'interest_user', 'users', 'interests'];
 
     /**
      * Seed the application's database.
@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(InterestsSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(InterestUserSeeder::class);
-        $this->call(UserLikesSeeder::class);
         $this->call(UserDislikesSeeder::class);
+        $this->call(UserLikesSeeder::class);
 
         Model::reguard();
     }

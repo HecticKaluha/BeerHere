@@ -84,10 +84,13 @@ class User extends Authenticatable
         foreach($interests as $interest){
             $users = $users->merge($interest->users);
         }
+        $uniqueUsers = $users->unique('email');
         $thisUser = $this;
-        $filtered = $users->reject(function ($value, $key) use($thisUser) {
+        $filtered = $uniqueUsers->reject(function ($value, $key) use($thisUser) {
             return $value->id == $thisUser->id || $thisUser->nonExpiredDislikes->contains($value->id) || $thisUser->likes->contains($value->id);
         });
+
+//        dd($filtered->pluck('name')->sortBy('name'));
 //        dd($filtered->count());
         return $filtered;
     }

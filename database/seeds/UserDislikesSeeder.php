@@ -20,17 +20,17 @@ class UserDisLikesSeeder extends Seeder
         }
 
         $faker = Faker::create('nl_NL');
-        $users = User::all()->shuffle();
-
+        $users = User::all();
+        $copyOfUsers = $users;
 
         foreach ($users as $user) {
-            $uniqueUsers = $users->shuffle();
+            $uniqueUsers = $copyOfUsers->shuffle();
             $amountOfDislikes = $faker->numberBetween(1, 17);
+
             foreach (range(1, $amountOfDislikes) as $index) {
-                $userToDislike = $uniqueUsers->pop();
                 DB::table('dislikes')->insert([
                     'user_id' => $user->id,
-                    'dislikes_user_id' => $userToDislike->id,
+                    'dislikes_user_id' => $uniqueUsers->pop()->id,
                     'disliked_on' => $faker->dateTimeBetween(Carbon::now()->subWeeks(3), ' now'),
                 ]);
             }
