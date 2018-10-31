@@ -32,7 +32,7 @@ class ImageUploadController extends Controller
     {
         $this->validate($request, [
             'images' => 'required|max:10',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ],
         [
             'images.required' => 'You haven\'t chosen a file.',
