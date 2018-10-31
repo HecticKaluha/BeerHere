@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -123,13 +124,21 @@ class ProfileController extends Controller
     {
         $user = Auth::User();
         $userToDislike = User::find(request('id'));
-        try {
-            $user->dislikes()->attach([1 => ['user_id' => $user->id, 'dislikes_user_id' => $userToDislike->id, 'disliked_on' => Carbon::now()]]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            return array(
-                'fail' => true,
-                'errors' => collect(['error' => 'You already disliked this user'])
-            );
+        if($user->expiredDislikes()->contains($userToDislike->id))
+        {
+            $userToDislikeAgain = $user->dislikes->find($userToDislike->id);
+            $userToDislikeAgain->pivot->disliked_on = Carbon::now();
+            $userToDislikeAgain->pivot->update();
+        }
+        else{
+            try {
+                $user->dislikes()->attach([1 => ['user_id' => $user->id, 'dislikes_user_id' => $userToDislike->id, 'disliked_on' => Carbon::now()]]);
+            } catch (\Illuminate\Database\QueryException $e) {
+                return array(
+                    'fail' => true,
+                    'errors' => collect(['error' => 'You already disliked this user'])
+                );
+            }
         }
         return array(
             'fail' => false,
