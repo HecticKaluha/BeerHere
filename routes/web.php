@@ -43,5 +43,9 @@ Route::put('/settings/editprofile', 'SettingsController@editProfile');
 Route::post('/validate/image','ImageUploadController@validateUpload');
 Route::post('/upload/images','ImageUploadController@uploadImages');
 
+Route::get('/chat', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');
+
 
 

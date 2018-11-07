@@ -36,6 +36,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Interest::class, 'interest_user');
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function pictures()
     {
         return $this->hasMany(Picture::class);
