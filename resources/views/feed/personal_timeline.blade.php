@@ -1,5 +1,5 @@
 <div class="block block-themed">
-    <div class="block-header {{$type == 'like' ? 'bg-primary' : 'bg-success'}}">
+    <div class="block-header {{$type == 'like' ? 'bg-info' : 'bg-success'}}">
         <ul class="block-options">
             <li>
                 <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i
