@@ -1,5 +1,5 @@
-<div class="bg-primary-dark-op">
-    <section class="content content-full content-boxed overflow-hidden">
+<div class="bg-image content bg-primary-dark-op" style="background-image: url({{asset('image/banner_image.jpg')}}); background-position: top; ">
+    <section class="content-full content-boxed overflow-hidden @if(true) push-150-t push-150 @endif">
         <!-- Section Content -->
         <div class="push-100-t push-50 text-center">
             <h1 class="h2 text-white push-10">Be Here</h1>
