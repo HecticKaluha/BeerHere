@@ -92,7 +92,13 @@ class User extends Authenticatable
 
 //        dd($filtered->pluck('name')->sortBy('name'));
 //        dd($filtered->count());
-        return $filtered;
+        if($filtered->isEmpty()){
+            return null;
+        }
+        else{
+            $filtered = array_values($filtered->all());
+            return $filtered[0];
+        }
     }
 
     public function getCommonInterests(){
@@ -100,4 +106,5 @@ class User extends Authenticatable
         $common = $this->interests()->whereIn('interest_id',$interests);
         return $common;
     }
+
 }

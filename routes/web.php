@@ -34,14 +34,21 @@ Route::get('/personal/matches/', 'PersonalController@getMatches');
 
 Route::get('/suggestions', 'ProfileController@getSuggestions');
 
-Route::post('/like', 'ProfileController@like');
-Route::post('/dislike', 'ProfileController@dislike');
+
 
 Route::get('/settings', 'SettingsController@index');
 Route::put('/settings/editprofile', 'SettingsController@editProfile');
-//image upload route call with ajax
+
+//Ajax endpoints
 Route::post('/validate/image','ImageUploadController@validateUpload');
 Route::post('/upload/images','ImageUploadController@uploadImages');
 
+Route::post('/like', 'ProfileController@like');
+Route::post('/dislike', 'ProfileController@dislike');
 
+
+Route::get('/nextsuggestion', 'ProfileController@getNextSuggestion');
+
+Route::post('/getcommoninterests', 'ProfileController@getCommonInterests');
+//Route::get('/getcommoninterests', 'ProfileController@getCommonInterests');
 

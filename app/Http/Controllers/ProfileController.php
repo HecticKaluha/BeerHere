@@ -95,11 +95,10 @@ class ProfileController extends Controller
 
     public function getSuggestions()
     {
-        $suggestions = Auth::user()->suggestions();
+        $user = Auth::user()->suggestions();
         $displayAll = true;
         $truncate = true;
-        return view('suggestion.suggestions', compact('suggestions', 'displayAll', 'truncate'));
-
+        return view('suggestion.suggestions', compact('user', 'displayAll', 'truncate'));
     }
 
     public function like()
@@ -144,5 +143,39 @@ class ProfileController extends Controller
             'fail' => false,
             'message' => collect(['message' => 'You disliked ' . $userToDislike->name])
         );
+    }
+
+    public function getNextSuggestion(){
+        $nextSuggestion = Auth::User()->suggestions();
+        if(isset($nextSuggestion)){
+            return array(
+                'fail' => false,
+                'message' => $nextSuggestion,
+            );
+        }
+        else{
+            return array(
+                'fail' => true,
+                'message' => collect(['error' => "No more users found with common interests..."])
+            );
+        }
+    }
+
+    public function getCommonInterests(){
+        $user = User::find(request('id'));
+
+        $common = $user->getCommonInterests;
+        if(isset($common)){
+            return array(
+                'fail' => false,
+                'message' => $common->all(),
+            );
+        }
+        else{
+            return array(
+                'fail' => true,
+                'message' => collect(['error' => "No common interests found"])
+            );
+        }
     }
 }
