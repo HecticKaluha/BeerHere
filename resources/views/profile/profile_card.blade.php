@@ -1,5 +1,5 @@
 <div class="block">
-    <div class="bg-image" style="background-image: url('@if($user->avatar_url){{asset($user->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif');">
+    <div id="profileAvatar" class="bg-image" style="background-image: url('@if($user->avatar_url){{asset($user->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif');">
         <div class="bg-black-op">
             <a href="/profile/{{$user->id}}">
                 <div class="block-content block-content-full text-center">

@@ -22,9 +22,9 @@
     <!-- Page Content -->
     <div class="content">
         <h2 class="content-heading">Suggested users</h2>
-        @if($user != null)
-            <div id="suggestions" class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3"
-                 data-equal-height-children>
+        <div id="suggestions" class="parent col-lg-6 col-lg-push-3 remove-padding col-xs-12 col-md-6 col-md-push-3"
+             data-equal-height-children>
+            @if($user != null)
                 <div class="child block suggestion">
                     @include('profile.profile_card', compact('user', 'displayAll'))
                     <div class="block-content block-content-mini block-content-full bg-gray-lighter">
@@ -50,10 +50,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        @else
-            @include('empty.empty_suggestions')
-        @endif
+            @else
+                @include('empty.empty_suggestions')
+            @endif
+        </div>
+
 
     </div>
 @endsection
@@ -62,6 +63,24 @@
     <script src="{{asset('assets/js/plugins/equal_height/jquery.equalHeightChildren.js')}}"></script>
     <script src="{{asset('assets/js/plugins/moment/moment.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/pluralize/pluralize.js')}}"></script>
+
+    <script id="noMoreSuggestions" type="text/x-custom-template">
+        <div class="block">
+            <div class="block-content block-content-full text-center">
+                <h3 class="font-w300 text-black push-30-t push-30">Sorry, we couldn't find anymore profiles with common
+                    interests. How about broadening the horizons?</h3>
+                <div class="push-30">
+                <span class="item item-2x item-circle bg-success-light">
+                    <i class="si si-shuffle text-success"></i>
+                </span>
+                </div>
+                <a class="btn btn-minw btn-rounded btn-noborder btn-success push-5" href="/personal/interests">Update
+                    your interests</a>
+                <p class="font-s12 text-muted">Mix it up!</p>
+            </div>
+        </div>
+    </script>
+
     <script>
         $(window).load(function () {
             fixSize();
@@ -82,6 +101,8 @@
     <script>
         var nextSuggestion;
 
+        var noMoreSuggestions = $('#noMoreSuggestions').html();
+
         function like(userId) {
             var target = event.target;
             var data = {id: userId, _token: '{{csrf_token()}}'};
@@ -96,7 +117,6 @@
                     } else {
                         $(document.body).append("<div id='flash-message' class='alert alert-success js-animation-object animated pulse' role='alert' style='z-index: 999999;'>" + data.message.message + "</div>");
                         nextSuggestion = $(target).closest('.suggestion').clone();
-                        $("#suggestions").prepend(nextSuggestion);
                         $(target).closest('.suggestion').addClass("animated bounceOutLeft");
                         setTimeout(function () {
                             removeSuggestion(target)
@@ -108,7 +128,7 @@
                     alert(xhr.responseText);
                 }
             }).done(function (msg) {
-                if(!msg.fail){
+                if (!msg.fail) {
                     getNextSuggestion();
                 }
             });
@@ -129,7 +149,6 @@
                     } else {
                         $(document.body).append("<div id='flash-message' class='alert alert-warning js-animation-object animated pulse' role='alert' style='z-index: 999999;'>" + data.message.message + "</div>");
                         nextSuggestion = $(target).closest('.suggestion').clone();
-                        $("#suggestions").prepend(nextSuggestion);
                         $(target).closest('.suggestion').addClass("animated bounceOutRight").css('z-index', '99');
                         setTimeout(function () {
                             removeSuggestion(target)
@@ -138,7 +157,7 @@
                     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
                 },
             }).done(function (msg) {
-                if(!msg.fail){
+                if (!msg.fail) {
                     getNextSuggestion();
                 }
             });
@@ -160,33 +179,10 @@
                 success: function (data) {
                     if (data.fail) {
                         //fail
-                        $("#suggestions").append("faal");
+                        $("#suggestions").empty().append(noMoreSuggestions);
                     } else {
                         //success
-                        $(nextSuggestion).find("#profileName").html(data.message.name);
-                        $(nextSuggestion).find("#profileAbout").html(data.message.about);
-                        if(data.message.gender === "M")
-                        {
-                            $(nextSuggestion).find("#profileGenderIcon").removeClass("si-user si-user-female").addClass("si-user");
-                        }
-                        else{
-                            $(nextSuggestion).find("#profileGenderIcon").removeClass("si-user si-user-female").addClass("si-user-female");
-                        }
-                        var age = moment().diff(data.message.birthdate, 'years');
-                        $(nextSuggestion).find("#profileAge").html(age);
-                        $(nextSuggestion).find("#profilePlace").html(data.message.place);
-
-                        var days = moment().diff(data.message.last_login, 'days');
-                        if(days < 1){
-                            $(nextSuggestion).find("#profileLastSeen").html("Today");
-                        }
-                        else if(days <= 7){
-                            $(nextSuggestion).find("#profileLastSeen").html(days + " " + pluralize('day', days) + " ago");
-                        }
-                        else{
-                            $(nextSuggestion).find("#profileLastSeen").html("Long ago");
-                        }
-
+                        $("#suggestions").prepend(nextSuggestion);
 
                         var _data = {id: data.message.id, _token: '{{csrf_token()}}'};
                         $.ajax({
@@ -195,12 +191,12 @@
                             data: _data,
                             success: function (response) {
                                 if (response.fail) {
-
+                                    $(nextSuggestion).find("#profileInCommon").empty().append("No interests in common");
                                 } else {
                                     $(nextSuggestion).find("#profileInCommon").empty().append("In common: ");
-                                    response.message.forEach(function(interest){
+                                    response.message.forEach(function (interest) {
                                         $(nextSuggestion).find("#profileInCommon").append("<i\n" +
-                                            "                                    class=\"fa fa-beer text-success\"> "+ interest.name +"</i> ");
+                                            "                                    class=\"fa fa-beer text-success\"> " + interest.name + "</i> ");
 
                                     });
                                 }
@@ -212,16 +208,42 @@
 
                         });
 
+                        if(data.message.avatar_url){
+                            $(nextSuggestion).find("#profileAvatar").css("backgroundImage","url('"+data.message.avatar_url+"')");
+                        }
+                        else{
+                            $(nextSuggestion).find("#profileAvatar").css("backgroundImage","url('image/no-profile.gif')");
+                        }
 
+                        $(nextSuggestion).find("#profileName").html(data.message.name);
+                        $(nextSuggestion).find("#profileAbout").html(data.message.about);
+                        if (data.message.gender === "M") {
+                            $(nextSuggestion).find("#profileGenderIcon").removeClass("si-user si-user-female").addClass("si-user");
+                        } else {
+                            $(nextSuggestion).find("#profileGenderIcon").removeClass("si-user si-user-female").addClass("si-user-female");
+                        }
+                        var age = moment().diff(data.message.birthdate, 'years');
+                        $(nextSuggestion).find("#profileAge").html(age);
+                        $(nextSuggestion).find("#profilePlace").html(data.message.place);
 
+                        var days = moment().diff(data.message.last_login, 'days');
+                        if (days < 1) {
+                            $(nextSuggestion).find("#profileLastSeen").html("Today");
+                        } else if (days <= 7) {
+                            $(nextSuggestion).find("#profileLastSeen").html(days + " " + pluralize('day', days) + " ago");
+                        } else {
+                            $(nextSuggestion).find("#profileLastSeen").html("Long ago");
+                        }
 
                         $(nextSuggestion).find("#profileDislike").attr("onclick", "dislike(" + data.message.id + ")");
                         $(nextSuggestion).find("#profileLike").attr("onclick", "like(" + data.message.id + ")");
 
 
                         $(nextSuggestion).find("#profileLike").attr("onclick", "like(" + data.message.id + ")");
-
                     }
+                },
+                error: function (data) {
+
                 },
             }).done(function (msg) {
                 // alert( msg.msg );

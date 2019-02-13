@@ -156,7 +156,7 @@ class ProfileController extends Controller
         else{
             return array(
                 'fail' => true,
-                'message' => collect(['error' => "No more users found with common interests..."])
+                'message' => "No more users found with common interests...",
             );
         }
     }
