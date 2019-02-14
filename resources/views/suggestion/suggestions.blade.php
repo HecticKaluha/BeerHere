@@ -37,8 +37,8 @@
                         <div class="row items-push text-center">
                             <div class="col-xs-6">
                                 <a id="profileLike" class="cursor_hand like" onclick="like({{$user->id}})">
-                                    <div class="push-5 text-danger"><i class="si si-like fa-2x"></i></div>
-                                    <div class="h5 font-w300 text-succes">Like</div>
+                                    <div class="push-5 text-success"><i class="si si-like fa-2x"></i></div>
+                                    <div class="h5 font-w300 text-success">Like</div>
                                 </a>
                             </div>
                             <div class="col-xs-6">
@@ -214,6 +214,9 @@
                         else{
                             $(nextSuggestion).find("#profileAvatar").css("backgroundImage","url('image/no-profile.gif')");
                         }
+
+                        $(nextSuggestion).find("#profileLink").attr("href", "/profile/"+data.message.id);
+                        console.log($(nextSuggestion).find("#profileLink"));
 
                         $(nextSuggestion).find("#profileName").html(data.message.name);
                         $(nextSuggestion).find("#profileAbout").html(data.message.about);

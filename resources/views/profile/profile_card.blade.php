@@ -1,7 +1,7 @@
 <div class="block">
     <div id="profileAvatar" class="bg-image" style="background-image: url('@if($user->avatar_url){{asset($user->avatar_url)}}@else {{asset('image/no-profile.gif')}} @endif');">
         <div class="bg-black-op">
-            <a href="/profile/{{$user->id}}">
+            <a id="profileLink" href="/profile/{{$user->id}}">
                 <div class="block-content block-content-full text-center">
                     <h3 id="profileName" class="push-150-t h4 text-uppercase text-white push-30-t push-5">{{$user->name}}</h3>
                     <h4 id="profileAbout" class="h5 text-white-op @if($truncate) respsonsive_truncation @endif push-20">@if($displayAll){{$user->about}} @endif</h4>
