@@ -21,13 +21,15 @@
 
     <!-- Page Content -->
     <div class="content">
-        <div class="col-lg-4">
-            @include('feed.personal_feed')
-        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                @include('feed.personal_feed')
+            </div>
 
-        <div class="col-lg-8">
-            @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'])
-            @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'])
+            <div class="col-lg-8">
+                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'])
+                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'])
+            </div>
         </div>
     </div>
     <!-- END Page Content -->
