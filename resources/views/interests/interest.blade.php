@@ -11,7 +11,7 @@
                 @if(Auth::user()->id == $user->id)
                     <div class="col-xs-6">
                         <div class="push-5"><i class="si si-users fa-2x"></i></div>
-                        <div class="h5 font-w300 text-muted">{{$interest->users->count()}} subscriber(s)</div>
+                        <div class="h5 font-w300 text-muted">{{$interest->users->count()}} {{str_plural('subscriber', $interest->users->count())}}</div>
                     </div>
 
                     <div class="col-xs-6">
@@ -33,7 +33,7 @@
                 @else
                     <div class="col-xs-12">
                         <div class="push-5"><i class="si si-users fa-2x"></i></div>
-                        <div class="h5 font-w300 text-muted">{{$interest->users->count()}} subscriber(s)</div>
+                        <div class="h5 font-w300 text-muted">{{$interest->users->count()}} {{str_plural('subscriber', $interest->users->count())}} </div>
                     </div>
                 @endif
             </div>
