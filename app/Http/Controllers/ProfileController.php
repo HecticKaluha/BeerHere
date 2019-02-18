@@ -106,8 +106,18 @@ class ProfileController extends Controller
         $user = Auth::user();
         $userToLike = User::find(request('id'));
         try {
-            $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
-        } catch (\Illuminate\Database\QueryException $e) {
+            if(!$user->dislikes->contains($userToLike->id))
+            {
+                $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
+            }
+            else{
+                return array(
+                    'fail' => true,
+                    'errors' => collect(['error' => 'You already disliked this user, you can\'t take that back!'])
+                );
+            }
+        }
+        catch (\Illuminate\Database\QueryException $e) {
             return array(
                 'fail' => true,
                 'errors' => collect(['error' => 'You already liked this user'])
@@ -131,7 +141,16 @@ class ProfileController extends Controller
         }
         else{
             try {
-                $user->dislikes()->attach([1 => ['user_id' => $user->id, 'dislikes_user_id' => $userToDislike->id, 'disliked_on' => Carbon::now()]]);
+                if(!$user->likes->contains($userToDislike->id))
+                {
+                    $user->dislikes()->attach([1 => ['user_id' => $user->id, 'dislikes_user_id' => $userToDislike->id, 'disliked_on' => Carbon::now()]]);
+                }
+                else{
+                    return array(
+                        'fail' => true,
+                        'errors' => collect(['error' => 'You already liked this user, you can\'t take that back!'])
+                    );
+                }
             } catch (\Illuminate\Database\QueryException $e) {
                 return array(
                     'fail' => true,

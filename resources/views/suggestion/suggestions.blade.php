@@ -30,7 +30,7 @@
                     <div class="block-content block-content-mini block-content-full bg-gray-lighter">
                         <div id="profileInCommon" class="text-center text-muted">In
                             common: @foreach($user->getCommonInterests as $commonInterest) <i
-                                    class="fa fa-beer text-success"> {{$commonInterest->name}}</i>  @endforeach
+                                    class="fa fa-beer text-success"></i> {{$commonInterest->name}} @endforeach
                         </div>
                     </div>
                     <div class="block-content">
@@ -193,10 +193,10 @@
                                 if (response.fail) {
                                     $(nextSuggestion).find("#profileInCommon").empty().append("No interests in common");
                                 } else {
-                                    $(nextSuggestion).find("#profileInCommon").empty().append("In common: ");
+                                    $(nextSuggestion).find("#profileInCommon").empty().append("In common:");
                                     response.message.forEach(function (interest) {
-                                        $(nextSuggestion).find("#profileInCommon").append("<i\n" +
-                                            "                                    class=\"fa fa-beer text-success\"> " + interest.name + "</i> ");
+                                        $(nextSuggestion).find("#profileInCommon").append(" <i\n" +
+                                            "                                    class=\"fa fa-beer text-success\"></i> " + interest.name);
 
                                     });
                                 }
@@ -216,7 +216,6 @@
                         }
 
                         $(nextSuggestion).find("#profileLink").attr("href", "/profile/"+data.message.id);
-                        console.log($(nextSuggestion).find("#profileLink"));
 
                         $(nextSuggestion).find("#profileName").html(data.message.name);
                         $(nextSuggestion).find("#profileAbout").html(data.message.about);
