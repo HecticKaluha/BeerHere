@@ -75,7 +75,7 @@
                                        type="password" id="password" name="password"
                                        placeholder="Password..."
                                        required>
-                                <label for="password">Wachtwoord</label>
+                                <label for="password">Password</label>
                                 <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
                             </div>
                             @if ($errors->has('password'))
@@ -90,7 +90,7 @@
                             <div class="form-material input-group">
                                 <input class="form-control" type="password" id="password-confirm"
                                        name="password_confirmation" placeholder="Repeat password..." required>
-                                <label for="password-confirm">Herhaal wachtwoord</label>
+                                <label for="password-confirm">Confirm password</label>
                                 <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                        type="text" id="example-datepicker6"
                                        name="birthdate" data-date-format="dd-mm-yyyy"
                                        placeholder="dd-mm-yyyy" required>
-                                <label for="example-datepicker6">Birthdate</label>
+                                <label for="example-datepicker6">Date of birth</label>
                                 <span class="input-group-addon"><i class="si si-calendar"></i></span>
                             </div>
                             @if ($errors->has('birthdate'))
