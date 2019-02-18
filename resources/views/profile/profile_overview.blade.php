@@ -37,7 +37,7 @@
                         <div class="block-header bg-primary-dark">
                             <ul class="block-options">
                                 <li>
-                                    <span>{{$user->pictures->count()}} Photos</span>
+                                    <span>{{$user->pictures->count()}} {{str_plural("picture",$user->pictures->count())}}</span>
                                 </li>
                             </ul>
                             <h3 class="block-title">Gallery</h3>
@@ -48,7 +48,7 @@
                                 <ol class="carousel-indicators">
                                     @foreach($user->pictures as $key => $picture)
                                         <li data-target="#carousel" data-slide-to="{{$key}}"
-                                            class="@if($key == 1) active @endif"></li>
+                                            class="@if($key == 0) active @endif"></li>
                                     @endforeach
                                 </ol>
                                 <!-- Items -->
@@ -61,9 +61,9 @@
                                     @endif
                                     {{--foreach image item--}}
                                     @foreach($user->pictures as $key => $picture)
-                                        <div class="item @if($key == 1) active @endif">
+                                        <div class="item @if($key == 0) active @endif">
                                             <img class="img-responsive" src="{{asset($picture->picture_url)}}"
-                                                 alt="Slide 2"/>
+                                                 alt=""/>
                                         </div>
                                     @endforeach
                                 </div>

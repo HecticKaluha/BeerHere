@@ -5,6 +5,10 @@
         </div>
     </div>
     <div class="block-content block-content-full text-center text-muted">
-        You haven't subscribed to any interests yet. <a class="font-w600" href="/personal/interests">Check out the list</a> and join the fun!
+        @if($user->id === Auth::user()->id)
+            You haven't subscribed to any interests yet. <a class="font-w600" href="/personal/interests">Check out the list</a> and join the fun!
+        @else
+            This user hasn't subscribed to any interests yet.
+        @endif
     </div>
 </div>
