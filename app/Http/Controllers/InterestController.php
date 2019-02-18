@@ -14,7 +14,8 @@ class InterestController extends Controller
      */
     public function index()
     {
-        //
+        $interests = Interest::all();
+        return view('interests.index', compact('interests'));
     }
 
     /**
@@ -57,7 +58,7 @@ class InterestController extends Controller
      */
     public function edit(Interest $interest)
     {
-        //
+        return view('interests.edit', compact('interest'));
     }
 
     /**
@@ -69,7 +70,25 @@ class InterestController extends Controller
      */
     public function update(Request $request, Interest $interest)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:20',
+            'image'=> 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        if($request->hasfile('image'))
+        {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $dir = 'uploads/interest_pictures/';
+            $filename = uniqid() . '_' . time() . '.' . $extension;
+            $request->file('image')->move($dir, $filename);
+            $interest->picture_url = $dir . $filename;
+        }
+
+        $interest->name = $request['name'];
+        $interest->update();
+
+        return redirect('/interests');
     }
 
     /**
@@ -80,6 +99,6 @@ class InterestController extends Controller
      */
     public function destroy(Interest $interest)
     {
-        //
+        Interest::destroy($interest->id);
     }
 }
