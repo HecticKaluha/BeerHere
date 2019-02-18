@@ -40,7 +40,7 @@ class User extends Authenticatable
     {
         return Interest::with('users')->whereDoesntHave('users', function($query) {
             $query->where('user_id', Auth::user()->id);
-        })->get();
+        })->orderBy('name', 'asc');
     }
 
     public function pictures()

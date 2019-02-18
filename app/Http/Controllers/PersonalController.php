@@ -86,9 +86,16 @@ class PersonalController extends Controller
 
     public function interests(){
         $user = Auth::user();
-        $interests = $user->interests;
+        $interests = $user->interests()
+            ->orderBy('interests.name', 'asc')
+            ->get();
         //interests to which the user is not subscribed
-        $availableInterests = $user->notSubscribedInterests();
+        $availableInterests = $user->notSubscribedInterests()
+            ->get()
+            ->sortBy(function($interest)
+            {
+                return $interest->users->count();
+            }, SORT_REGULAR, true);
         return view('personal.interests', compact('interests', 'availableInterests', 'user'));
     }
 
