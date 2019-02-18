@@ -1,7 +1,7 @@
 <div class="col-lg-4">
     <a class="block block-link-hover3">
         <div class="block-content block-content-full text-center bg-image"
-             style="background-image: url('{{asset('image/beer_interest.jpg')}}');">
+             style="background-image: url('{{$interest->picture_url}}');">
             <div class="block-content block-content-mini block-content-full">
                 <h3 class="h4 text-uppercase text-warning push-5"><i class="fa fa-glass text-warning"></i> {{$interest->name}}</h3>
             </div>
