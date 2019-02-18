@@ -87,8 +87,9 @@ class PersonalController extends Controller
     public function interests(){
         $user = Auth::user();
         $interests = $user->interests;
-        $allInterests = Interest::all();
-        return view('personal.interests', compact('interests', 'allInterests', 'user'));
+        //interests to which the user is not subscribed
+        $availableInterests = $user->notSubscribedInterests();
+        return view('personal.interests', compact('interests', 'availableInterests', 'user'));
     }
 
     public function unsubscribe($interest){

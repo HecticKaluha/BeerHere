@@ -23,9 +23,9 @@
     <div class="content">
         @include('personal.subscribed_interests')
 
-        <h2 class="content-heading">All Interests</h2>
+        <h2 class="content-heading">Available Interests</h2>
         <div class="row">
-            @foreach($allInterests as $interest)
+            @foreach($availableInterests as $interest)
                 @include('interests.interest')
             @endforeach
         </div>

@@ -36,6 +36,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Interest::class, 'interest_user');
     }
 
+    public function notSubscribedInterests()
+    {
+        return Interest::with('users')->whereDoesntHave('users', function($query) {
+            $query->where('user_id', Auth::user()->id);
+        })->get();
+    }
+
     public function pictures()
     {
         return $this->hasMany(Picture::class);
