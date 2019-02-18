@@ -15,12 +15,12 @@
                     <small>Profile</small>
                 </h1>
             </div>
-            <div class="col-sm-5 text-right hidden-xs">
-                <ol class="breadcrumb push-10-t">
-                    <li>Profile</li>
-                    <li><a class="link-effect" href="">{{$user->name}}</a></li>
-                </ol>
-            </div>
+            {{--<div class="col-sm-5 text-right hidden-xs">--}}
+                {{--<ol class="breadcrumb push-10-t">--}}
+                    {{--<li>Profile</li>--}}
+                    {{--<li><a class="link-effect" href="">{{$user->name}}</a></li>--}}
+                {{--</ol>--}}
+            {{--</div>--}}
         </div>
     </div>
     <!-- END Page Header -->

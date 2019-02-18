@@ -9,12 +9,12 @@
                     <small>Likes</small>
                 </h1>
             </div>
-            <div class="col-sm-5 text-right hidden-xs">
-                <ol class="breadcrumb push-10-t">
-                    <li>Personal</li>
-                    <li><a class="link-effect" href="">Likes</a></li>
-                </ol>
-            </div>
+            {{--<div class="col-sm-5 text-right hidden-xs">--}}
+                {{--<ol class="breadcrumb push-10-t">--}}
+                    {{--<li>Personal</li>--}}
+                    {{--<li><a class="link-effect" href="">Likes</a></li>--}}
+                {{--</ol>--}}
+            {{--</div>--}}
         </div>
     </div>
     <!-- END Page Header -->
