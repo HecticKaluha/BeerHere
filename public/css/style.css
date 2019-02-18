@@ -99,3 +99,18 @@ img {
 .parent{
     margin-bottom:15px;
 }
+
+.responsive-header {
+    margin-bottom: 150px !important;
+    margin-top: 150px !important;
+}
+
+@media only screen and (max-width: 480px) {
+    .responsive-header {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+}
+
+
+
