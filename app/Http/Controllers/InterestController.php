@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateInterestRequest;
+use App\Http\Requests\EditInterestRequest;
 use App\Interest;
 use Illuminate\Http\Request;
 
@@ -34,27 +36,9 @@ class InterestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateInterestRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:interests|string|max:20',
-            'image'=> 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-
-        if($request->hasfile('image'))
-        {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $dir = 'uploads/interest_pictures/';
-            $filename = uniqid() . '_' . time() . '.' . $extension;
-            $request->file('image')->move($dir, $filename);
-            $file = $dir . $filename;
-        }
-
-        $interest = Interest::create([
-            'name' => request('name'),
-            'picture_url' => $file,
-        ]);
+        $request->persist();
         return redirect('/interests');
     }
 
@@ -87,26 +71,9 @@ class InterestController extends Controller
      * @param  \App\Interest  $interest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Interest $interest)
+    public function update(EditInterestRequest $request, Interest $interest)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:interests|string|max:20',
-            'image'=> 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-
-        if($request->hasfile('image'))
-        {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $dir = 'uploads/interest_pictures/';
-            $filename = uniqid() . '_' . time() . '.' . $extension;
-            $request->file('image')->move($dir, $filename);
-            $interest->picture_url = $dir . $filename;
-        }
-
-        $interest->name = $request['name'];
-        $interest->update();
-
+        $request->patch($interest);
         return redirect('/interests');
     }
 
