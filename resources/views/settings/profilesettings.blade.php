@@ -199,14 +199,21 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-12">
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if(session('error'))
+                                <div class="alert alert-important alert-warning alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <p class="font-w300 push-15">{{ session('error') }}</p>
+                                </div>
+                            @endif
                             <div class="form-group">
-                                @if(session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
                                 <label class="col-xs-12 {{ $errors->has('images') ? ' is-invalid' : '' }}"
                                        for="images">Upload pictures</label>
+
                                 <div class="col-xs-12">
                                     <input type="file" id="images" name="images[]" multiple>
                                     {{--@if ($errors->has('images'))--}}

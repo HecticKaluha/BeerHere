@@ -6,6 +6,8 @@ use App\Picture;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class ImageUploadController extends Controller
@@ -46,18 +48,26 @@ class ImageUploadController extends Controller
             $user = User::find(Auth::user()->id);
             $dir = 'uploads/pictures/' . $user->id . '/';
 
+            $picturesLeft = $user->pictures->count();
             foreach ($request->file('images') as $image) {
-                $extension = $image->getClientOriginalExtension();
-                $filename = uniqid() . '_' . time() . '.' . $extension;
-                $image->move($dir, $filename);
-                Picture::create([
-                    'picture_url' => 'uploads/pictures/' . $user->id . '/' . $filename,
-                    'user_id' => $user->id,
-                ]);
+                if($picturesLeft < 10)
+                {
+                    $extension = $image->getClientOriginalExtension();
+                    $filename = uniqid() . '_' . time() . '.' . $extension;
+                    $image->move($dir, $filename);
+                    Picture::create([
+                        'picture_url' => 'uploads/pictures/' . $user->id . '/' . $filename,
+                        'user_id' => $user->id,
+                    ]);
+                    $picturesLeft++;
+                }
+                else{
+                    return Redirect::to(URL::previous() . "#upload_pictures")->with('error', 'We didn\'t upload all or some of your pictures since you\'ve reached the maximum amount of 10 pictures for your account');
+                }
             }
-            return back()->with('success', 'Your images has been successfully uploaded, you can view them in your carousel on your profilepage');
+            return Redirect::to(URL::previous() . "#upload_pictures")->with('success', 'Your images have been successfully uploaded, you can view them in your carousel on your profilepage');
         } else {
-            return back()->with('errors', 'There where no files selected');
+            return Redirect::to(URL::previous() . "#upload_pictures")->with('error', 'There were no files selected');
         }
     }
 }
