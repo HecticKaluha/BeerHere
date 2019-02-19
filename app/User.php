@@ -35,6 +35,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Interest::class, 'interest_user');
     }
+
     public function orderedInterests(){
         return $this->interests()
             ->orderBy('interests.name', 'asc')
@@ -60,6 +61,10 @@ class User extends Authenticatable
     public function pictures()
     {
         return $this->hasMany(Picture::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 
     public function likes()

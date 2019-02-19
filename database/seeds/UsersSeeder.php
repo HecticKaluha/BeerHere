@@ -29,6 +29,7 @@ class UsersSeeder extends Seeder
             'email' => 'dev@dev.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
+            'role_id' => 1,
             'last_login' => Carbon::now(),
             'remember_token' => str_random(10),
         ]);

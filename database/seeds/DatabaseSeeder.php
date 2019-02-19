@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $toTruncate = ['likes', 'dislikes', 'interest_user', 'users', 'interests'];
+    protected $toTruncate = ['likes', 'dislikes', 'interest_user', 'users', 'interests', 'roles'];
 
     /**
      * Seed the application's database.
@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
         $this->call(InterestsSeeder::class);
+        $this->call(RoleSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(InterestUserSeeder::class);
         $this->call(UserDisLikesSeeder::class);
