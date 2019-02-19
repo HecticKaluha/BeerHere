@@ -130,6 +130,14 @@
     @include('layouts.landing.nav')
     <!-- END Sidebar -->
 
+    <!-- Flash message -->
+    @if($flash = session('message'))
+        <div id="flash-message" class="alert alert-success js-animation-object animated bounce" role="alert">{{$flash}}</div>
+    @endif
+    @if($errors->has('error'))
+        <div id="flash-message" class="alert alert-danger js-animation-object animated shake" role="alert">{{$errors->first('error')}}</div>
+    @endif
+
     <!-- Header -->
     @include('layouts.landing.header')
     <!-- END Header -->
@@ -157,5 +165,11 @@
 
 <!-- Page JS Plugins + Page JS Code -->
 @stack('scripts')
+
+<!-- Matser scripts -->
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
+
 </body>
 </html>

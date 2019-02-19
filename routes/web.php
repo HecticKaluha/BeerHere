@@ -34,15 +34,16 @@ Route::get('/suggestions', 'ProfileController@getSuggestions');
 Route::get('/settings', 'SettingsController@index');
 Route::put('/settings/editprofile', 'SettingsController@editProfile');
 
-//CRUD routes
-Route::get('/interests', 'InterestController@index');
-Route::get('/interests/create', 'InterestController@create');
-Route::post('/interests', 'InterestController@store');
-Route::get('/interests/edit/{interest}', 'InterestController@edit');
-Route::put('/interests/update/{interest}', 'InterestController@update');
-Route::get('/interests/delete/{interest}', 'InterestController@destroy');
 
-
+Route::middleware(['middleware' => 'auth', 'isadmin'])->group(function () {
+    //CRUD routes
+    Route::get('/interests', 'InterestController@index');
+    Route::get('/interests/create', 'InterestController@create');
+    Route::post('/interests', 'InterestController@store');
+    Route::get('/interests/edit/{interest}', 'InterestController@edit');
+    Route::put('/interests/update/{interest}', 'InterestController@update');
+    Route::get('/interests/delete/{interest}', 'InterestController@destroy');
+});
 
 //Ajax endpoints
 Route::post('/validate/image','ImageUploadController@validateUpload');

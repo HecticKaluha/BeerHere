@@ -35,6 +35,21 @@ class UsersSeeder extends Seeder
         ]);
         $this->command->info("Seeded user dev (dev@dev.com) with password 'password'");
 
+        DB::table('users')->insert([
+            'name' => 'User',
+            'about' => $faker->paragraph,
+            'gender' => 'F',
+            'birthdate' => $faker->dateTimeBetween('-20 years', '-19 years'),
+            'place' => $faker->city,
+            'email' => 'user@user.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+            'role_id' => 3,
+            'last_login' => Carbon::now(),
+            'remember_token' => str_random(10),
+        ]);
+        $this->command->info("Seeded user user (user@user.com) with password 'password'");
+
 
         factory(App\User::class, $amount)->create();
         $this->command->info('Seeded ' . $amount . ' users');

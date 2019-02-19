@@ -61,10 +61,10 @@
                 </div>
                 {{--uncomment these lines if you want the logo to be the sidebar toggle--}}
                 {{--<ul class="nav-header pull-left">--}}
-                    {{--<li class="h5 text-white" data-toggle="layout" data-action="sidebar_mini_toggle">--}}
-                        {{--<img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span--}}
-                                {{--class="h6 font-w600 sidebar-mini-hide"> BeerHere</span>--}}
-                    {{--</li>--}}
+                {{--<li class="h5 text-white" data-toggle="layout" data-action="sidebar_mini_toggle">--}}
+                {{--<img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span--}}
+                {{--class="h6 font-w600 sidebar-mini-hide"> BeerHere</span>--}}
+                {{--</li>--}}
                 {{--</ul>--}}
                 <a class="h5 text-white" href="/home">
                     <img class="fa" src="/assets/img/favicons/favicon-16x16.png"> <span
@@ -78,7 +78,8 @@
             <div class="side-content side-content-mini">
                 <ul class="nav-main">
                     <li>
-                        <a class="active" href="/suggestions"><i class="si si-chemistry"></i><span class="sidebar-mini-hide">Suggestions</span></a>
+                        <a class="active" href="/suggestions"><i class="si si-chemistry"></i><span
+                                    class="sidebar-mini-hide">Suggestions</span></a>
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-hide">Pages</span></li>
                     <li>
@@ -88,48 +89,35 @@
                     <li>
                         <a class="nav" data-toggle="" href="/profile"><i class="si si-user"></i><span
                                     class="sidebar-mini-hide">Profile</span></a>
-                        <ul>
-                            <li>
-                                <a href="/profile">View</a>
-                            </li>
-                        </ul>
                     </li>
                     <li>
                         <a class="nav" data-toggle="" href="/personal/interests"><i class="si si-heart"></i><span
-                                class="sidebar-mini-hide">Interests</span></a>
-                        <ul>
-                            <li>
-                                <a href="/personal/interests">View</a>
-                            </li>
-                        </ul>
+                                    class="sidebar-mini-hide">Interests</span></a>
                     </li>
                     <li>
                         <a class="nav" data-toggle="" href="/personal/likes"><i class="si si-like"></i><span
-                                class="sidebar-mini-hide">Likes</span></a>
-                        <ul>
-                            <li>
-                                <a href="/personal/likes">View</a>
-                            </li>
-                        </ul>
+                                    class="sidebar-mini-hide">Likes</span></a>
                     </li>
                     <li>
                         <a class="nav" data-toggle="" href="/personal/matches"><i class="fa fa-beer"></i><span
-                                class="sidebar-mini-hide">Matches</span></a>
-                        <ul>
-                            <li>
-                                <a href="/personal/matches">View</a>
-                            </li>
-                        </ul>
+                                    class="sidebar-mini-hide">Matches</span></a>
                     </li>
                     <li>
                         <a class="nav" data-toggle="" href="/settings/"><i class="si si-settings"></i><span
                                     class="sidebar-mini-hide">Settings</span></a>
-                        <ul>
-                            <li>
-                                <a href="/settings">View</a>
-                            </li>
-                        </ul>
                     </li>
+
+                    @if(in_array(Auth::user()->role_id, [1,2]))
+                        <li class="nav-main-heading"><span class="sidebar-mini-hide">Admin routes</span></li>
+                        <li>
+                            <a class="nav" data-toggle="" href="/interests"><i class="si si-wrench"></i><span
+                                        class="sidebar-mini-hide">Manage interests</span></a>
+                        </li>
+                        <li>
+                            <a class="nav" data-toggle="" href="/interests/create"><i class="si si-plus"></i><span
+                                        class="sidebar-mini-hide">Create interests</span></a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <!-- END Side Content -->
