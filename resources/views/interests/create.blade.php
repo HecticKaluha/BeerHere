@@ -5,7 +5,7 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    Edit
+                    Create
                     <small>Interests</small>
                 </h1>
             </div>
@@ -21,13 +21,12 @@
 
     <!-- Page Content -->
     <div class="content">
-        <h2 class="content-heading">Edit {{$interest->name}}</h2>
+        <h2 class="content-heading">Create a new interest</h2>
         <div class="row">
-            <form class="" action="/interests/update/{{$interest->id}}" method="post"
+            <form class="" action="/interests" method="post"
                   id="editInterest" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
-                <div class="col-lg-4 col-lg-push-4">
+                <div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
                     @if(!$errors->isEmpty())
                         <div class="alert alert-important alert-warning alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -39,7 +38,7 @@
                     @endif
                     <a class="block block-link-hover3">
                         <div class="block-content block-content-full text-center bg-image" id="preview_image"
-                             style="background-image: url('{{asset($interest->picture_url)}}');">
+                             style="background-image: url('{{asset('/image/bar.jpg')}}');">
                             <div class="block-content block-content-mini block-content-full">
                                 <div class="form-group push-50">
                                     <div class="col-sm-12">
@@ -61,11 +60,11 @@
                                         <input type="file" id="image" name="image"/>
                                     </div>
                                 </div>
-
                                 <div class="col-xs-6">
-                                    <div class="cursor_hand text-success" onclick="document.getElementById('editInterest').submit();">
+                                    <div class="cursor_hand text-success"
+                                         onclick="document.getElementById('editInterest').submit();">
                                         <div class="push-5"><i class="fa fa-check fa-2x"></i></div>
-                                        <div class="h5 font-w300 text-muted">Apply</div>
+                                        <div class="h5 font-w300 text-muted">Create</div>
                                     </div>
                                 </div>
                             </div>
@@ -94,14 +93,13 @@
                     if (data.fail) {
                         alert(data.errors['file']);
                         $('#image').val('');
-                    }
-                    else {
+                    } else {
                         DisplayImagePreview(input);
                     }
                 },
                 error: function (xhr, status, error) {
                     alert(xhr.responseText);
-                    $('#preview_image').css("backgroundImage","url('')");
+                    $('#preview_image').css("backgroundImage", "url('')");
                 }
             })
         });
@@ -111,7 +109,7 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#preview_image').css("backgroundImage","url('"+e.target.result+"')");
+                    $('#preview_image').css("backgroundImage", "url('" + e.target.result + "')");
                 };
                 reader.readAsDataURL(input.files[0]);
             }

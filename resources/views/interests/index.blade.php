@@ -5,7 +5,7 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    Create
+                    Manage
                     <small>Interests</small>
                 </h1>
             </div>

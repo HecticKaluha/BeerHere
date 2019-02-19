@@ -36,9 +36,11 @@ Route::put('/settings/editprofile', 'SettingsController@editProfile');
 
 //CRUD routes
 Route::get('/interests', 'InterestController@index');
+Route::get('/interests/create', 'InterestController@create');
+Route::post('/interests', 'InterestController@store');
 Route::get('/interests/edit/{interest}', 'InterestController@edit');
 Route::put('/interests/update/{interest}', 'InterestController@update');
-Route::post('/interests/delete/{interest}', 'InterestController@destroy');
+Route::get('/interests/delete/{interest}', 'InterestController@destroy');
 
 
 

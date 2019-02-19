@@ -19,7 +19,7 @@
 
                 <div class="col-xs-6">
                     <div class="cursor_hand text-danger"
-                         onclick="window.location = '/interests/destroy/{{$interest->id}}'">
+                         onclick="window.location = '/interests/delete/{{$interest->id}}'">
                         <div class="push-5"><i class="fa fa-times fa-2x"></i></div>
                         <div class="h5 font-w300 text-muted">Delete</div>
                     </div>
