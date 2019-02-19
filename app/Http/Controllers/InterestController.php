@@ -16,7 +16,7 @@ class InterestController extends Controller
      */
     public function index()
     {
-        $interests = Interest::all();
+        $interests = Interest::orderBy('name')->get();
         return view('interests.index', compact('interests'));
     }
 

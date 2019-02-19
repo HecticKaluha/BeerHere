@@ -35,12 +35,26 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Interest::class, 'interest_user');
     }
+    public function orderedInterests(){
+        return $this->interests()
+            ->orderBy('interests.name', 'asc')
+            ->get();
+    }
 
     public function notSubscribedInterests()
     {
         return Interest::with('users')->whereDoesntHave('users', function($query) {
             $query->where('user_id', Auth::user()->id);
         })->orderBy('name', 'asc');
+    }
+
+    public function orderedNotSubscribedInterests(){
+        return $this->notSubscribedInterests()
+            ->get()
+            ->sortBy(function($interest)
+            {
+                return $interest->users->count();
+            }, SORT_REGULAR, true);
     }
 
     public function pictures()
