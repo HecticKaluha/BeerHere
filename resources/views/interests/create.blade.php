@@ -37,15 +37,17 @@
                         </div>
                     @endif
                     <a class="block block-link-hover3">
-                        <div class="block-content block-content-full text-center bg-image" id="preview_image"
+                        <div class="text-center bg-image" id="preview_image"
                              style="background-image: url('{{asset('/image/bar.jpg')}}');">
-                            <div class="block-content block-content-mini block-content-full">
-                                <div class="form-group push-50">
-                                    <div class="col-sm-12">
-                                        <div class="form-material floating">
-                                            <input class="form-control" type="text" id="name" name="name">
-                                            <label for="name"><h3
-                                                        class="h4 text-uppercase text-warning push-5">Name</h3></label>
+                            <div class="bg-black-op block-content block-content-full">
+                                <div class="block-content block-content-mini block-content-full">
+                                    <div class="form-group push-50">
+                                        <div class="col-sm-12">
+                                            <div class="form-material floating">
+                                                <input class="form-control" type="text" id="name" name="name">
+                                                <label for="name"><h3
+                                                            class="h4 text-uppercase text-warning ">Name</h3></label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

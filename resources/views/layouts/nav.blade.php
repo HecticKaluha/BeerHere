@@ -113,10 +113,6 @@
                             <a class="nav" data-toggle="" href="/interests"><i class="si si-wrench"></i><span
                                         class="sidebar-mini-hide">Manage interests</span></a>
                         </li>
-                        <li>
-                            <a class="nav" data-toggle="" href="/interests/create"><i class="si si-plus"></i><span
-                                        class="sidebar-mini-hide">Create interests</span></a>
-                        </li>
                     @endif
                 </ul>
             </div>

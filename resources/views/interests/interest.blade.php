@@ -1,9 +1,18 @@
 <div class="col-lg-4">
     <a class="block block-link-hover3">
-        <div class="block-content block-content-full text-center bg-image"
+        <div class="text-center bg-image"
              style="background-image: url('{{asset($interest->picture_url)}}');">
-            <div class="block-content block-content-mini block-content-full">
-                <h3 class="h4 text-uppercase text-warning push-5"><i class="fa fa-glass text-warning"></i> {{$interest->name}}</h3>
+            <div class="bg-black-op block-content block-content-full">
+                <div class="block-content block-content-mini block-content-full">
+                    <div class="push-50">
+                        <div class="col-sm-12">
+                            <div class="form-material floating">
+                                <h3 class="h4 text-uppercase text-warning push-5"><i
+                                            class="fa fa-glass text-warning"></i> {{$interest->name}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="block-content">
