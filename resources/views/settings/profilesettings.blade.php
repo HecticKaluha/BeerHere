@@ -146,7 +146,7 @@
                                 <label class="col-xs-12 {{ $errors->has('image') ? ' is-invalid' : '' }}"
                                        for="image">Upload a profile picture</label>
                                 <div id="single_filupload" class="col-xs-12">
-                                    <input type="file" id="image" name="image">
+                                    <input type="file" accept=".jpeg,.png,.jpg,.gif,.svg" id="image" name="image">
                                 </div>
                                 @if ($errors->has('image'))
                                     <span class="invalid-feedback" role="alert">
@@ -215,7 +215,7 @@
                                        for="images">Upload pictures</label>
 
                                 <div class="col-xs-12">
-                                    <input type="file" id="images" name="images[]" multiple>
+                                    <input type="file" id="images" accept=".jpeg,.png,.jpg,.gif,.svg" name="images[]" multiple>
                                     {{--@if ($errors->has('images'))--}}
                                     {{--<span class="invalid-feedback" role="alert">--}}
                                     {{--<strong>{{ $errors->first('images') }}</strong>--}}
