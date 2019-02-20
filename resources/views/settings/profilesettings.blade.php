@@ -145,7 +145,7 @@
                             <div class="form-group">
                                 <label class="col-xs-12 {{ $errors->has('image') ? ' is-invalid' : '' }}"
                                        for="image">Upload a profile picture</label>
-                                <div class="col-xs-12">
+                                <div id="single_filupload" class="col-xs-12">
                                     <input type="file" id="image" name="image">
                                 </div>
                                 @if ($errors->has('image'))
@@ -278,7 +278,10 @@
                 processData: false,
                 success: function (data) {
                     if (data.fail) {
-                        alert(data.errors['file'].join(' & '));
+                        $("#single_filupload").prepend('<div id="single_fileupload_errors" class="alert alert-important alert-warning alert-dismissable">\n' +
+                            '                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\n' +
+                            '                                </div>');
+                        $("#single_fileupload_errors").append('<p class="font-w300 push-15">' + data.errors['file'].join(' & ') +'</p>');
                         $('#image').val('');
                     }
                     else {
