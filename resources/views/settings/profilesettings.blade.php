@@ -198,7 +198,7 @@
                       id="upload_form" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div id="multiple_fileupload" class="col-sm-12">
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -278,7 +278,7 @@
                 processData: false,
                 success: function (data) {
                     if (data.fail) {
-                        alert(data.errors['file']);
+                        alert(data.errors['file'].join(' & '));
                         $('#image').val('');
                     }
                     else {
@@ -308,18 +308,24 @@
                 processData: false,
                 success: function (data) {
                     if (data.fail) {
+                        console.log(data.errors);
+                        $("#multiple_fileupload").prepend('<div id="multiple_fileupload_errors" class="alert alert-important alert-warning alert-dismissable">\n' +
+                            '                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\n' +
+                            '                                </div>');
                         $.each(data.errors, function(index, value){
                             var number = parseInt(index.substr(index.indexOf('.') +1)) +1;
-                            index = index.replace('.', ' ');
-                            index = index.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-                                return letter.toUpperCase();
-                            });
+                            if(index === 'file'){
+                                $("#multiple_fileupload_errors").append('<p class="font-w300 push-15">' + value.join(' & ') +'</p>');
+                            }
+                            else{
+                                $("#multiple_fileupload_errors").append('<p class="font-w300 push-15">File ' + number + ': ' +value.join(' & ') +'</p>');
+                            }
                             console.log("File " + number + ": " +value[0]);
                         });
                         $('#images').val('');
                     }
                     else {
-                        
+
                     }
                 },
                 error: function (xhr, status, error) {

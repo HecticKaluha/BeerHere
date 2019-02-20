@@ -19,10 +19,12 @@ class ImageUploadController extends Controller
 
         $validator = Validator::make($request->all(),
             [
-                'file' => 'image',
+                'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ],
             [
-                'file.image' => 'The file must be an image (jpeg, png, bmp, gif, or svg)'
+                'file.image' => 'The file must be an image',
+                'file.max' => 'The file cannot be bigger than :maxmb',
+                'file.mimes' => 'We only accept jpeg, png, jpg, gif and svg',
             ]);
         if ($validator->fails()) {
             return array(
@@ -34,19 +36,16 @@ class ImageUploadController extends Controller
 
     public function validateMultipleUploads(Request $request)
     {
-        $rules = [];
-        Log::info(request('file'));
-        foreach(range(0, count(request('file'))-1) as $index) {
-            $rules['file.' . $index] = 'image|max:2048';
-        }
-        Log::info($rules);
-
-
         $validator = Validator::make($request->all(),
-            $rules,
             [
-                'file.*.image' => 'The file must be an image (jpeg, png, bmp, gif, or svg)',
-                'file.*.max' => 'The file cannot be bigger than :max',
+                'file' => 'max:10',
+                'file.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ],
+            [
+                'file.*.image' => 'The file must be an image',
+                'file.*.max' => 'The file cannot be bigger than :maxmb',
+                'file.*.mimes' => 'We only accept jpeg, png, jpg, gif and svg',
+                'file.max' => 'You can only upload :max files at once',
             ]);
         if ($validator->fails()) {
             return array(
@@ -67,7 +66,7 @@ class ImageUploadController extends Controller
                 'images.required' => 'You haven\'t chosen a file.',
                 'images.max' => 'You can only upload :max files at once.',
                 'images.*.image' => 'The files must all be images, silly!',
-                'images.*.mimes' => 'We only accept :mimes.',
+                'images.*.mimes' => 'We only accept :mimes',
                 'images.*.max' => 'The files must be smaller than :max kb each.',
             ]
         );
