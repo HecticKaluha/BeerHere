@@ -34,6 +34,9 @@ Route::get('/suggestions', 'ProfileController@getSuggestions');
 Route::get('/settings', 'SettingsController@index');
 Route::put('/settings/editprofile', 'SettingsController@editProfile');
 
+Route::post('/upload/images','ImageUploadController@uploadImages');
+
+
 
 Route::middleware(['middleware' => 'auth', 'isadmin'])->group(function () {
     //CRUD routes
@@ -47,7 +50,7 @@ Route::middleware(['middleware' => 'auth', 'isadmin'])->group(function () {
 
 //Ajax endpoints
 Route::post('/validate/image','ImageUploadController@validateUpload');
-Route::post('/upload/images','ImageUploadController@uploadImages');
+Route::post('/validate/images','ImageUploadController@validateMultipleUploads');
 
 Route::post('/like', 'ProfileController@like');
 Route::post('/dislike', 'ProfileController@dislike');

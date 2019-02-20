@@ -292,6 +292,42 @@
             })
         });
 
+        $("#images").change(function () {
+            var form_data = new FormData();
+            var numberOfFiles = 0;
+            $.each(this.files, function(i, file) {
+                form_data.append('file[]', file);
+                numberOfFiles++;
+            });
+            form_data.append('_token', '{{csrf_token()}}');
+            $.ajax({
+                url: '/validate/images',
+                data: form_data,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.fail) {
+                        $.each(data.errors, function(index, value){
+                            var number = parseInt(index.substr(index.indexOf('.') +1)) +1;
+                            index = index.replace('.', ' ');
+                            index = index.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                                return letter.toUpperCase();
+                            });
+                            console.log("File " + number + ": " +value[0]);
+                        });
+                        $('#images').val('');
+                    }
+                    else {
+                        
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            })
+        });
+
         function DisplayImagePreview(input) {
             // console.log(input.files);
             if (input.files && input.files[0]) {

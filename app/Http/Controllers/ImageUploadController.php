@@ -6,13 +6,17 @@ use App\Picture;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class ImageUploadController extends Controller
 {
-    public function validateUpload(Request $request){
+    public function validateUpload(Request $request)
+    {
+        Log::info(request('file'));
+
         $validator = Validator::make($request->all(),
             [
                 'file' => 'image',
@@ -28,21 +32,44 @@ class ImageUploadController extends Controller
         }
     }
 
+    public function validateMultipleUploads(Request $request)
+    {
+        $rules = [];
+        Log::info(request('file'));
+        foreach(range(0, count(request('file'))-1) as $index) {
+            $rules['file.' . $index] = 'image|max:2048';
+        }
+        Log::info($rules);
 
+
+        $validator = Validator::make($request->all(),
+            $rules,
+            [
+                'file.*.image' => 'The file must be an image (jpeg, png, bmp, gif, or svg)',
+                'file.*.max' => 'The file cannot be bigger than :max',
+            ]);
+        if ($validator->fails()) {
+            return array(
+                'fail' => true,
+                'errors' => $validator->errors()
+            );
+        }
+    }
 
     public function uploadImages(Request $request)
     {
+        Log::info($request);
         $this->validate($request, [
             'images' => 'required|max:10',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ],
-        [
-            'images.required' => 'You haven\'t chosen a file.',
-            'images.max' => 'You can only upload :max files at once.',
-            'images.*.image' => 'The file must be an image, silly!',
-            'images.*.mimes' => 'We only accept :mimes.',
-            'images.*.max' => 'The files must be smaller than :max kb each.',
-        ]
+            [
+                'images.required' => 'You haven\'t chosen a file.',
+                'images.max' => 'You can only upload :max files at once.',
+                'images.*.image' => 'The files must all be images, silly!',
+                'images.*.mimes' => 'We only accept :mimes.',
+                'images.*.max' => 'The files must be smaller than :max kb each.',
+            ]
         );
         if ($request->hasfile('images')) {
             $user = User::find(Auth::user()->id);
@@ -50,8 +77,7 @@ class ImageUploadController extends Controller
 
             $picturesLeft = $user->pictures->count();
             foreach ($request->file('images') as $image) {
-                if($picturesLeft < 10)
-                {
+                if ($picturesLeft < 10) {
                     $extension = $image->getClientOriginalExtension();
                     $filename = uniqid() . '_' . time() . '.' . $extension;
                     $image->move($dir, $filename);
@@ -60,8 +86,7 @@ class ImageUploadController extends Controller
                         'user_id' => $user->id,
                     ]);
                     $picturesLeft++;
-                }
-                else{
+                } else {
                     return Redirect::to(URL::previous() . "#upload_pictures")->with('error', 'We didn\'t upload all or some of your pictures since you\'ve reached the maximum amount of 10 pictures for your account');
                 }
             }
