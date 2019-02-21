@@ -1,5 +1,5 @@
 <li>
-    <div class="list-timeline-time">{{\Carbon\Carbon::parse($item->pivot->liked_on)->format('D d-m-Y')}}</div>
+    <div class="list-timeline-time">{{\Carbon\Carbon::parse($item->pivot->liked_on)->diffForHumans()}}</div>
     <i class="{{$type == 'like' ? 'si si-like' : 'fa fa-beer'}} list-timeline-icon {{$type == 'like' ? 'bg-info' : 'bg-success'}}"></i>
     <div class="list-timeline-content">
         <ul class="nav-users push">
