@@ -106,7 +106,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $userToLike = User::find(request('id'));
         try {
-            if(!$user->dislikes->contains($userToLike->id))
+            if(!$user->nonExpiredDislikes->contains($userToLike->id))
             {
                 $user->likes()->attach([1 => ['user_id' => $user->id, 'likes_user_id' => $userToLike->id, 'liked_on' => Carbon::now()]]);
             }

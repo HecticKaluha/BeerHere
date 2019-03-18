@@ -19,7 +19,7 @@ class PictureSeeder extends Seeder
         }
         $faker = Faker::create('nl_NL');
         foreach (User::all() as $user) {
-            foreach (range(0, 10) as $picture) {
+            for($i=0; $i < mt_rand(0, 9);$i++) {
                 DB::table('pictures')->insert([
                     'picture_url' => 'uploads/pictures/defaults/photo' . $faker->randomElement(range(1,39)) . '.jpg',
                     'user_id' => $user->id,
