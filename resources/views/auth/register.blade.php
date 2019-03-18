@@ -24,7 +24,7 @@
                                        id="name" name="name"
                                        placeholder="Name..."
                                        autofocus required>
-                                <label for="name">Naam</label>
+                                <label for="name">Name</label>
                                 <span class="input-group-addon"><i class="si si-user"></i></span>
                             </div>
                             @if ($errors->has('name'))

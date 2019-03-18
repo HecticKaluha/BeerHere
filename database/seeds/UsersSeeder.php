@@ -31,6 +31,7 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('password'),
             'role_id' => 1,
             'last_login' => Carbon::now(),
+            'avatar_url' => 'uploads/avatars/defaults/1.jpg',
             'remember_token' => str_random(10),
         ]);
         $this->command->info("Seeded user dev (dev@dev.com) with password 'password'");
@@ -46,6 +47,7 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('password'),
             'role_id' => 3,
             'last_login' => Carbon::now(),
+            'avatar_url' => 'uploads/avatars/defaults/2.jpg',
             'remember_token' => str_random(10),
         ]);
         $this->command->info("Seeded user user (user@user.com) with password 'password'");

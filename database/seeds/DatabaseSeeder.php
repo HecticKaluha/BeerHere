@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $toTruncate = ['likes', 'dislikes', 'interest_user', 'users', 'interests', 'roles'];
+    protected $toTruncate = ['pictures','likes', 'dislikes', 'interest_user', 'users', 'interests', 'roles'];
 
     /**
      * Seed the application's database.
@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(InterestUserSeeder::class);
+        $this->call(PictureSeeder::class);
         $this->call(UserDisLikesSeeder::class);
         $this->call(UserLikesSeeder::class);
 
