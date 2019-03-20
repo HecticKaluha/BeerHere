@@ -44,9 +44,20 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
     public function authenticated(Request $request, $user)
     {
+        $this->matchesWhenAway($request, $user);
         $user->last_login = Carbon::now();
         $user->save();
+    }
+
+    public function matchesWhenAway($request, $user)
+    {
+        $matchesWhenAWay = $user->matchesWhenAway();
+        if($matchesWhenAWay > 0)
+        {
+            $request->session()->flash('matchesWhenAway', $matchesWhenAWay);
+        }
     }
 }

@@ -21,6 +21,7 @@
 
     <!-- Page Content -->
     <div class="content">
+        @include('alerts.matchesWhenAway')
         <div class="row">
             <div class="col-lg-4">
                 @include('feed.personal_feed')
