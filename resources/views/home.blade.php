@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-lg-8">
-                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedMatches, 'type' => 'matche'])
+                @include('feed.personal_timeline', ['feeditems' => $loggedInUser->getOrderedMatchesWithTime(), 'type' => 'matche'])
                 @include('feed.personal_timeline', ['feeditems' => $loggedInUser->orderedLikes, 'type' => 'like'])
             </div>
         </div>

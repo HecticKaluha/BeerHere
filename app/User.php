@@ -108,7 +108,25 @@ class User extends Authenticatable
     public function matches()
     {
         $likedBy = $this->likedBy->pluck('id')->toArray();
-        return $this->likes()->wherePivotIn('likes_user_id', $likedBy);
+        $matches = $this->likes()->wherePivotIn('likes_user_id', $likedBy);
+        return $matches;
+    }
+
+    public function getOrderedMatchesWithTime()
+    {
+        $matchesId = $this->orderedMatches()->get();
+        $matchesWithTime = collect();
+        foreach($matchesId as $match){
+            $match->attributes['matched_on'] = max($match->likedWhen($this)->first(), $match->pivot->liked_on);
+            $matchesWithTime->push($match);
+        }
+        return $matchesWithTime->sortBy(function($match){
+            return $match->matched_on;
+        })->reverse();
+    }
+
+    public function likedWhen(User $user){
+        return $this->likes()->where('likes_user_id', '=', $user->id)->pluck('liked_on');
     }
 
     public function orderedMatches()
@@ -129,8 +147,6 @@ class User extends Authenticatable
             return $value->id == $thisUser->id || $thisUser->nonExpiredDislikes->contains($value->id) || $thisUser->likes->contains($value->id);
         });
 
-//        dd($filtered->pluck('name')->sortBy('name'));
-//        dd($filtered->count());
         if ($filtered->isEmpty()) {
             return null;
         } else {
