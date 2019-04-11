@@ -91,6 +91,7 @@ class PersonalController extends Controller
         //interests to which the user is not subscribed
         $availableInterests = $user->orderedNotSubscribedInterests();
         return view('personal.interests', compact('interests', 'availableInterests', 'user'));
+//        return $interests->toJson();
     }
 
     public function unsubscribe($interest){
