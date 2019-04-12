@@ -47,14 +47,14 @@ class InterestTest extends TestCase
         return $token;
     }
 
-    public function testGetPersonalInterests(){
-        //Get token
-        $token = $this->authenticate();
-        $response = $this->withHeaders([
-            'Authorization' => 'Bearer '. $token,
-        ])->json('GET',route('api.getPersonalInterests'));
-        $response->assertStatus(200);
-
-        Log::info($response->json());
-    }
+//    public function testGetPersonalInterests(){
+//        //Get token
+//        $token = $this->authenticate();
+//        $response = $this->withHeaders([
+//            'Authorization' => 'Bearer '. $token,
+//        ])->json('GET',route('api.getPersonalInterests'));
+//        $response->assertStatus(200);
+//
+//        Log::info($response->json());
+//    }
 }

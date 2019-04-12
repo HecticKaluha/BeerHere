@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Interest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class PersonalController extends Controller
 {
@@ -90,8 +91,10 @@ class PersonalController extends Controller
 
         //interests to which the user is not subscribed
         $availableInterests = $user->orderedNotSubscribedInterests();
-        return view('personal.interests', compact('interests', 'availableInterests', 'user'));
-//        return $interests->toJson();
+        //non-api
+//        return view('personal.interests', compact('interests', 'availableInterests', 'user'));
+        //api
+        return Response::json(array('interests' => $interests,'availableInterests' => $availableInterests));
     }
 
     public function unsubscribe($interest){
@@ -113,13 +116,19 @@ class PersonalController extends Controller
         $likes = Auth::user()->likes;
         $displayAll = false;
         $truncate = false;
-        return view('personal.likes', compact('likes', 'displayAll', 'truncate'));
+        //non-api
+//        return view('personal.likes', compact('likes', 'displayAll', 'truncate'));
+        //api
+        return Response::json(array('likes' => $likes,'displayAll' => $displayAll, 'truncate' => $truncate));
     }
 
     public function getMatches(){
         $matches = Auth::user()->matches;
         $displayAll = false;
         $truncate = false;
-        return view('personal.matches', compact('matches', 'displayAll', 'truncate'));
+        //non-api
+//        return view('personal.matches', compact('matches', 'displayAll', 'truncate'));
+        //api
+        return Response::json(array('matches' => $matches,'displayAll' => $displayAll, 'truncate' => $truncate));
     }
 }

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
 
 class ProfileController extends Controller
 {
@@ -98,7 +99,11 @@ class ProfileController extends Controller
         $user = Auth::user()->suggestions();
         $displayAll = true;
         $truncate = true;
-        return view('suggestion.suggestions', compact('user', 'displayAll', 'truncate'));
+        //non-api
+//        return view('suggestion.suggestions', compact('user', 'displayAll', 'truncate'));
+        //api
+        return Response::json(array('user' => $user,'displayAll' => $displayAll, 'truncate' => $truncate));
+
     }
 
     public function like()

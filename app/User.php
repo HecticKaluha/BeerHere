@@ -47,7 +47,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function notSubscribedInterests()
     {
-        return Interest::with('users')->whereDoesntHave('users', function ($query) {
+        return Interest::with(array('users'=>function($query){
+            $query->select('user_id');
+        }))->whereDoesntHave('users', function ($query) {
             $query->where('user_id', Auth::user()->id);
         })->orderBy('name', 'asc');
     }
