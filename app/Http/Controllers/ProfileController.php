@@ -56,8 +56,10 @@ class ProfileController extends Controller
         $interests = $user->interests;
         $displayAll = true;
         $truncate = false;
-        return view('profile.profile_overview', compact('user', 'interests', 'displayAll', 'truncate'));
-
+        //non-api
+//        return view('profile.profile_overview', compact('user', 'interests', 'displayAll', 'truncate'));
+        //api
+        return Response::json(array('user' => $user,'interests' => $interests ,'displayAll' => $displayAll, 'truncate' => $truncate));
     }
 
     /**

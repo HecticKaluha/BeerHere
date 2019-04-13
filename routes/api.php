@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'settings'], function () {
     Route::put('/settings/editprofile', 'SettingsController@editProfile')->name('api.editProfile');
 });
 
+//to test
 Route::group(['middleware' => 'auth:api', 'prefix' => 'uploads'], function () {
     Route::post('/upload/images','ImageUploadController@uploadImages')->name('api.uploadImages');
 });

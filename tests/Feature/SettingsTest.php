@@ -3,15 +3,13 @@
 namespace Tests\Feature;
 
 use App\User;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class InterestTest extends TestCase
+class SettingsTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -25,47 +23,42 @@ class InterestTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function setUp(): void
-    {
-        parent::setUp();
-//        $this->artisan('db:seed');
-    }
-
-    public function tearDown(): void
-    {
-        parent::setUp();
-//        $this->artisan('db:seed');
-    }
-
-
     protected function authenticate()
     {
         //Create user
-        $user = User::find(1);
+        $user = User::find(5);
         $token = JWTAuth::fromUser($user);
         //return token
         return $token;
     }
 
-    public function testSubscribeToInterest(){
+    public function testSettings(){
         //Get token
         $token = $this->authenticate();
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-        ])->json('GET',route('api.subscribeToInterest', 4));
+        ])->json('GET',route('api.settings'));
         $response->assertStatus(200);
 
 //        Log::info($response->json());
     }
 
-    public function testUnsubscribeToInterest(){
+    public function testEditProfile(){
         //Get token
         $token = $this->authenticate();
+        $data = [
+            'name' => 'Updated',
+            'gender' => 'F',
+            'birthdate' => '1996-04-11 00:00:00.000000',
+            'place' => 'Papendrecht',
+            'about' => 'Nieuwe about',
+        ];
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-        ])->json('GET',route('api.unsubscribeToInterest', 3));
+        ])->json('PUT',route('api.editProfile', $data));
         $response->assertStatus(200);
 
-//        Log::info($response->json());
+//        $response = $response->json();
+//        Log::info($response['loggedInUser']['name'] == 'Updated');
     }
 }

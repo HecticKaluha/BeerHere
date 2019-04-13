@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class SettingsController extends Controller
 {
@@ -17,7 +18,10 @@ class SettingsController extends Controller
     public function index()
     {
         $loggedInUser = Auth::user();
-        return view('settings.profilesettings', compact('loggedInUser'));
+        //non-api
+//        return view('settings.profilesettings', compact('loggedInUser'));
+        //api
+        return Response::json(array('loggedInUser' => $loggedInUser));
     }
 
     /**
@@ -118,6 +122,9 @@ class SettingsController extends Controller
         $user->update();
 
         $loggedInUser = $user;
-        return view('home', compact('loggedInUser'));
+        //non-api
+//        return view('home', compact('loggedInUser'));
+        //api
+        return Response::json(array('loggedInUser' => $loggedInUser));
     }
 }

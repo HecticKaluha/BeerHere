@@ -73,6 +73,6 @@ class PersonalTest extends TestCase
         ])->json('GET',route('api.getSuggestions'));
         $response->assertStatus(200);
 
-        Log::info($response->json());
+//        Log::info($response->json());
     }
 }

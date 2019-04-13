@@ -3,15 +3,13 @@
 namespace Tests\Feature;
 
 use App\User;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class InterestTest extends TestCase
+class AjaxTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -25,19 +23,6 @@ class InterestTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function setUp(): void
-    {
-        parent::setUp();
-//        $this->artisan('db:seed');
-    }
-
-    public function tearDown(): void
-    {
-        parent::setUp();
-//        $this->artisan('db:seed');
-    }
-
-
     protected function authenticate()
     {
         //Create user
@@ -47,23 +32,54 @@ class InterestTest extends TestCase
         return $token;
     }
 
-    public function testSubscribeToInterest(){
+    public function testLike(){
         //Get token
         $token = $this->authenticate();
+        $data = [
+            'id' => 6,
+        ];
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-        ])->json('GET',route('api.subscribeToInterest', 4));
+        ])->json('POST',route('api.like', $data));
         $response->assertStatus(200);
 
 //        Log::info($response->json());
     }
 
-    public function testUnsubscribeToInterest(){
+    public function testDislike(){
+        //Get token
+        $token = $this->authenticate();
+        $data = [
+            'id' => 7,
+        ];
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+        ])->json('POST',route('api.dislike', $data));
+        $response->assertStatus(200);
+
+//        Log::info($response->json());
+    }
+
+    public function testNextSuggestion(){
         //Get token
         $token = $this->authenticate();
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-        ])->json('GET',route('api.unsubscribeToInterest', 3));
+        ])->json('GET',route('api.nextSuggestion'));
+        $response->assertStatus(200);
+
+//        Log::info($response->json());
+    }
+
+    public function testGetCommonInterests(){
+        //Get token
+        $token = $this->authenticate();
+        $data = [
+            'id' => 3,
+        ];
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+        ])->json('POST',route('api.getCommonInterests', $data));
         $response->assertStatus(200);
 
 //        Log::info($response->json());

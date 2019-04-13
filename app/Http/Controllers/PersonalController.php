@@ -99,17 +99,25 @@ class PersonalController extends Controller
 
     public function unsubscribe($interest){
         Auth::user()->interests()->detach($interest);
-        return redirect()->back();
+        //non-api
+//        return redirect()->back();
+        //api
+        return Response::json(array('fail' => false, 'message' => 'You successfully unsubscribed to this interest.'));
     }
 
     public function subscribe($interest){
         try{
             Auth::user()->interests()->attach($interest);
         } catch(\Illuminate\Database\QueryException $e){
-            return redirect()->back()->withErrors(array('error' => 'You are already subscribed to this interest.'));
+            //non-api
+//            return redirect()->back()->withErrors(array('error' => 'You are already subscribed to this interest.'));
+            //api
+            return Response::json(array('fail' => true, 'error' => 'You are already subscribed to this interest.'));
         }
-
-        return redirect()->back();
+        //non-api
+//        return redirect()->back();
+        //api
+        return Response::json(array('fail' => false, 'message' => 'You successfully subscribed to this interest.'));
     }
 
     public function getLikes(){
