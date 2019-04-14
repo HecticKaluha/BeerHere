@@ -17,43 +17,38 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
+Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
+    //auth
     Route::post('authenticate', 'AuthController@authenticate')->name('api.authenticate');
     Route::post('register', 'AuthController@register')->name('api.register');
-});
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'home'], function () {
+    //home
     Route::get('/home', 'HomeController@index')->name('api.home');
-});
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'interests'], function () {
+    //interests
     Route::get('/interests/unsubscribe/{interest}', 'PersonalController@unsubscribe')->name('api.unsubscribeToInterest');
     Route::get('/interests/subscribe/{interest}', 'PersonalController@subscribe')->name('api.subscribeToInterest');
-});
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'personal'], function () {
+    //personal
     Route::get('/personal/interests', 'PersonalController@interests')->name('api.getPersonalInterests');
     Route::get('/personal/likes/', 'PersonalController@getLikes')->name('api.getLikes');
     Route::get('/personal/matches/', 'PersonalController@getMatches')->name('api.getMatches');
     Route::get('/personal/suggestions', 'ProfileController@getSuggestions')->name('api.getSuggestions');
-});
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'profile'], function () {
+   //profile
     Route::get('/profile/', ['uses' => 'ProfileController@show'])->name('api.getPersonalProfile');
     Route::get('/profile/{user}', ['uses' => 'ProfileController@show'])->name('api.getProfile');
-});
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'settings'], function () {
+
+    //settings
     Route::get('/settings', 'SettingsController@index')->name('api.settings');
     Route::put('/settings/editprofile', 'SettingsController@editProfile')->name('api.editProfile');
-});
 
-//to test
-Route::group(['middleware' => 'auth:api', 'prefix' => 'uploads'], function () {
+    //upload
+    //to test
     Route::post('/upload/images','ImageUploadController@uploadImages')->name('api.uploadImages');
-});
 
-Route::group(['middleware' => 'auth:api', 'prefix' => 'ajax'], function () {
+    //ajax
     Route::post('/validate/image','ImageUploadController@validateUpload')->name('api.validateImage');
     Route::post('/validate/images','ImageUploadController@validateMultipleUploads')->name('api.validateImages');
 
