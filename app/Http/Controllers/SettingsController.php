@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\User as UserResource;
+
 
 class SettingsController extends Controller
 {
@@ -21,7 +23,11 @@ class SettingsController extends Controller
         //non-api
 //        return view('settings.profilesettings', compact('loggedInUser'));
         //api
-        return Response::json(array('loggedInUser' => $loggedInUser));
+//        return Response::json(array('loggedInUser' => $loggedInUser));
+        return Response::json(array(
+            'loggedInUser' => new UserResource($loggedInUser),
+        ));
+
     }
 
     /**
@@ -125,6 +131,9 @@ class SettingsController extends Controller
         //non-api
 //        return view('home', compact('loggedInUser'));
         //api
-        return Response::json(array('loggedInUser' => $loggedInUser));
+//        return Response::json(array('loggedInUser' => $loggedInUser));
+        return Response::json(array(
+            'loggedInUser' => new UserResource($loggedInUser),
+        ));
     }
 }

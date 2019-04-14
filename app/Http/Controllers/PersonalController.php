@@ -6,6 +6,7 @@ use App\Interest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\User as UserResource;
 
 class PersonalController extends Controller
 {
@@ -94,7 +95,11 @@ class PersonalController extends Controller
         //non-api
 //        return view('personal.interests', compact('interests', 'availableInterests', 'user'));
         //api
-        return Response::json(array('interests' => $interests,'availableInterests' => $availableInterests));
+//        return Response::json(array('interests' => $interests,'availableInterests' => $availableInterests));
+        return Response::json(array(
+            'interests' => UserResource::collection($user->orderedInterests()),
+            'availableInterests' => UserResource::collection($user->orderedNotSubscribedInterests()),
+        ));
     }
 
     public function unsubscribe($interest){
@@ -127,7 +132,12 @@ class PersonalController extends Controller
         //non-api
 //        return view('personal.likes', compact('likes', 'displayAll', 'truncate'));
         //api
-        return Response::json(array('likes' => $likes,'displayAll' => $displayAll, 'truncate' => $truncate));
+//        return Response::json(array('likes' => $likes,'displayAll' => $displayAll, 'truncate' => $truncate));
+        return Response::json(array(
+            'likes' => UserResource::collection(Auth::user()->likes),
+            'displayAll' => $displayAll,
+            'truncate' => $truncate
+        ));
     }
 
     public function getMatches(){
@@ -137,6 +147,11 @@ class PersonalController extends Controller
         //non-api
 //        return view('personal.matches', compact('matches', 'displayAll', 'truncate'));
         //api
-        return Response::json(array('matches' => $matches,'displayAll' => $displayAll, 'truncate' => $truncate));
+//        return Response::json(array('matches' => $matches,'displayAll' => $displayAll, 'truncate' => $truncate));
+        return Response::json(array(
+            'matches' => UserResource::collection(Auth::user()->matches),
+            'displayAll' => $displayAll,
+            'truncate' => $truncate
+        ));
     }
 }

@@ -37,7 +37,7 @@ class User extends JsonResource
             'email' => $this->email,
             'email_verified_at' => $this->email_verified_at,
             'role_id' => $this->role_id,
-            'lat_login' => $this->last_login,
+            'last_login' => $this->last_login,
             'interests' => InterestResource::collection($this->whenLoaded('interests')),
             'pictures' => PictureResource::collection($this->whenLoaded('pictures')),
             'role' => RoleResource::collection($this->whenLoaded('role')),

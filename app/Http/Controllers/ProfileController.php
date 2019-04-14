@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\User as UserResource;
+use App\Http\Resources\Interest as InterestResource;
+
 
 class ProfileController extends Controller
 {
@@ -59,7 +62,13 @@ class ProfileController extends Controller
         //non-api
 //        return view('profile.profile_overview', compact('user', 'interests', 'displayAll', 'truncate'));
         //api
-        return Response::json(array('user' => $user,'interests' => $interests ,'displayAll' => $displayAll, 'truncate' => $truncate));
+//        return Response::json(array('user' => $user,'interests' => $interests ,'displayAll' => $displayAll, 'truncate' => $truncate));
+        return Response::json(array(
+            'user' => new UserResource($user),
+            'interests' => InterestResource::collection($user->interests),
+            'displayAll' => $displayAll,
+            'truncate' => $truncate,
+        ));
     }
 
     /**
@@ -104,8 +113,12 @@ class ProfileController extends Controller
         //non-api
 //        return view('suggestion.suggestions', compact('user', 'displayAll', 'truncate'));
         //api
-        return Response::json(array('user' => $user,'displayAll' => $displayAll, 'truncate' => $truncate));
-
+//        return Response::json(array('user' => $user,'displayAll' => $displayAll, 'truncate' => $truncate));
+        return Response::json(array(
+            'user' => new UserResource(Auth::user()->suggestions()),
+            'displayAll' => $displayAll,
+            'truncate' => $truncate,
+        ));
     }
 
     public function like()

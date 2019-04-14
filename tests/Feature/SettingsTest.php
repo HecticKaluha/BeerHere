@@ -59,6 +59,6 @@ class SettingsTest extends TestCase
         $response->assertStatus(200);
 
 //        $response = $response->json();
-//        Log::info($response['loggedInUser']['name'] == 'Updated');
+//        Log::info($response->json());
     }
 }
