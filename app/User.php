@@ -172,9 +172,6 @@ class User extends Authenticatable implements JWTSubject
         return $matchesWhenAway->count();
     }
 
-
-
-
     //JWT Stuff
     //Get the identifier that will be stored in the subject claim of the JWT.
     public function getJWTIdentifier()
