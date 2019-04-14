@@ -104,4 +104,13 @@ public/uploads/
 
 storage/framework/views/
 
+
+### Vuejs ###
+# Recommended template: Node.gitignore
+
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
 # End of https://www.gitignore.io/api/laravel,phpstorm

@@ -40,10 +40,11 @@
     <!-- END Icons -->
 
     <!-- Stylesheets -->
+    @stack("style")
     <!-- Web fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
     <!-- Page JS Plugins CSS go here -->
-    @stack("style")
+
     <!-- Bootstrap and OneUI CSS framework -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" id="css-main" href="{{asset('assets/css/oneui.min.css')}}">

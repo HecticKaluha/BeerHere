@@ -15,7 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('landing_nav', require('./components/LandingNav.vue').default);
+Vue.component('landing_header', require('./components/LandingHeader.vue').default);
+Vue.component('landing_banner', require('./components/LandingBanner.vue').default);
+Vue.component('landing_footer', require('./components/LandingFooter.vue').default);
 
 const app = new Vue({
     el: '#app'
