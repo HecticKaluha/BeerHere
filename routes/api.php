@@ -22,6 +22,10 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('register', 'AuthController@register')->name('api.register');
 });
 
+Route::group(['middleware' => 'auth:api', 'prefix' => 'home'], function () {
+    Route::get('/home', 'HomeController@index')->name('api.home');
+});
+
 Route::group(['middleware' => 'auth:api', 'prefix' => 'interests'], function () {
     Route::get('/interests/unsubscribe/{interest}', 'PersonalController@unsubscribe')->name('api.unsubscribeToInterest');
     Route::get('/interests/subscribe/{interest}', 'PersonalController@subscribe')->name('api.subscribeToInterest');

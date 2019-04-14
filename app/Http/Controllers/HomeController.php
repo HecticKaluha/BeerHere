@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
+use App\Http\Resources\User as UserResource;
 
 class HomeController extends Controller
 {
@@ -25,8 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $loggedInUser = Auth::user();
-        return view('home', compact('loggedInUser'));
+        //non-api
+//        return view('home', compact('loggedInUser'));
+        //api
+        return Response::json(array(
+            'loggedInUser' => new UserResource(Auth::user()),
+        ));
     }
-
-
 }
