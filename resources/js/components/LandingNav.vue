@@ -58,9 +58,9 @@
                 <!-- Side Content -->
                 <div class="side-content side-content-full">
                     <ul class="nav-main">
-                        <li>
-                            <a class="active" href="/home"><i class="si si-home"></i><span class="sidebar-mini-hide">Home</span></a>
-                        </li>
+                        <router-link tag="li" to="/home">
+                            <a class="active" ><i class="si si-home"></i><span class="sidebar-mini-hide">Home</span></a>
+                        </router-link>
                     </ul>
                 </div>
                 <!-- END Side Content -->

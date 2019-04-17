@@ -37455,221 +37455,202 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { attrs: { id: "sidebar" } }, [
-      _c("div", { attrs: { id: "sidebar-scroll" } }, [
-        _c("div", { staticClass: "sidebar-content" }, [
-          _c("div", { staticClass: "side-header side-content" }, [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "btn btn-link text-gray pull-right visible-xs visible-sm",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "layout",
-                  "data-action": "sidebar_close"
-                }
-              },
-              [_c("i", { staticClass: "fa fa-times" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "btn-group pull-right visible-md visible-lg" },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-link text-gray dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", type: "button" }
-                  },
-                  [_c("i", { staticClass: "si si-drop" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  {
-                    staticClass:
-                      "dropdown-menu dropdown-menu-right font-s13 sidebar-mini-hide"
-                  },
-                  [
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            "data-toggle": "theme",
-                            "data-theme": "default",
-                            tabindex: "-1",
-                            href: "javascript:void(0)"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-circle text-default pull-right"
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "font-w600" }, [
-                            _vm._v("Default")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            "data-toggle": "theme",
-                            "data-theme": "assets/css/themes/amethyst.min.css",
-                            tabindex: "-1",
-                            href: "javascript:void(0)"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-circle text-amethyst pull-right"
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "font-w600" }, [
-                            _vm._v("Amethyst")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            "data-toggle": "theme",
-                            "data-theme": "assets/css/themes/city.min.css",
-                            tabindex: "-1",
-                            href: "javascript:void(0)"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-circle text-city pull-right"
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "font-w600" }, [
-                            _vm._v("City")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            "data-toggle": "theme",
-                            "data-theme": "assets/css/themes/flat.min.css",
-                            tabindex: "-1",
-                            href: "javascript:void(0)"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-circle text-flat pull-right"
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "font-w600" }, [
-                            _vm._v("Flat")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            "data-toggle": "theme",
-                            "data-theme": "assets/css/themes/modern.min.css",
-                            tabindex: "-1",
-                            href: "javascript:void(0)"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-circle text-modern pull-right"
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "font-w600" }, [
-                            _vm._v("Modern")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            "data-toggle": "theme",
-                            "data-theme": "assets/css/themes/smooth.min.css",
-                            tabindex: "-1",
-                            href: "javascript:void(0)"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-circle text-smooth pull-right"
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "font-w600" }, [
-                            _vm._v("Smooth")
-                          ])
-                        ]
-                      )
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              { staticClass: "h5 text-white", attrs: { href: "/home" } },
-              [
-                _c("img", {
-                  staticClass: "fa",
-                  attrs: { src: "assets/img/favicons/favicon-16x16.png" }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "h6 font-w600 sidebar-mini-hide" }, [
-                  _vm._v("Be Here")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "side-content side-content-full" }, [
-            _c("ul", { staticClass: "nav-main" }, [
-              _c("li", [
-                _c("a", { staticClass: "active", attrs: { href: "/home" } }, [
+  return _c("nav", { attrs: { id: "sidebar" } }, [
+    _c("div", { attrs: { id: "sidebar-scroll" } }, [
+      _c("div", { staticClass: "sidebar-content" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "side-content side-content-full" }, [
+          _c(
+            "ul",
+            { staticClass: "nav-main" },
+            [
+              _c("router-link", { attrs: { tag: "li", to: "/home" } }, [
+                _c("a", { staticClass: "active" }, [
                   _c("i", { staticClass: "si si-home" }),
                   _c("span", { staticClass: "sidebar-mini-hide" }, [
                     _vm._v("Home")
                   ])
                 ])
               ])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "side-header side-content" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "btn btn-link text-gray pull-right visible-xs visible-sm",
+          attrs: {
+            type: "button",
+            "data-toggle": "layout",
+            "data-action": "sidebar_close"
+          }
+        },
+        [_c("i", { staticClass: "fa fa-times" })]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "btn-group pull-right visible-md visible-lg" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link text-gray dropdown-toggle",
+            attrs: { "data-toggle": "dropdown", type: "button" }
+          },
+          [_c("i", { staticClass: "si si-drop" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticClass:
+              "dropdown-menu dropdown-menu-right font-s13 sidebar-mini-hide"
+          },
+          [
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    "data-toggle": "theme",
+                    "data-theme": "default",
+                    tabindex: "-1",
+                    href: "javascript:void(0)"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-circle text-default pull-right"
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-w600" }, [_vm._v("Default")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    "data-toggle": "theme",
+                    "data-theme": "assets/css/themes/amethyst.min.css",
+                    tabindex: "-1",
+                    href: "javascript:void(0)"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-circle text-amethyst pull-right"
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-w600" }, [_vm._v("Amethyst")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    "data-toggle": "theme",
+                    "data-theme": "assets/css/themes/city.min.css",
+                    tabindex: "-1",
+                    href: "javascript:void(0)"
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-circle text-city pull-right" }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-w600" }, [_vm._v("City")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    "data-toggle": "theme",
+                    "data-theme": "assets/css/themes/flat.min.css",
+                    tabindex: "-1",
+                    href: "javascript:void(0)"
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-circle text-flat pull-right" }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-w600" }, [_vm._v("Flat")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    "data-toggle": "theme",
+                    "data-theme": "assets/css/themes/modern.min.css",
+                    tabindex: "-1",
+                    href: "javascript:void(0)"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-circle text-modern pull-right"
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-w600" }, [_vm._v("Modern")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    "data-toggle": "theme",
+                    "data-theme": "assets/css/themes/smooth.min.css",
+                    tabindex: "-1",
+                    href: "javascript:void(0)"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-circle text-smooth pull-right"
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-w600" }, [_vm._v("Smooth")])
+                ]
+              )
             ])
-          ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "h5 text-white", attrs: { href: "/home" } }, [
+        _c("img", {
+          staticClass: "fa",
+          attrs: { src: "assets/img/favicons/favicon-16x16.png" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "h6 font-w600 sidebar-mini-hide" }, [
+          _vm._v("Be Here")
         ])
       ])
     ])
