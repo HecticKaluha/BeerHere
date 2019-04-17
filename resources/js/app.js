@@ -8,6 +8,19 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+const routes = [
+    { path: '/', component: require('./components/LandingContent.vue').default },
+    { path: '/login', component: require('./components/Login.vue').default },
+    { path: '/register', component: require('./components/Register.vue').default },
+];
+
+const router = new VueRouter({
+    routes
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -33,5 +46,5 @@ Vue.component('landing_auth', require('./components/LandingAuth.vue').default);
  */
 
 const app = new Vue({
-    el: '#app'
-});
+    router
+}).$mount('#app');
