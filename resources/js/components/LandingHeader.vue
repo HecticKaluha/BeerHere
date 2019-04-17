@@ -7,11 +7,7 @@
                     <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
                     <div class="btn-group">
                         <!--auth here-->
-                        <ul class="navbar-nav remove-margin-t">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">include auth here</a>
-                            </li>
-                        </ul>
+                        <landing_auth></landing_auth>
                         <!--end auth-->
                     </div>
                 </li>

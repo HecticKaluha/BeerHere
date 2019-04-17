@@ -37028,6 +37028,110 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LandingAuth.vue?vue&type=template&id=1ff74878&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LandingAuth.vue?vue&type=template&id=1ff74878& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "navbar-nav remove-margin-t" },
+    [true ? [_vm._m(0), _vm._v(" "), _vm._m(1)] : undefined],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+        _vm._v("Route to login")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+        _vm._v("Route to register")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item dropdown" }, [
+      _c(
+        "a",
+        {
+          pre: true,
+          attrs: {
+            id: "navbarDropdown",
+            class: "nav-link dropdown-toggle",
+            href: "#",
+            role: "button",
+            "data-toggle": "dropdown",
+            "aria-haspopup": "true",
+            "aria-expanded": "false"
+          }
+        },
+        [_vm._v("\n                User's name here\n            ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "dropdown-menu dropdown-menu-right",
+          attrs: { "aria-labelledby": "navbarDropdown" }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "dropdown-item",
+              attrs: {
+                href: "#",
+                onclick:
+                  "event.preventDefault(); document.getElementById('logout-form').submit();"
+              }
+            },
+            [
+              _vm._v(
+                "\n                    Route to logout / logout function\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("form", {
+            staticStyle: { display: "none" },
+            attrs: { id: "logout-form", action: "#", method: "POST" }
+          })
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LandingBanner.vue?vue&type=template&id=ea246b70&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LandingBanner.vue?vue&type=template&id=ea246b70& ***!
@@ -37272,64 +37376,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "header",
+    {
+      staticClass: "content-mini content-mini-full hidden-md hidden-lg",
+      attrs: { id: "header-navbar" }
+    },
+    [
+      _c("div", { staticClass: "content-boxed" }, [
+        _c("ul", { staticClass: "nav-header pull-right" }, [
+          _c("li", [
+            _c("div", { staticClass: "btn-group" }, [_c("landing_auth")], 1)
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "header",
-      {
-        staticClass: "content-mini content-mini-full hidden-md hidden-lg",
-        attrs: { id: "header-navbar" }
-      },
-      [
-        _c("div", { staticClass: "content-boxed" }, [
-          _c("ul", { staticClass: "nav-header pull-right" }, [
-            _c("li", [
-              _c("div", { staticClass: "btn-group" }, [
-                _c("ul", { staticClass: "navbar-nav remove-margin-t" }, [
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("include auth here")
-                    ])
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-link text-white pull-right",
-                  attrs: {
-                    type: "button",
-                    "data-toggle": "layout",
-                    "data-action": "sidebar_open"
-                  }
-                },
-                [_c("i", { staticClass: "fa fa-navicon" })]
-              )
-            ])
-          ]),
+    return _c("li", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-link text-white pull-right",
+          attrs: {
+            type: "button",
+            "data-toggle": "layout",
+            "data-action": "sidebar_open"
+          }
+        },
+        [_c("i", { staticClass: "fa fa-navicon" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "nav-header pull-left" }, [
+      _c("li", { staticClass: "header-content" }, [
+        _c("a", { staticClass: "h5", attrs: { href: "/home" } }, [
+          _c("i", { staticClass: "fa fa-circle-o-notch text-primary" }),
           _vm._v(" "),
-          _c("ul", { staticClass: "nav-header pull-left" }, [
-            _c("li", { staticClass: "header-content" }, [
-              _c("a", { staticClass: "h5", attrs: { href: "/home" } }, [
-                _c("i", { staticClass: "fa fa-circle-o-notch text-primary" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "h4 font-w600 text-white" }, [
-                  _vm._v("Be Here")
-                ])
-              ])
-            ])
+          _c("span", { staticClass: "h4 font-w600 text-white" }, [
+            _vm._v("Be Here")
           ])
         ])
-      ]
-    )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -49740,6 +49842,7 @@ Vue.component('landing_nav', __webpack_require__(/*! ./components/LandingNav.vue
 Vue.component('landing_header', __webpack_require__(/*! ./components/LandingHeader.vue */ "./resources/js/components/LandingHeader.vue")["default"]);
 Vue.component('landing_banner', __webpack_require__(/*! ./components/LandingBanner.vue */ "./resources/js/components/LandingBanner.vue")["default"]);
 Vue.component('landing_footer', __webpack_require__(/*! ./components/LandingFooter.vue */ "./resources/js/components/LandingFooter.vue")["default"]);
+Vue.component('landing_auth', __webpack_require__(/*! ./components/LandingAuth.vue */ "./resources/js/components/LandingAuth.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
@@ -49801,6 +49904,59 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/LandingAuth.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/LandingAuth.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LandingAuth_vue_vue_type_template_id_1ff74878___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LandingAuth.vue?vue&type=template&id=1ff74878& */ "./resources/js/components/LandingAuth.vue?vue&type=template&id=1ff74878&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _LandingAuth_vue_vue_type_template_id_1ff74878___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LandingAuth_vue_vue_type_template_id_1ff74878___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/LandingAuth.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LandingAuth.vue?vue&type=template&id=1ff74878&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/LandingAuth.vue?vue&type=template&id=1ff74878& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingAuth_vue_vue_type_template_id_1ff74878___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LandingAuth.vue?vue&type=template&id=1ff74878& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LandingAuth.vue?vue&type=template&id=1ff74878&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingAuth_vue_vue_type_template_id_1ff74878___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingAuth_vue_vue_type_template_id_1ff74878___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

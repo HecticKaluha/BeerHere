@@ -69,10 +69,10 @@
         <landing_header></landing_header>
 
         <main id="main-container" style="min-height: 271px;">
-            <div class="pull-right hidden-sm hidden-xs">auth here</div>
+            <div class="pull-right hidden-sm hidden-xs"><landing_auth></landing_auth></div>
             <landing_banner></landing_banner>
             {{--vue slot here--}}
-            {{--@yield('content')--}}
+            <router-view></router-view>
         </main>
         <landing_footer></landing_footer>
     </div>
