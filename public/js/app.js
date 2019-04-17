@@ -49814,16 +49814,26 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('landing_nav', __webpack_require__(/*! ./components/LandingNav.vue */ "./resources/js/components/LandingNav.vue")["default"]);
 Vue.component('landing_header', __webpack_require__(/*! ./components/LandingHeader.vue */ "./resources/js/components/LandingHeader.vue")["default"]);
 Vue.component('landing_banner', __webpack_require__(/*! ./components/LandingBanner.vue */ "./resources/js/components/LandingBanner.vue")["default"]);
 Vue.component('landing_footer', __webpack_require__(/*! ./components/LandingFooter.vue */ "./resources/js/components/LandingFooter.vue")["default"]);
 Vue.component('landing_auth', __webpack_require__(/*! ./components/LandingAuth.vue */ "./resources/js/components/LandingAuth.vue")["default"]);
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
 var app = new Vue({
   el: '#app'
 });
