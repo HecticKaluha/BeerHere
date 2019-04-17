@@ -45,7 +45,8 @@
     <!-- Stylesheets -->
 
     <!-- Web fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
 
     <!-- Page JS Plugins CSS go here -->
 
@@ -59,9 +60,10 @@
     <!-- END Stylesheets -->
 </head>
 <body>
+<!-- Page Container -->
 <div id="app">
-    <!-- Page Container -->
-    <div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent">
+    <div id="page-container"
+         class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent">
         <landing_nav></landing_nav>
 
         <landing_header></landing_header>
@@ -73,11 +75,14 @@
             {{--@yield('content')--}}
         </main>
         <landing_footer></landing_footer>
-
     </div>
 </div>
+
+
+{{--vue app.js--}}
+<script src="{{asset('js/app.js')}}"></script>
+
 {{--core js for OneUi--}}
-<script src="assets/js/oneui.min.js"></script>
 {{--<script src="assets/js/core/jquery.min.js"></script>--}}
 {{--<script src="assets/js/core/bootstrap.min.js"></script>--}}
 {{--<script src="assets/js/core/jquery.slimscroll.min.js"></script>--}}
@@ -86,9 +91,9 @@
 {{--<script src="assets/js/core/jquery.countTo.min.js"></script>--}}
 {{--<script src="assets/js/core/jquery.placeholder.min.js"></script>--}}
 {{--<script src="assets/js/core/js.cookie.min.js"></script>--}}
+
 {{--oneUi app.js--}}
-{{--<script src="assets/js/core/app.js"></script>--}}
-{{--vue app.js--}}
-<script src="{{asset('js/app.js')}}"></script>
+<script src="assets/js/oneui.min.js"></script>
+
 </body>
 </html>
