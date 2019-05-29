@@ -16,6 +16,8 @@ Route::get('/', 'IndexController@index')->name('index');
 
 Auth::routes();
 
+Route::view('/{path?}', 'react-master');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/personal/interests', 'PersonalController@interests');

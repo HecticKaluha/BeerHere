@@ -24,7 +24,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('layouts.landing.vue-master');
+        return view('layouts.landing.react-master');
 //        return view('index');
     }
 }
